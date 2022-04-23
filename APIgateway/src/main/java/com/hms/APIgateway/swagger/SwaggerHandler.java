@@ -1,4 +1,4 @@
-package com.hms.APIgateway;
+package com.hms.APIgateway.swagger;
 
 import java.util.Optional;
 

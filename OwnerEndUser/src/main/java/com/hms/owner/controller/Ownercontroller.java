@@ -1,14 +1,14 @@
-package com.hms.manager;
+package com.hms.owner.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class controller {
+public class Ownercontroller {
 
-	@GetMapping("/man")
-	public String man() {
-		return "Manager";
+	@GetMapping("/own")
+	public String own() {
+		return "Owner";
 	}
 
 }

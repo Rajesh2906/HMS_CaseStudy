@@ -1,4 +1,4 @@
-package com.hms.APIgateway;
+package com.hms.APIgateway.swagger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,6 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
 	}
 
 	@Override
-
 	public List<SwaggerResource> get() {
 		List<SwaggerResource> resources = new ArrayList<>();
 		routeLocator.getRouteDefinitions().subscribe(routeDefinition -> {

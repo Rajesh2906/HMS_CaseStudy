@@ -24,8 +24,13 @@ spring:
               - Path=/Owner/**  
               filters:
               - StripPrefix=1
+            - id: Reservation
+              uri: http://localhost:8081/
+              predicates:
+              - Path=/reservation/**  
+              filters:
+              - StripPrefix=1
   
-
 eureka:
   client:
     enabled: true

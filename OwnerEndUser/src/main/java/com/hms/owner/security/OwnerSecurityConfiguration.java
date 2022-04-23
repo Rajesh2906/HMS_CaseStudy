@@ -1,4 +1,4 @@
-package com.hms.receptionist;
+package com.hms.owner.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-public class springSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class OwnerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -19,7 +19,8 @@ public class springSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("user")).authorities("ADMIN");
+		auth.inMemoryAuthentication().withUser("owner").password(passwordEncoder().encode("owner"))
+				.authorities("ADMIN");
 	}
 
 	@Bean
