@@ -1,0 +1,134 @@
+package com.hms.receptionist.model;
+
+import java.util.Date;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
+
+@Component
+@Document(collection = "Guest")
+public class Guest {
+
+	@Id
+	private String guestCode;
+	private String reservationCode;
+	private String roomNumber;
+	private Date todayDate_;
+	private String name_;
+	private String emailId_;
+	private String phoneNumber_;
+	private String gender_;
+	private String address_;
+	private String company_;
+	private String guestStatus_;
+
+	public Guest() {
+	}
+
+	public Guest(String guestCode, String reservationCode, String roomNumber, Date todayDate_, String name_,
+			String emailId_, String phoneNumber_, String gender_, String address_, String company_,
+			String guestStatus_) {
+		super();
+		this.guestCode = guestCode;
+		this.reservationCode = reservationCode;
+		this.roomNumber = roomNumber;
+		this.todayDate_ = todayDate_;
+		this.name_ = name_;
+		this.emailId_ = emailId_;
+		this.phoneNumber_ = phoneNumber_;
+		this.gender_ = gender_;
+		this.address_ = address_;
+		this.company_ = company_;
+		this.guestStatus_ = guestStatus_;
+	}
+
+	public String getGuestCode() {
+		return guestCode;
+	}
+
+	public void setGuestCode(String guestCode) {
+		this.guestCode = guestCode;
+	}
+
+	public String getReservationCode() {
+		return reservationCode;
+	}
+
+	public void setReservationCode(String reservationCode) {
+		this.reservationCode = reservationCode;
+	}
+
+	public String getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public Date getTodayDate_() {
+		return todayDate_;
+	}
+
+	public void setTodayDate_(Date todayDate_) {
+		this.todayDate_ = todayDate_;
+	}
+
+	public String getName_() {
+		return name_;
+	}
+
+	public void setName_(String name_) {
+		this.name_ = name_;
+	}
+
+	public String getEmailId_() {
+		return emailId_;
+	}
+
+	public void setEmailId_(String emailId_) {
+		this.emailId_ = emailId_;
+	}
+
+	public String getPhoneNumber_() {
+		return phoneNumber_;
+	}
+
+	public void setPhoneNumber_(String phoneNumber_) {
+		this.phoneNumber_ = phoneNumber_;
+	}
+
+	public String getGender_() {
+		return gender_;
+	}
+
+	public void setGender_(String gender_) {
+		this.gender_ = gender_;
+	}
+
+	public String getAddress_() {
+		return address_;
+	}
+
+	public void setAddress_(String address_) {
+		this.address_ = address_;
+	}
+
+	public String getCompany_() {
+		return company_;
+	}
+
+	public void setCompany_(String company_) {
+		this.company_ = company_;
+	}
+
+	public String getGuestStatus_() {
+		return guestStatus_;
+	}
+
+	public void setGuestStatus_(String guestStatus_) {
+		this.guestStatus_ = guestStatus_;
+	}
+
+}

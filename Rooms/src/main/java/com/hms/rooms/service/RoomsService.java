@@ -11,16 +11,16 @@ import com.hms.rooms.repository.RoomsRepository;
 
 @Service
 public class RoomsService {
-	@Autowired
-	Rooms rooms;
 
 	@Autowired
 	private RoomsRepository roomrepo;
 
 	public void addRoom(Rooms rooms) {
 		rooms.setRoomStatus_("Not Active");
-		rooms.setTotalRooms_(roomrepo.count() + 1);
 		roomrepo.insert(rooms);
+		List<Rooms> list = roomrepo.findAll();
+		list.forEach(p -> p.setTotalRooms_(roomrepo.count()));
+		roomrepo.saveAll(list);
 	}
 
 	public List<Rooms> getAllRooms() {
@@ -33,20 +33,29 @@ public class RoomsService {
 		return list;
 	}
 
-	public List<Rooms> updatetotalrooms() {
-		List<Rooms> list = new ArrayList<>();
-		roomrepo.findAll().stream().filter(p -> p.setTotalRooms_(roomrepo.count())).forEach(list::add);
-		roomrepo.save(list);
+	public void updateNoofRooms() {
+		List<Rooms> list = roomrepo.findAll();
+		list.forEach(p -> p.setTotalRooms_(roomrepo.count()));
+		roomrepo.saveAll(list);
 	}
 
-	public void updateNoofRooms(Rooms rooms) {
-		rooms.setTotalRooms_(roomrepo.count());
-		roomrepo.save(rooms);
+	public void makeStatusActive(String roomNumber) {
+		Rooms roomobj = roomrepo.findById(roomNumber).get();
+		roomobj.setRoomStatus_("Active");
+		roomrepo.save(roomobj);
+	}
+
+	public void makeStatusNotActive(String roomNumber) {
+		Rooms roomobj = roomrepo.findById(roomNumber).get();
+		roomobj.setRoomStatus_("Not Active");
+		roomrepo.save(roomobj);
 	}
 
 	public void deleteRooms(String roomNo) {
-		rooms.setTotalRooms_(roomrepo.count() - 1);
 		roomrepo.deleteById(roomNo);
+		List<Rooms> list = roomrepo.findAll();
+		list.forEach(p -> p.setTotalRooms_(roomrepo.count()));
+		roomrepo.saveAll(list);
 	}
 
 }

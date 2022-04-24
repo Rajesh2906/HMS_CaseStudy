@@ -32,8 +32,8 @@ public class GuestController {
 	}
 
 	@PostMapping("/addnewguest")
-	public void addNewGuest(@RequestBody Guest guest) {
-		service.addguest(guest);
+	public void addNewGuest(@RequestBody Guest guest, @RequestParam String roomNo) {
+		service.addguest(guest, roomNo);
 	}
 
 	@PostMapping("/addreservedguest")
@@ -48,11 +48,11 @@ public class GuestController {
 	}
 
 	@PutMapping("/checkoutguest")
-	public void updatecheckoutGuest(@RequestParam String roomNo, @RequestParam String guestCode) {
-		service.checkoutGuest(roomNo, guestCode);
+	public void updatecheckoutGuest(@RequestParam String guestCode) {
+		service.checkoutGuest(guestCode);
 	}
 
-	@DeleteMapping("/delteguest")
+	@DeleteMapping("/deleteguest")
 	public void deleteGuest(@RequestParam String guestCode) {
 		service.deleteguest(guestCode);
 	}

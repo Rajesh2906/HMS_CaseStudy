@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Reservation {
 
 	@Id
-	private String reservationCode;
+	private String reservationCode_;
 	private int numberOfAdult;
 	private int numberOfChildren;
 
@@ -34,11 +34,11 @@ public class Reservation {
 	public Reservation() {
 	}
 
-	public Reservation(String reservationCode, int numberOfAdult, int numberOfChildren, Date checkIn, Date checkOut,
+	public Reservation(String reservationCode_, int numberOfAdult, int numberOfChildren, Date checkIn, Date checkOut,
 			int numberOfNights, String name, String emailId, String phoneNumber, String gender, String address,
 			String company, String status_) {
 		super();
-		this.reservationCode = reservationCode;
+		this.reservationCode_ = reservationCode_;
 		this.numberOfAdult = numberOfAdult;
 		this.numberOfChildren = numberOfChildren;
 		this.checkIn = checkIn;
@@ -53,12 +53,12 @@ public class Reservation {
 		this.status_ = status_;
 	}
 
-	public String getReservationCode() {
-		return reservationCode;
+	public String getReservationCode_() {
+		return reservationCode_;
 	}
 
-	public void setReservationCode(String reservationCode) {
-		this.reservationCode = reservationCode;
+	public void setReservationCode_(String reservationCode_) {
+		this.reservationCode_ = reservationCode_;
 	}
 
 	public int getNumberOfAdult() {

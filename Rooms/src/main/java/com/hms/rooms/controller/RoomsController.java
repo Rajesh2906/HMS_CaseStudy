@@ -37,9 +37,19 @@ public class RoomsController {
 		roomservice.addRoom(rooms);
 	}
 
-	@PutMapping("/updateRooms")
-	public void updateRooms(@RequestBody Rooms rooms) {
-		roomservice.updateNoofRooms(rooms);
+	@PostMapping("/makestatusactive")
+	public void makeStatusActive(@RequestParam String roomNumber) {
+		roomservice.makeStatusActive(roomNumber);
+	}
+
+	@PostMapping("/makestatusnotactive")
+	public void makeStatusNotActive(@RequestParam String roomNumber) {
+		roomservice.makeStatusNotActive(roomNumber);
+	}
+
+	@PutMapping("/updatetotalrooms")
+	public void updateRooms() {
+		roomservice.updateNoofRooms();
 	}
 
 	@DeleteMapping("/deleteRooms")

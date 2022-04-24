@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,13 +18,13 @@ import org.springframework.web.client.RestTemplate;
 import com.hms.receptionist.model.Reservation;
 
 @RestController
-@RequestMapping("/Receptionist")
-public class Receptionistcontroller {
+@RequestMapping("/Receptionist/reservation")
+public class ReceptionistReservationcontroller {
 
 	@Autowired
 	private RestTemplate restTemplate;
 
-	// Receptionist Controller
+	// Reservation Controller
 
 	@GetMapping("/getreservationbyid")
 	public Reservation reservationById(@RequestParam String id) {
@@ -51,11 +50,6 @@ public class Receptionistcontroller {
 	@PutMapping("/updatereservation")
 	public void updateReservation(@RequestBody Reservation book) {
 		restTemplate.put("http://localhost:8081/reservation/updatereservation", book, Reservation.class);
-	}
-
-	@DeleteMapping("/deletereservation")
-	public void deleteReservation(@RequestParam String id) {
-		restTemplate.delete("http://localhost:8081/reservation/deletereservation?id=" + id);
 	}
 
 }

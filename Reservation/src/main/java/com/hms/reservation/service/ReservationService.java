@@ -16,6 +16,7 @@ public class ReservationService {
 
 	public Reservation addReservation(Reservation reservation) {
 		reservation.setStatus_("Confirmed");
+		reservation.setReservationCode_("RS" + (rep.count() + 1));
 		return rep.insert(reservation);
 	}
 
@@ -27,17 +28,8 @@ public class ReservationService {
 		return rep.save(reservation);
 	}
 
-	public void deleteReservation(String ReservationcCode) {
-		rep.deleteById(ReservationcCode);
-	}
-
 	public Reservation getreservationById(String ReservationcCode) {
 		return rep.findById(ReservationcCode).get();
 	}
-
-	/*
-	 * public boolean findById(String code) { return
-	 * rep.findById(res.getCode()).equals(code); }
-	 */
 
 }

@@ -25,8 +25,10 @@ public class GuestService {
 	@Autowired
 	private GuestRepository guestrepo;
 
-	public void addguest(Guest guest) {
+	public void addguest(Guest guest, String roomNo) {
 		guest.setGuestStatus_("Checked In");
+		restTemplate.postForObject("http://Rooms/manager/makestatusactive?roomNumber=" + roomNo, guest, Guest.class);
+		guest.setGuestCode("G" + (guestrepo.count() + 1));
 		guestrepo.insert(guest);
 	}
 
@@ -52,11 +54,8 @@ public class GuestService {
 
 		if (listOfReservation.stream().anyMatch(p -> reservationcode.equals(p.getReservationCode()))) {
 
-			// AUTOMATE IT AFTER CREATING ROOM MICROSERVICE
-
-//			Rooms myDocumentToUpdateactive = roomsrepo.findById(roomNo).get();
-//			myDocumentToUpdateactive.setRoomStatus_("Active");
-//			roomsrepo.save(myDocumentToUpdateactive);
+			restTemplate.postForObject("http://Rooms/manager/makestatusactive?roomNumber=" + roomNo, guest,
+					Guest.class);
 
 			Reservation resobj = listOfReservation.stream().filter(p -> reservationcode.equals(p.getReservationCode()))
 					.findAny().orElse(null);
@@ -70,6 +69,7 @@ public class GuestService {
 			guest.setReservationCode(reservationcode);
 			guest.setRoomNumber(roomNo);
 			guest.setGuestStatus_("Checked In");
+			guest.setGuestCode("G" + (guestrepo.count() + 1));
 			return guestrepo.insert(guest);
 
 		} else {
@@ -83,11 +83,11 @@ public class GuestService {
 		guestrepo.save(guest);
 	}
 
-	public void checkoutGuest(String roomNo, String guestCode) {
+	public void checkoutGuest(String guestCode) {
 
-//		Rooms myDocumentToUpdatenotactive = roomsrepo.findById(roomNo).get();
-//		myDocumentToUpdatenotactive.setRoomStatus_("Not Active");
-//		roomsrepo.save(myDocumentToUpdatenotactive);
+		String roomNo = guestrepo.findById(guestCode).get().getRoomNumber();
+
+		restTemplate.postForObject("http://Rooms/manager/makestatusnotactive?roomNumber=" + roomNo, guest, Guest.class);
 
 		Guest guestinfo = guestrepo.findById(guestCode).get();
 		guestinfo.setGuestStatus_("Checked Out");
