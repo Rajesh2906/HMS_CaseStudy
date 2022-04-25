@@ -22,9 +22,9 @@ public class ReservationController {
 	private ReservationService service;
 
 	@PostMapping("/addreservation")
-	public Reservation addReservations(@RequestBody Reservation reservation) {
+	public void addReservations(@RequestBody Reservation reservation) {
 		service.addReservation(reservation);
-		return reservation;
+
 	}
 
 	@GetMapping("/getallreservation")

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class Guest {
 
 	@Id
-	private String guestCode;
+	private String guestCode_;
 	private String reservationCode;
 	private String roomNumber;
 	private Date todayDate_;
@@ -26,11 +26,11 @@ public class Guest {
 	public Guest() {
 	}
 
-	public Guest(String guestCode, String reservationCode, String roomNumber, Date todayDate_, String name_,
+	public Guest(String guestCode_, String reservationCode, String roomNumber, Date todayDate_, String name_,
 			String emailId_, String phoneNumber_, String gender_, String address_, String company_,
 			String guestStatus_) {
 		super();
-		this.guestCode = guestCode;
+		this.guestCode_ = guestCode_;
 		this.reservationCode = reservationCode;
 		this.roomNumber = roomNumber;
 		this.todayDate_ = todayDate_;
@@ -43,12 +43,12 @@ public class Guest {
 		this.guestStatus_ = guestStatus_;
 	}
 
-	public String getGuestCode() {
-		return guestCode;
+	public String getGuestCode_() {
+		return guestCode_;
 	}
 
-	public void setGuestCode(String guestCode) {
-		this.guestCode = guestCode;
+	public void setGuestCode_(String guestCode_) {
+		this.guestCode_ = guestCode_;
 	}
 
 	public String getReservationCode() {

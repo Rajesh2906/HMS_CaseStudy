@@ -43,8 +43,8 @@ public class GuestController {
 	}
 
 	@PutMapping("/updateGuest")
-	public void updateGuest(@RequestBody Guest guest) {
-		service.updateGuest(guest);
+	public void updateGuest(@RequestParam String id, @RequestBody Guest guest) {
+		service.updateGuest(id, guest);
 	}
 
 	@PutMapping("/checkoutguest")

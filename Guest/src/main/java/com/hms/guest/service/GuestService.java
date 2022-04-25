@@ -28,7 +28,7 @@ public class GuestService {
 	public void addguest(Guest guest, String roomNo) {
 		guest.setGuestStatus_("Checked In");
 		restTemplate.postForObject("http://Rooms/manager/makestatusactive?roomNumber=" + roomNo, guest, Guest.class);
-		guest.setGuestCode("G" + (guestrepo.count() + 1));
+		guest.setGuestCode_("G" + (guestrepo.count() + 1));
 		guestrepo.insert(guest);
 	}
 
@@ -52,12 +52,12 @@ public class GuestService {
 				});
 		List<Reservation> listOfReservation = responseEntity.getBody();
 
-		if (listOfReservation.stream().anyMatch(p -> reservationcode.equals(p.getReservationCode()))) {
+		if (listOfReservation.stream().anyMatch(p -> reservationcode.equals(p.getReservationCode_()))) {
 
 			restTemplate.postForObject("http://Rooms/manager/makestatusactive?roomNumber=" + roomNo, guest,
 					Guest.class);
 
-			Reservation resobj = listOfReservation.stream().filter(p -> reservationcode.equals(p.getReservationCode()))
+			Reservation resobj = listOfReservation.stream().filter(p -> reservationcode.equals(p.getReservationCode_()))
 					.findAny().orElse(null);
 
 			guest.setName_(resobj.getName());
@@ -69,7 +69,7 @@ public class GuestService {
 			guest.setReservationCode(reservationcode);
 			guest.setRoomNumber(roomNo);
 			guest.setGuestStatus_("Checked In");
-			guest.setGuestCode("G" + (guestrepo.count() + 1));
+			guest.setGuestCode_("G" + (guestrepo.count() + 1));
 			return guestrepo.insert(guest);
 
 		} else {
@@ -79,7 +79,8 @@ public class GuestService {
 
 	}
 
-	public void updateGuest(Guest guest) {
+	public void updateGuest(String id, Guest guest) {
+		guest.setGuestCode_(id);
 		guestrepo.save(guest);
 	}
 

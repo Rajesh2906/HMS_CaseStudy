@@ -33,11 +33,11 @@ public class RoomsService {
 		return list;
 	}
 
-	public void updateNoofRooms() {
-		List<Rooms> list = roomrepo.findAll();
-		list.forEach(p -> p.setTotalRooms_(roomrepo.count()));
-		roomrepo.saveAll(list);
-	}
+//	public void updateNoofRooms() {
+//		List<Rooms> list = roomrepo.findAll();
+//		list.forEach(p -> p.setTotalRooms_(roomrepo.count()));
+//		roomrepo.saveAll(list);
+//	}
 
 	public void makeStatusActive(String roomNumber) {
 		Rooms roomobj = roomrepo.findById(roomNumber).get();

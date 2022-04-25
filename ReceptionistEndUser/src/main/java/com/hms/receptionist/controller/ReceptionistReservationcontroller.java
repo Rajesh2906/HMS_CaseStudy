@@ -28,14 +28,14 @@ public class ReceptionistReservationcontroller {
 
 	@GetMapping("/getreservationbyid")
 	public Reservation reservationById(@RequestParam String id) {
-		return restTemplate.getForObject("http://localhost:8081/reservation/getreservationbyid?id=" + id,
+		return restTemplate.getForObject("http://Reservation/reservation/getreservationbyid?id=" + id,
 				Reservation.class);
 	}
 
 	@GetMapping("/getallreservation")
 	public List<Reservation> allReservations() {
 		ResponseEntity<List<Reservation>> responseEntity = restTemplate.exchange(
-				"http://localhost:8081/reservation/getallreservation", HttpMethod.GET, null,
+				"http://Reservation/reservation/getallreservation", HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Reservation>>() {
 				});
 		List<Reservation> listOfReservation = responseEntity.getBody();
@@ -44,12 +44,12 @@ public class ReceptionistReservationcontroller {
 
 	@PostMapping("/addreservation")
 	public void postReservation(@RequestBody Reservation reservation) {
-		restTemplate.postForObject("http://localhost:8081/reservation/addreservation", reservation, Reservation.class);
+		restTemplate.postForObject("http://Reservation/reservation/addreservation", reservation, Reservation.class);
 	}
 
 	@PutMapping("/updatereservation")
 	public void updateReservation(@RequestBody Reservation book) {
-		restTemplate.put("http://localhost:8081/reservation/updatereservation", book, Reservation.class);
+		restTemplate.put("http://Reservation/reservation/updatereservation", book, Reservation.class);
 	}
 
 }
