@@ -6,6 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component
 @Document(collection = "Guest")
 public class Guest {
@@ -15,6 +17,13 @@ public class Guest {
 	private String reservationCode;
 	private String roomNumber;
 	private Date todayDate_;
+	private int numberOfAdult;
+	private int numberOfChildren;
+	@JsonFormat(pattern = "yyyy/MM/dd")
+	private Date checkIn;
+	@JsonFormat(pattern = "yyyy/MM/dd")
+	private Date checkOut;
+	private int numberOfNights;
 	private String name_;
 	private String emailId_;
 	private String phoneNumber_;
@@ -26,14 +35,19 @@ public class Guest {
 	public Guest() {
 	}
 
-	public Guest(String guestCode_, String reservationCode, String roomNumber, Date todayDate_, String name_,
-			String emailId_, String phoneNumber_, String gender_, String address_, String company_,
-			String guestStatus_) {
+	public Guest(String guestCode_, String reservationCode, String roomNumber, Date todayDate_, int numberOfAdult,
+			int numberOfChildren, Date checkIn, Date checkOut, int numberOfNights, String name_, String emailId_,
+			String phoneNumber_, String gender_, String address_, String company_, String guestStatus_) {
 		super();
 		this.guestCode_ = guestCode_;
 		this.reservationCode = reservationCode;
 		this.roomNumber = roomNumber;
 		this.todayDate_ = todayDate_;
+		this.numberOfAdult = numberOfAdult;
+		this.numberOfChildren = numberOfChildren;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.numberOfNights = numberOfNights;
 		this.name_ = name_;
 		this.emailId_ = emailId_;
 		this.phoneNumber_ = phoneNumber_;
@@ -41,6 +55,46 @@ public class Guest {
 		this.address_ = address_;
 		this.company_ = company_;
 		this.guestStatus_ = guestStatus_;
+	}
+
+	public int getNumberOfAdult() {
+		return numberOfAdult;
+	}
+
+	public void setNumberOfAdult(int numberOfAdult) {
+		this.numberOfAdult = numberOfAdult;
+	}
+
+	public int getNumberOfChildren() {
+		return numberOfChildren;
+	}
+
+	public void setNumberOfChildren(int numberOfChildren) {
+		this.numberOfChildren = numberOfChildren;
+	}
+
+	public Date getCheckIn() {
+		return checkIn;
+	}
+
+	public void setCheckIn(Date checkIn) {
+		this.checkIn = checkIn;
+	}
+
+	public Date getCheckOut() {
+		return checkOut;
+	}
+
+	public void setCheckOut(Date checkOut) {
+		this.checkOut = checkOut;
+	}
+
+	public int getNumberOfNights() {
+		return numberOfNights;
+	}
+
+	public void setNumberOfNights(int numberOfNights) {
+		this.numberOfNights = numberOfNights;
 	}
 
 	public String getGuestCode_() {

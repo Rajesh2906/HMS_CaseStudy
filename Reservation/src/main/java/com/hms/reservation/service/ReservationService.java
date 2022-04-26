@@ -15,8 +15,10 @@ public class ReservationService {
 	private ReservationRepository rep;
 
 	public Reservation addReservation(Reservation reservation) {
+
 		reservation.setStatus_("Confirmed");
 		reservation.setReservationCode_("RS" + (rep.count() + 1));
+
 		return rep.insert(reservation);
 	}
 

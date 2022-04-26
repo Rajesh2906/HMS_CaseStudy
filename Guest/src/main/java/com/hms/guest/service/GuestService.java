@@ -59,17 +59,23 @@ public class GuestService {
 
 			Reservation resobj = listOfReservation.stream().filter(p -> reservationcode.equals(p.getReservationCode_()))
 					.findAny().orElse(null);
-
-			guest.setName_(resobj.getName());
-			guest.setAddress_(resobj.getAddress());
-			guest.setCompany_(resobj.getCompany());
-			guest.setEmailId_(resobj.getEmailId());
-			guest.setGender_(resobj.getGender());
-			guest.setPhoneNumber_(resobj.getPhoneNumber());
+			guest.setGuestCode_("G" + (guestrepo.count() + 1));
 			guest.setReservationCode(reservationcode);
 			guest.setRoomNumber(roomNo);
+
+			guest.setNumberOfAdult(resobj.getNumberOfAdult());
+			guest.setNumberOfChildren(resobj.getNumberOfChildren());
+			guest.setCheckIn(resobj.getCheckIn());
+			guest.setCheckOut(resobj.getCheckOut());
+			guest.setNumberOfNights(resobj.getNumberOfNights());
+			guest.setName_(resobj.getName());
+			guest.setEmailId_(resobj.getEmailId());
+			guest.setPhoneNumber_(resobj.getPhoneNumber());
+			guest.setGender_(resobj.getGender());
+			guest.setAddress_(resobj.getAddress());
+			guest.setCompany_(resobj.getCompany());
 			guest.setGuestStatus_("Checked In");
-			guest.setGuestCode_("G" + (guestrepo.count() + 1));
+
 			return guestrepo.insert(guest);
 
 		} else {
@@ -79,8 +85,7 @@ public class GuestService {
 
 	}
 
-	public Guest updateGuest(String id, Guest guest) {
-		guest.setGuestCode_(id);
+	public Guest updateGuest(Guest guest) {
 		return guestrepo.save(guest);
 	}
 

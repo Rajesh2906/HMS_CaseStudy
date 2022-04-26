@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.hms.manager.models.Rates;
 
 @RestController
-@RequestMapping("/manager")
+@RequestMapping("/manager/rates")
 public class ManagerRatesController {
 
 	@Autowired
@@ -26,13 +25,13 @@ public class ManagerRatesController {
 
 	@PostMapping("/addrate")
 	public void setRates(@RequestBody Rates rate) {
-		restTemplate.postForObject("http://Rates/manager/addrate", rate, Rates.class);
+		restTemplate.postForObject("http://Rates/rates/addrate", rate, Rates.class);
 
 	}
 
 	@GetMapping("/getallrates")
 	public List<Rates> getRates() {
-		ResponseEntity<List<Rates>> responseEntity = restTemplate.exchange("http://Rates/manager/getallrates",
+		ResponseEntity<List<Rates>> responseEntity = restTemplate.exchange("http://Rates/rates/getallrates",
 				HttpMethod.GET, null, new ParameterizedTypeReference<List<Rates>>() {
 				});
 		List<Rates> listOfRates = responseEntity.getBody();
@@ -40,8 +39,8 @@ public class ManagerRatesController {
 	}
 
 	@PutMapping("/updaterates")
-	public void updateRates(@RequestBody Rates rates, @RequestParam String id) {
-		restTemplate.put("http://Rates/manager/updaterates?id=" + id, rates, Rates.class);
+	public void updateRates(@RequestBody Rates rates) {
+		restTemplate.put("http://Rates/rates/updaterates", rates, Rates.class);
 	}
 
 }

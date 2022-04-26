@@ -40,8 +40,8 @@ public class ReceptionistGuestcontroller {
 	}
 
 	@PostMapping("/addnewguest")
-	public void addNewGuest(@RequestBody Guest guest, @RequestParam String roomNo) {
-		restTemplate.postForObject("http://Guest/Guest/addnewguest?roomNo=" + roomNo, guest, Guest.class);
+	public void addNewGuest(@RequestBody Guest guest) {
+		restTemplate.postForObject("http://Guest/Guest/addnewguest", guest, Guest.class);
 	}
 
 	@PostMapping("/addreservedguest")

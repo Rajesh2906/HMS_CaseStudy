@@ -15,7 +15,7 @@ import com.hms.rates.models.Rates;
 import com.hms.rates.service.RateService;
 
 @RestController
-@RequestMapping("/manager")
+@RequestMapping("/rates")
 public class RateController {
 	@Autowired
 	RateService rateService;
@@ -31,8 +31,13 @@ public class RateController {
 	}
 
 	@PutMapping("/updaterates")
-	public void updateRates(@RequestBody Rates rates, @RequestParam String id) {
-		rateService.updateRates(rates, id);
+	public void updateRates(@RequestBody Rates rates) {
+		rateService.updateRates(rates);
+	}
+
+	@GetMapping("/getratesbyid")
+	public Rates getRatesById(@RequestParam String id) {
+		return rateService.getRateById(id);
 	}
 
 }

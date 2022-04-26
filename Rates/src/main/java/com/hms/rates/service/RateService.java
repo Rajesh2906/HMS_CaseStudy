@@ -18,14 +18,17 @@ public class RateService {
 		return raterepo.insert(rates);
 	}
 
-	public Rates updateRates(Rates rates, String id) {
-		rates.setRateId(id);
+	public Rates updateRates(Rates rates) {
 		return raterepo.save(rates);
 	}
 
 	public List<Rates> getRates() {
 		return raterepo.findAll();
 
+	}
+
+	public Rates getRateById(String id) {
+		return raterepo.findById(id).get();
 	}
 
 }

@@ -1,14 +1,10 @@
 package com.hms.receptionist.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 @Component
-@Document(collection = "Rooms")
 public class Rooms {
 
-	@Id
 	private String roomNumber;
 	private String roomStatus_;
 	private Long totalRooms_;

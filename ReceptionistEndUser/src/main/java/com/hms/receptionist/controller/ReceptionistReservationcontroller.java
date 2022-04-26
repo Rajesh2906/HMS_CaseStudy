@@ -24,8 +24,6 @@ public class ReceptionistReservationcontroller {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	// Reservation Controller
-
 	@GetMapping("/getreservationbyid")
 	public Reservation reservationById(@RequestParam String id) {
 		return restTemplate.getForObject("http://Reservation/reservation/getreservationbyid?id=" + id,
@@ -48,8 +46,8 @@ public class ReceptionistReservationcontroller {
 	}
 
 	@PutMapping("/updatereservation")
-	public void updateReservation(@RequestBody Reservation book) {
-		restTemplate.put("http://Reservation/reservation/updatereservation", book, Reservation.class);
+	public void updateReservation(@RequestBody Reservation reservation) {
+		restTemplate.put("http://Reservation/reservation/updatereservation", reservation, Reservation.class);
 	}
 
 }

@@ -1,14 +1,18 @@
-package com.hms.receptionist.model;
+package com.hms.bill.models;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Component
+@Document(collection = "Guest")
 public class Guest {
 
+	@Id
 	private String guestCode_;
 	private String reservationCode;
 	private String roomNumber;

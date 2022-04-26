@@ -2,17 +2,13 @@ package com.hms.receptionist.model;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Component
-@Document(collection = "Reservation")
 public class Reservation {
 
-	@Id
 	private String reservationCode_;
 	private int numberOfAdult;
 	private int numberOfChildren;
