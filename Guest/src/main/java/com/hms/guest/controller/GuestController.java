@@ -32,8 +32,8 @@ public class GuestController {
 	}
 
 	@PostMapping("/addnewguest")
-	public void addNewGuest(@RequestBody Guest guest, @RequestParam String roomNo) {
-		service.addguest(guest, roomNo);
+	public void addNewGuest(@RequestBody Guest guest) {
+		service.addguest(guest);
 	}
 
 	@PostMapping("/addreservedguest")

@@ -15,12 +15,12 @@ public class RoomsService {
 	@Autowired
 	private RoomsRepository roomrepo;
 
-	public void addRoom(Rooms rooms) {
+	public List<Rooms> addRoom(Rooms rooms) {
 		rooms.setRoomStatus_("Not Active");
 		roomrepo.insert(rooms);
 		List<Rooms> list = roomrepo.findAll();
 		list.forEach(p -> p.setTotalRooms_(roomrepo.count()));
-		roomrepo.saveAll(list);
+		return roomrepo.saveAll(list);
 	}
 
 	public List<Rooms> getAllRooms() {
@@ -39,16 +39,16 @@ public class RoomsService {
 //		roomrepo.saveAll(list);
 //	}
 
-	public void makeStatusActive(String roomNumber) {
+	public Rooms makeStatusActive(String roomNumber) {
 		Rooms roomobj = roomrepo.findById(roomNumber).get();
 		roomobj.setRoomStatus_("Active");
-		roomrepo.save(roomobj);
+		return roomrepo.save(roomobj);
 	}
 
-	public void makeStatusNotActive(String roomNumber) {
+	public Rooms makeStatusNotActive(String roomNumber) {
 		Rooms roomobj = roomrepo.findById(roomNumber).get();
 		roomobj.setRoomStatus_("Not Active");
-		roomrepo.save(roomobj);
+		return roomrepo.save(roomobj);
 	}
 
 	public void deleteRooms(String roomNo) {

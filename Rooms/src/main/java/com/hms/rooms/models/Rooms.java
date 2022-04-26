@@ -13,6 +13,17 @@ public class Rooms {
 	private String roomStatus_;
 	private Long totalRooms_;
 
+	public Rooms() {
+
+	}
+
+	public Rooms(String roomNumber, String roomStatus_, Long totalRooms_) {
+		super();
+		this.roomNumber = roomNumber;
+		this.roomStatus_ = roomStatus_;
+		this.totalRooms_ = totalRooms_;
+	}
+
 	public String getRoomNumber() {
 		return roomNumber;
 	}

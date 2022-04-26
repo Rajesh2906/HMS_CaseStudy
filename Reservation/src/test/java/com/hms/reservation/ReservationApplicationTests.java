@@ -28,7 +28,7 @@ class ReservationApplicationTests {
 	private ReservationRepository rep;
 
 	@Test
-	public void getGuestTest() throws ParseException {
+	public void getReservationTest() throws ParseException {
 
 		SimpleDateFormat simpleformat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = simpleformat.parse("2022/05/22");
@@ -44,7 +44,7 @@ class ReservationApplicationTests {
 	}
 
 	@Test
-	public void addGuestTest() throws ParseException {
+	public void addReservationTest() throws ParseException {
 
 		SimpleDateFormat simpleformat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = simpleformat.parse("2022/05/22");
@@ -57,7 +57,7 @@ class ReservationApplicationTests {
 	}
 
 	@Test
-	public void updateGuestTest() throws ParseException {
+	public void updateReservationTest() throws ParseException {
 
 		SimpleDateFormat simpleformat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = simpleformat.parse("2022/05/22");

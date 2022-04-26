@@ -25,11 +25,12 @@ public class GuestService {
 	@Autowired
 	private GuestRepository guestrepo;
 
-	public void addguest(Guest guest, String roomNo) {
+	public Guest addguest(Guest guest) {
 		guest.setGuestStatus_("Checked In");
-		restTemplate.postForObject("http://Rooms/manager/makestatusactive?roomNumber=" + roomNo, guest, Guest.class);
+		restTemplate.postForObject("http://Rooms/Rooms/makestatusactive?roomNumber=" + guest.getRoomNumber(), guest,
+				Guest.class);
 		guest.setGuestCode_("G" + (guestrepo.count() + 1));
-		guestrepo.insert(guest);
+		return guestrepo.insert(guest);
 	}
 
 	public List<Guest> getallguests() {
@@ -54,8 +55,7 @@ public class GuestService {
 
 		if (listOfReservation.stream().anyMatch(p -> reservationcode.equals(p.getReservationCode_()))) {
 
-			restTemplate.postForObject("http://Rooms/manager/makestatusactive?roomNumber=" + roomNo, guest,
-					Guest.class);
+			restTemplate.postForObject("http://Rooms/Rooms/makestatusactive?roomNumber=" + roomNo, guest, Guest.class);
 
 			Reservation resobj = listOfReservation.stream().filter(p -> reservationcode.equals(p.getReservationCode_()))
 					.findAny().orElse(null);
@@ -79,16 +79,16 @@ public class GuestService {
 
 	}
 
-	public void updateGuest(String id, Guest guest) {
+	public Guest updateGuest(String id, Guest guest) {
 		guest.setGuestCode_(id);
-		guestrepo.save(guest);
+		return guestrepo.save(guest);
 	}
 
 	public void checkoutGuest(String guestCode) {
 
 		String roomNo = guestrepo.findById(guestCode).get().getRoomNumber();
 
-		restTemplate.postForObject("http://Rooms/manager/makestatusnotactive?roomNumber=" + roomNo, guest, Guest.class);
+		restTemplate.postForObject("http://Rooms/Rooms/makestatusnotactive?roomNumber=" + roomNo, guest, Guest.class);
 
 		Guest guestinfo = guestrepo.findById(guestCode).get();
 		guestinfo.setGuestStatus_("Checked Out");
