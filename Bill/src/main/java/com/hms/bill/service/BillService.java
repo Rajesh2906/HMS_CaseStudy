@@ -43,7 +43,7 @@ public class BillService {
 			 * String reservationCode = listOfGuest.stream().filter(p ->
 			 * p.getGuestCode_().equals(guestCode)).findAny() .get().getReservationCode();
 			 */
-			Rates rate = restTemplate.getForObject("http://Rates/manager/getratesbyid?id=" + rateId, Rates.class);
+			Rates rate = restTemplate.getForObject("http://Rates/rates/getratesbyid?id=" + rateId, Rates.class);
 
 			double oneNight = rate.getFirstNightPrice();
 			double dayprice = rate.getDayPrice();

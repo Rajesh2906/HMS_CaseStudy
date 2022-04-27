@@ -1,9 +1,12 @@
-package com.hms.staff;
+package com.hms.staff.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.hms.staff.models.Staff;
+import com.hms.staff.repository.StaffRepository;
 
 @Service
 public class StaffService {
