@@ -23,13 +23,13 @@ public class Bill {
 	public Bill() {
 	}
 
-	public Bill(String billNumber, String guestCode, Double quantity, Double price, Double taxes, Date date,
+	public Bill(String billNumber, String guestCode, Double quantity, Double totalPrice_, Double taxes, Date date,
 			Double services, Double unit) {
 		super();
 		this.billNumber = billNumber;
 		this.guestCode = guestCode;
 		this.quantity = quantity;
-		this.totalPrice_ = price;
+		this.totalPrice_ = totalPrice_;
 		this.taxes = taxes;
 		this.date = date;
 		this.services = services;
@@ -64,8 +64,8 @@ public class Bill {
 		return totalPrice_;
 	}
 
-	public void setTotalPrice_(Double price) {
-		this.totalPrice_ = price;
+	public void setTotalPrice_(Double totalPrice_) {
+		this.totalPrice_ = totalPrice_;
 	}
 
 	public Double getTaxes() {
