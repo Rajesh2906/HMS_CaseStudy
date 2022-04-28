@@ -1,11 +1,11 @@
 package com.hms.staff.models;
 
-import org.hibernate.annotations.Entity;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 @Component
-@Entity
+@Document(collection = "Staff")
 public class Staff {
 
 	@Id

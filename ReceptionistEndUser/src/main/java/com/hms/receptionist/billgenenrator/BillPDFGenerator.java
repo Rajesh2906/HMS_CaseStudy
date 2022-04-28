@@ -1,10 +1,10 @@
-package com.hms.reports.generator;
+package com.hms.receptionist.billgenenrator;
 
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.hms.reports.models.Bill;
+import com.hms.receptionist.model.Bill;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;

@@ -1,12 +1,11 @@
 package com.hms.department.models;
 
-import javax.persistence.Id;
-
-import org.hibernate.annotations.Entity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 @Component
-@Entity
+@Document(collection = "Department")
 public class Department {
 
 	@Id

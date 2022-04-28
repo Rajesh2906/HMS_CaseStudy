@@ -1,12 +1,16 @@
-package com.hms.reports.models;
+package com.hms.receptionist.model;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 @Component
+@Document(collection = "Bill")
 public class Bill {
 
+	@Id
 	private String billNumber;
 	private String guestCode;
 	private Double quantity;

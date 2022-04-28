@@ -15,7 +15,7 @@ public class DepartmentService {
 	private DepartmentRepository departmentRepository;
 
 	public Department addDepartment(Department department) {
-		return departmentRepository.save(department);
+		return departmentRepository.insert(department);
 	}
 
 	public Department updateDepartment(Department department) {

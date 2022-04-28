@@ -31,7 +31,7 @@ public class PatymController {
 	@Autowired
 	private Environment env;
 
-	@GetMapping("/")
+	@GetMapping("/pay")
 	public String home() {
 		return "home";
 	}

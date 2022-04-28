@@ -1,17 +1,18 @@
 package com.hms.reports;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class ReportsApplication implements CommandLineRunner {
+@Configuration
+public class ReportsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ReportsApplication.class, args);
@@ -21,12 +22,6 @@ public class ReportsApplication implements CommandLineRunner {
 	@LoadBalanced
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-
 	}
 
 }

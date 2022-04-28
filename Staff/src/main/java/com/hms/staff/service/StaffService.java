@@ -19,7 +19,7 @@ public class StaffService {
 	}
 
 	public Staff addStaff(Staff staff) {
-		return staffrep.save(staff);
+		return staffrep.insert(staff);
 	}
 
 	public void deleteStaffById(String staffCode) {
