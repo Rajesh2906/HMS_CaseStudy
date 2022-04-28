@@ -16,7 +16,7 @@ import com.hms.staff.models.Staff;
 import com.hms.staff.service.StaffService;
 
 @RestController
-@RequestMapping("/manager")
+@RequestMapping("/staff")
 public class StaffController {
 	@Autowired
 	private StaffService staffservice;
@@ -27,8 +27,8 @@ public class StaffController {
 	}
 
 	@PostMapping("/addstaff")
-	public Staff addStaff(@RequestBody Staff staff) {
-		return staffservice.addStaff(staff);
+	public void addStaff(@RequestBody Staff staff) {
+		staffservice.addStaff(staff);
 	}
 
 	@DeleteMapping("/deletestaff")
