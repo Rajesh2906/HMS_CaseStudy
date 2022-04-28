@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import com.hms.owner.models.Reservation;
 
 @RestController
-@RequestMapping("/Receptionist/reservation")
+@RequestMapping("/owner/reservation")
 public class OwnerReservationcontroller {
 
 	@Autowired

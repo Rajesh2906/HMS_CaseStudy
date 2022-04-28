@@ -13,8 +13,8 @@ public class OwnerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/swagger-ui/**").permitAll().anyRequest().authenticated().and()
-				.httpBasic();
+		http.csrf().disable().authorizeRequests().antMatchers("/swagger-ui/**").permitAll().anyRequest().authenticated()
+				.and().httpBasic();
 	}
 
 	@Override

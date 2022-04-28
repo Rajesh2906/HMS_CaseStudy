@@ -25,7 +25,7 @@ import com.hms.owner.models.Bill;
 import com.lowagie.text.DocumentException;
 
 @RestController
-@RequestMapping("/receptionist/bill")
+@RequestMapping("/owner/bill")
 public class OwnerBillController {
 
 	@Autowired

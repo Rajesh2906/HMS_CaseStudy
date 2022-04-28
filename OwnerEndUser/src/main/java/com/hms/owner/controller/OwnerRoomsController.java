@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import com.hms.owner.models.Rooms;
 
 @RestController
-@RequestMapping("/manager/rooms")
+@RequestMapping("/owner/rooms")
 public class OwnerRoomsController {
 
 	@Autowired

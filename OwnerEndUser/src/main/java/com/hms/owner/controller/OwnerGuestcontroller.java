@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import com.hms.owner.models.Guest;
 
 @RestController
-@RequestMapping("/receptionist/guest")
+@RequestMapping("/owner/guest")
 public class OwnerGuestcontroller {
 
 	@Autowired

@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import com.hms.owner.models.Inventory;
 
 @RestController
-@RequestMapping("/manager")
+@RequestMapping("/owner/inventory")
 public class OwnerInventoryController {
 
 	@Autowired
