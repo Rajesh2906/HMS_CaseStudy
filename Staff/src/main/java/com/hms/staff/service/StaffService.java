@@ -14,7 +14,7 @@ public class StaffService {
 	@Autowired
 	private StaffRepository staffrep;
 
-	public List<Staff> getAllReservation() {
+	public List<Staff> getAllStaff() {
 		return (List<Staff>) staffrep.findAll();
 	}
 
@@ -26,8 +26,8 @@ public class StaffService {
 		staffrep.deleteById(staffCode);
 	}
 
-	public Staff updateStaffById(Staff staffCode) {
-		return staffrep.save(staffCode);
+	public Staff updateStaff(Staff staff) {
+		return staffrep.save(staff);
 	}
 
 	public Staff getStaffById(String staffCode) {

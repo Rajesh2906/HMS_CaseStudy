@@ -23,7 +23,7 @@ public class StaffController {
 
 	@GetMapping("/getallstaff")
 	public List<Staff> getAllStaff() {
-		return staffservice.getAllReservation();
+		return staffservice.getAllStaff();
 	}
 
 	@PostMapping("/addstaff")
@@ -37,8 +37,8 @@ public class StaffController {
 	}
 
 	@PutMapping("/updatestaff")
-	public Staff updateById(@RequestBody Staff staffCode) {
-		return staffservice.updateStaffById(staffCode);
+	public Staff updateStaff(@RequestBody Staff staff) {
+		return staffservice.updateStaff(staff);
 	}
 
 	@GetMapping("/getstaffbyid")

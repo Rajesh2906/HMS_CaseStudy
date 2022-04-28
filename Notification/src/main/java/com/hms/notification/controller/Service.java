@@ -15,8 +15,8 @@ import com.twilio.type.PhoneNumber;
 @RestController
 @RequestMapping("/Notification")
 public class Service {
-	private final static String ACCOUNT_SID = "AC422ae1c14a4cfa4dcf903decf5b37059";
-	private final static String AUTH_ID = "bc0b91c0e7fe44db9d4ffb3c8d92d27d";
+	private final static String ACCOUNT_SID = "ACf226aeb779bb44959cca044707a1b67a";
+	private final static String AUTH_ID = "f63e7d7736c56609b158bb5d4e303aed";
 
 	@Autowired
 	private MailService mailservice;
@@ -27,7 +27,7 @@ public class Service {
 
 	@PostMapping("/sendnotification")
 	public void run(@RequestBody NotificationDetails details) throws Exception {
-		Message.creator(new PhoneNumber(details.getPhoneNumber()), new PhoneNumber("+17577928806"),
+		Message.creator(new PhoneNumber(details.getPhoneNumber()), new PhoneNumber("+17579934689"),
 				"Thank you for registering " + details.getName()).create();
 		mailservice.sendmail(details.getEmailId());
 
