@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.hms.guest.models.Guest;
+import com.hms.guest.models.GuestNotification;
 import com.hms.guest.service.GuestService;
 
 @RestController
@@ -20,6 +22,12 @@ import com.hms.guest.service.GuestService;
 public class GuestController {
 	@Autowired
 	private GuestService service;
+
+	@Autowired
+	private GuestNotification notificationDetails;
+
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@GetMapping("/getallguests")
 	public List<Guest> getGuestList() {
@@ -33,13 +41,26 @@ public class GuestController {
 
 	@PostMapping("/addnewguest")
 	public void addNewGuest(@RequestBody Guest guest) {
+
+		notificationDetails.setPhoneNumber(guest.getPhoneNumber_());
+		notificationDetails.setEmailId(guest.getEmailId_());
+		notificationDetails.setName(guest.getName_());
+		notificationDetails.setGuestCode(guest.getGuestCode_());
 		service.addguest(guest);
+		restTemplate.postForObject("http://Notification/Notification/guestnotification", notificationDetails,
+				GuestNotification.class);
 	}
 
 	@PostMapping("/addreservedguest")
 	public void addGuest(@RequestParam String reservationcode, @RequestParam String roomNo, @RequestBody Guest guest) {
-		service.addifGuest(reservationcode, guest, roomNo);
 
+		notificationDetails.setPhoneNumber(guest.getPhoneNumber_());
+		notificationDetails.setEmailId(guest.getEmailId_());
+		notificationDetails.setName(guest.getName_());
+		notificationDetails.setGuestCode(guest.getGuestCode_());
+		service.addifGuest(reservationcode, guest, roomNo);
+		restTemplate.postForObject("http://localhost:8092/Notification/guestnotification", notificationDetails,
+				GuestNotification.class);
 	}
 
 	@PutMapping("/updateGuest")

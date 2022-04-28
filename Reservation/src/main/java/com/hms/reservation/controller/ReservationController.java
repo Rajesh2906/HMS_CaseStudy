@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.hms.reservation.models.NotificationDetails;
 import com.hms.reservation.models.Reservation;
+import com.hms.reservation.models.ReservationNotification;
 import com.hms.reservation.service.ReservationService;
 
 @RestController
@@ -27,7 +27,7 @@ public class ReservationController {
 	private RestTemplate restTemplate;
 
 	@Autowired
-	private NotificationDetails notificationDetails;
+	private ReservationNotification notificationDetails;
 
 	@PostMapping("/addreservation")
 	public void addReservations(@RequestBody Reservation reservation) {
@@ -35,9 +35,10 @@ public class ReservationController {
 		notificationDetails.setPhoneNumber(reservation.getPhoneNumber());
 		notificationDetails.setEmailId(reservation.getEmailId());
 		notificationDetails.setName(reservation.getName());
+		notificationDetails.setReservationCode(reservation.getReservationCode_());
 		service.addReservation(reservation);
-		restTemplate.postForObject("http://localhost:8092/Notification/sendnotification", notificationDetails,
-				NotificationDetails.class);
+		restTemplate.postForObject("http://localhost:8092/Notification/reservationnotification", notificationDetails,
+				ReservationNotification.class);
 
 	}
 

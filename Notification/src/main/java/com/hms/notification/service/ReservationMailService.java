@@ -6,23 +6,22 @@ import java.util.Properties;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
+import com.hms.notification.models.ReservationNotification;
+
 @Service
-public class MailService {
+public class ReservationMailService {
 
 	@Value("${com.mail}")
 	private String emailId;
@@ -33,7 +32,7 @@ public class MailService {
 	@Autowired
 	private Environment env;
 
-	public void sendmail(String mail) throws AddressException, MessagingException, IOException {
+	public void sendmail(ReservationNotification details) throws AddressException, MessagingException, IOException {
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.starttls.enable", "true");
@@ -49,16 +48,18 @@ public class MailService {
 		Message msg = new MimeMessage(session);
 		msg.setFrom(new InternetAddress(emailId, false));
 
-		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mail));
-		msg.setSubject("Twilio msg");
-		msg.setContent("Sample body and content", "text/html");
+		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(details.getEmailId()));
+		msg.setSubject("ABC Hotel");
+		msg.setContent("Dear " + details.getName()
+				+ " Thank you for registering to ABC Hotel. Your Reservation Code is " + details.getReservationCode(),
+				"text/html");
 		msg.setSentDate(new Date());
 
-		MimeBodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setContent("Sample body and content", "text/html");
-
-		Multipart multipart = new MimeMultipart();
-		multipart.addBodyPart(messageBodyPart);
+//		MimeBodyPart messageBodyPart = new MimeBodyPart();
+//		messageBodyPart.setContent("Sample body and content", "text/html");
+//
+//		Multipart multipart = new MimeMultipart();
+//		multipart.addBodyPart(messageBodyPart);
 
 //		   MimeBodyPart attachPart = new MimeBodyPart();
 //		   attachPart.attachFile("C:\\Users\\navne\\Documents\\workspace-spring-tool-suite-4-4.13.1.RELEASE\\Mailer\\src\\main\\resources\\clock.png");

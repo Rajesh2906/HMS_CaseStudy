@@ -1,22 +1,25 @@
-package com.hms.notification.models;
+package com.hms.reservation.models;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class NotificationDetails {
+public class ReservationNotification {
 
 	private String name;
 	private String phoneNumber;
 	private String emailId;
+	private String reservationCode;
 
-	public NotificationDetails() {
-	}
-
-	public NotificationDetails(String name, String phoneNumber, String emailId) {
+	public ReservationNotification(String name, String phoneNumber, String emailId, String reservationCode) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.emailId = emailId;
+		this.reservationCode = reservationCode;
+	}
+
+	public ReservationNotification() {
+		super();
 	}
 
 	public String getName() {
@@ -41,6 +44,14 @@ public class NotificationDetails {
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+
+	public String getReservationCode() {
+		return reservationCode;
+	}
+
+	public void setReservationCode(String reservationCode) {
+		this.reservationCode = reservationCode;
 	}
 
 }
