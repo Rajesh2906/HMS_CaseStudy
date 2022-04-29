@@ -32,12 +32,12 @@ public class ReservationController {
 	@PostMapping("/addreservation")
 	public void addReservations(@RequestBody Reservation reservation) {
 
+		service.addReservation(reservation);
 		notificationDetails.setPhoneNumber(reservation.getPhoneNumber());
 		notificationDetails.setEmailId(reservation.getEmailId());
 		notificationDetails.setName(reservation.getName());
 		notificationDetails.setReservationCode(reservation.getReservationCode_());
-		service.addReservation(reservation);
-		restTemplate.postForObject("http://localhost:8092/Notification/reservationnotification", notificationDetails,
+		restTemplate.postForObject("http://Notification/Notification/reservationnotification", notificationDetails,
 				ReservationNotification.class);
 
 	}

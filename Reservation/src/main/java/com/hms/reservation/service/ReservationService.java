@@ -20,6 +20,7 @@ public class ReservationService {
 		reservation.setReservationCode_("RS" + (rep.count() + 1));
 
 		return rep.insert(reservation);
+
 	}
 
 	public List<Reservation> getAllReservation() {

@@ -41,24 +41,24 @@ public class GuestController {
 
 	@PostMapping("/addnewguest")
 	public void addNewGuest(@RequestBody Guest guest) {
+		service.addguest(guest);
 
 		notificationDetails.setPhoneNumber(guest.getPhoneNumber_());
 		notificationDetails.setEmailId(guest.getEmailId_());
 		notificationDetails.setName(guest.getName_());
 		notificationDetails.setGuestCode(guest.getGuestCode_());
-		service.addguest(guest);
 		restTemplate.postForObject("http://Notification/Notification/guestnotification", notificationDetails,
 				GuestNotification.class);
 	}
 
 	@PostMapping("/addreservedguest")
 	public void addGuest(@RequestParam String reservationcode, @RequestParam String roomNo, @RequestBody Guest guest) {
+		service.addifGuest(reservationcode, guest, roomNo);
 
 		notificationDetails.setPhoneNumber(guest.getPhoneNumber_());
 		notificationDetails.setEmailId(guest.getEmailId_());
 		notificationDetails.setName(guest.getName_());
 		notificationDetails.setGuestCode(guest.getGuestCode_());
-		service.addifGuest(reservationcode, guest, roomNo);
 		restTemplate.postForObject("http://localhost:8092/Notification/guestnotification", notificationDetails,
 				GuestNotification.class);
 	}
