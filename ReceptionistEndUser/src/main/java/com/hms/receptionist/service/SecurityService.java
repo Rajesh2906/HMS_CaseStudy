@@ -17,25 +17,28 @@ public class SecurityService {
 
 	@Autowired
 	private ReceptionistSecurityRepository receptionistRepo;
-
 	@Autowired
 	private RestTemplate restTemplate;
 
 	// update owner details
-	@SuppressWarnings("unlikely-arg-type")
-	public void updateReceptionistDetails(ReceptionistSecurityModel securityModel) {
+	public void updateReceptionistDetails(ReceptionistSecurityModel securityModel, String newPassword) {
 		ResponseEntity<List<ReceptionistSecurityModel>> responseEntity = restTemplate.exchange(
-				"http://subhash:8096/manager/security/getreceptionistdetails", HttpMethod.GET, null,
+				"http://ManagerEndUser/manager/security/getreceptionistdetails", HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<ReceptionistSecurityModel>>() {
 				});
+
 		List<ReceptionistSecurityModel> listOfReceptionistDetails = responseEntity.getBody();
 
-		if ((listOfReceptionistDetails.stream().anyMatch(p -> p.equals(securityModel.getUserId())))) {
-			if(listOfReceptionistDetails.stream().) {
+		ReceptionistSecurityModel resobj = listOfReceptionistDetails.stream()
+				.filter(p -> securityModel.getUserId().equals(p.getUserId())).findAny().orElse(null);
 
-			}receptionistRepo.save(securityModel);
+		if (listOfReceptionistDetails.stream().anyMatch(p -> securityModel.getUserId().equals(p.getUserId()))) {
+
+			if (securityModel.getPassword().equals(resobj.getPassword())) {
+				securityModel.setPassword(newPassword);
+				receptionistRepo.save(securityModel);
+			}
 		}
-
 	}
 
 	public List<ReceptionistSecurityModel> getUserDetails() {
