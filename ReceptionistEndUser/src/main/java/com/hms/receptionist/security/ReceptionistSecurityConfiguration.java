@@ -1,4 +1,3 @@
-
 package com.hms.receptionist.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class ReceptionistSecurityConfiguration extends WebSecurityConfigurerAdap
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable().authorizeRequests()
 				.antMatchers("/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/swagger-ui/**",
-						"/webjars/**", "/authenticate", "/addReceptionist")
+						"/webjars/**", "/authenticate", "/addreceptionist")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

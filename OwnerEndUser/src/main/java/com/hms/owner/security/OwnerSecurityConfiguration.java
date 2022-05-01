@@ -1,30 +1,56 @@
 package com.hms.owner.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.hms.owner.filter.JwtRequestFilter;
+import com.hms.owner.service.MyUserDetailsService;
+
+
 
 @EnableWebSecurity
 public class OwnerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/swagger-ui/**").permitAll().anyRequest().authenticated()
-				.and().httpBasic();
-	}
+	@Autowired
+	private MyUserDetailsService myUserDetailsService;
+
+	@Autowired
+	private JwtRequestFilter jwtRequestFilter;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("owner").password(passwordEncoder().encode("owner"))
-				.authorities("ADMIN");
+		auth.userDetailsService(myUserDetailsService);
+	}
+
+	// disables cross site request forgery
+	@Override
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		httpSecurity.csrf().disable().authorizeRequests()
+				.antMatchers("/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/swagger-ui/**",
+						"/webjars/**", "/authenticate", "/addowner")
+				.permitAll().anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+	}
+
+	@Override
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+		return NoOpPasswordEncoder.getInstance();
 	}
 }

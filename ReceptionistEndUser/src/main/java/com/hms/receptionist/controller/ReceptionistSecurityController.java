@@ -48,7 +48,7 @@ public class ReceptionistSecurityController {
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
 
-	@PostMapping("/addReceptionist")
+	@PostMapping("/addreceptionist")
 	public void addReceptionist(@RequestBody ReceptionistSecurityModel mod) {
 		userDetailsService.addUserdetails(mod);
 	}
