@@ -1,31 +1,19 @@
-package com.hms.manager.controller;
-
-import java.util.Arrays;
-import java.util.List;
+package com.hms.manager.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import com.hms.manager.models.AuthenticationRequest;
-import com.hms.manager.models.AuthenticationResponse;
-import com.hms.manager.models.ManagerSecurityModel;
-import com.hms.manager.models.ReceptionistSecurityModel;
-import com.hms.manager.service.MyUserDetailsService;
-import com.hms.manager.util.JwtUtil;
 
 @RestController
 @RequestMapping("/manager")
@@ -44,22 +32,20 @@ public class ManagerSecurityController {
 	private MyUserDetailsService userDetailsService;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
+	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
 			throws Exception {
 
 		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-					authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (BadCredentialsException e) {
 			throw new Exception("Incorrect username or password", e);
 		}
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 
-		userDetailsService.logintoMCs();
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		return ResponseEntity.ok(jwt);
 	}
 
 	@PostMapping("/addmanager")
@@ -73,19 +59,11 @@ public class ManagerSecurityController {
 				ReceptionistSecurityModel.class);
 	}
 
-	// all customers
-	@GetMapping("/allcustomers")
-	public List<ReceptionistSecurityModel> findAllUsers() {
-		String token = userDetailsService.logintoMCs();
-		// System.out.println(token);
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Authorization", token);
-		// RestTemplate restTemplate = new RestTemplate();
-		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
-		String baseurl = "http://ReceptionistEndUser/receptionist/getallreceptionist";
-		ResponseEntity<ReceptionistSecurityModel[]> helloResponse = restTemplate.exchange(baseurl, HttpMethod.GET,
-				jwtEntity, ReceptionistSecurityModel[].class);
-		return Arrays.asList(helloResponse.getBody());
+	@PutMapping("/updatemanager")
+	public void updateManagerDetails(@RequestBody ManagerSecurityModel managerSecurityModel,
+			@RequestParam String password) throws Exception {
+		userDetailsService.updateManagerDetails(managerSecurityModel, password);
+
 	}
 
 }

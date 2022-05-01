@@ -1,4 +1,4 @@
-package com.hms.receptionist.filter;
+package com.hms.manager.security;
 
 import java.io.IOException;
 
@@ -14,9 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import com.hms.receptionist.service.MyUserDetailsService;
-import com.hms.receptionist.util.JwtUtil;
 
 //filter intercepts every request once and examine the header
 @Component

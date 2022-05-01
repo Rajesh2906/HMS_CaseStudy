@@ -1,18 +1,22 @@
-package com.hms.manager.models;
+package com.hms.owner.security;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 @Component
-@Document(collection = "ManagerDetails")
-public class ManagerSecurityModel {
+@Document(collection = "Staff_details")
+public class ReceptionistSecurityModel {
 
-	public ManagerSecurityModel() {
+	@Id
+	private String userId;
+	private String password;
+
+	public ReceptionistSecurityModel() {
 
 	}
 
-	public ManagerSecurityModel(String userId, String password) {
+	public ReceptionistSecurityModel(String userId, String password) {
 		super();
 		this.userId = userId;
 		this.password = password;
@@ -33,9 +37,5 @@ public class ManagerSecurityModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	@Id
-	private String userId;
-	private String password;
 
 }

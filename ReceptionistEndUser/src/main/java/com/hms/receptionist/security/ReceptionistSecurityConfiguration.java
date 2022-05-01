@@ -12,9 +12,6 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.hms.receptionist.filter.JwtRequestFilter;
-import com.hms.receptionist.service.MyUserDetailsService;
-
 @EnableWebSecurity
 public class ReceptionistSecurityConfiguration extends WebSecurityConfigurerAdapter {
 

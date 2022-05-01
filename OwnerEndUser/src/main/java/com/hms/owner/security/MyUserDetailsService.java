@@ -1,4 +1,4 @@
-package com.hms.owner.service;
+package com.hms.owner.security;
 
 import java.util.ArrayList;
 
@@ -8,9 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.hms.owner.models.OwnerSecurityModel;
-import com.hms.owner.repository.OwnerSecurityRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -31,11 +28,17 @@ public class MyUserDetailsService implements UserDetailsService {
 	}
 
 	// update owner details
-	public void updateOwnerDetails(OwnerSecurityModel securityModel) {
-		if (securityModel.getPassword() == ownerRepo.findById(securityModel.getUserId()).get().getPassword()) {
-			ownerRepo.save(securityModel);
+	public void updateOwnerDetails(OwnerSecurityModel securityModel, String newPassword) throws Exception {
+		if (ownerRepo.existsById(securityModel.getUserId())) {
+			if (securityModel.getPassword().equals(ownerRepo.findById(securityModel.getUserId()).get().getPassword())) {
+				securityModel.setPassword(newPassword);
+				ownerRepo.save(securityModel);
+			} else {
+				throw new Exception("Incorrect old password, please check it and try again");
+			}
+		} else {
+			throw new Exception("User name not found");
 		}
-
 	}
 
 }

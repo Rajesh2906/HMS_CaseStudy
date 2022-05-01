@@ -1,4 +1,4 @@
-package com.hms.receptionist.service;
+package com.hms.receptionist.security;
 
 import java.util.ArrayList;
 
@@ -8,9 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.hms.receptionist.model.ReceptionistSecurityModel;
-import com.hms.receptionist.repository.ReceptionistSecurityRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -28,4 +25,21 @@ public class MyUserDetailsService implements UserDetailsService {
 	public void addUserdetails(ReceptionistSecurityModel mod) {
 		repo.insert(mod);
 	}
+
+	// update receptionist details
+	public void updateReceptionistDetails(ReceptionistSecurityModel securityModel, String newPassword)
+			throws Exception {
+		if (repo.existsById(securityModel.getUserId())) {
+			if (securityModel.getPassword().equals(repo.findById(securityModel.getUserId()).get().getPassword())) {
+				securityModel.setPassword(newPassword);
+				repo.save(securityModel);
+			} else {
+				throw new Exception("Incorrect old password, please check it and try again");
+			}
+		} else {
+			throw new Exception("User name not found");
+		}
+
+	}
+
 }

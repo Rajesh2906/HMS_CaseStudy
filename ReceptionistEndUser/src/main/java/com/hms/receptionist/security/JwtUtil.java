@@ -1,4 +1,4 @@
-package com.hms.receptionist.util;
+package com.hms.receptionist.security;
 
 import java.util.Date;
 import java.util.HashMap;

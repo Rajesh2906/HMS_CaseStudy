@@ -1,4 +1,4 @@
-package com.hms.receptionist.model;
+package com.hms.receptionist.security;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

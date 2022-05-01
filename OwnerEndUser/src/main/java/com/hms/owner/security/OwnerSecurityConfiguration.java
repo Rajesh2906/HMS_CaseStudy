@@ -12,9 +12,6 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.hms.owner.filter.JwtRequestFilter;
-import com.hms.owner.service.MyUserDetailsService;
-
 @EnableWebSecurity
 public class OwnerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 

@@ -1,9 +1,7 @@
-package com.hms.manager.repository;
+package com.hms.manager.security;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-
-import com.hms.manager.models.ManagerSecurityModel;
 
 @Repository
 public interface ManagerSecurityRepository extends MongoRepository<ManagerSecurityModel, String> {

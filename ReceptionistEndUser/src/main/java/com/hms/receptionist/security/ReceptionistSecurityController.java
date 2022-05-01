@@ -1,6 +1,4 @@
-package com.hms.receptionist.controller;
-
-import java.util.List;
+package com.hms.receptionist.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,18 +6,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.hms.receptionist.model.AuthenticationRequest;
-import com.hms.receptionist.model.ReceptionistSecurityModel;
-import com.hms.receptionist.repository.ReceptionistSecurityRepository;
-import com.hms.receptionist.service.MyUserDetailsService;
-import com.hms.receptionist.util.JwtUtil;
 
 @RestController
 @RequestMapping("/receptionist")
@@ -38,17 +31,16 @@ public class ReceptionistSecurityController {
 	private ReceptionistSecurityRepository repo;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
+	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
 			throws Exception {
 
 		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-					authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (BadCredentialsException e) {
 			throw new Exception("Incorrect username or password", e);
 		}
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 
@@ -60,8 +52,10 @@ public class ReceptionistSecurityController {
 		userDetailsService.addUserdetails(mod);
 	}
 
-	@GetMapping("/getallreceptionist")
-	public List<ReceptionistSecurityModel> getAllRece() {
-		return repo.findAll();
+	@PutMapping("/updatereceptionist")
+	public void updateReceptionst(@RequestBody ReceptionistSecurityModel receptionistSecurityModel,
+			@RequestParam String password) throws Exception {
+		userDetailsService.updateReceptionistDetails(receptionistSecurityModel, password);
 	}
+
 }
