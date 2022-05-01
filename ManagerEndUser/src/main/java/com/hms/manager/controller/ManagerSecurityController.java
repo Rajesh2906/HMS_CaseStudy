@@ -1,11 +1,18 @@
 package com.hms.manager.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,6 +58,7 @@ public class ManagerSecurityController {
 
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 
+		userDetailsService.logintoMCs();
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
 
@@ -63,6 +71,21 @@ public class ManagerSecurityController {
 	public void addReceeptionist(@RequestBody ReceptionistSecurityModel recepmodel) {
 		restTemplate.postForObject("http://ReceptionistEndUser/receptionist/addreceptionist", recepmodel,
 				ReceptionistSecurityModel.class);
+	}
+
+	// all customers
+	@GetMapping("/allcustomers")
+	public List<ReceptionistSecurityModel> findAllUsers() {
+		String token = userDetailsService.logintoMCs();
+		// System.out.println(token);
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Authorization", token);
+		// RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> jwtEntity = new HttpEntity<String>(headers);
+		String baseurl = "http://ReceptionistEndUser/receptionist/getallreceptionist";
+		ResponseEntity<ReceptionistSecurityModel[]> helloResponse = restTemplate.exchange(baseurl, HttpMethod.GET,
+				jwtEntity, ReceptionistSecurityModel[].class);
+		return Arrays.asList(helloResponse.getBody());
 	}
 
 }
