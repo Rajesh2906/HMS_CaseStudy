@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.hms.owner.models.OwnerSecurityModel;
 import com.hms.owner.repository.OwnerSecurityRepository;
 
-
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
@@ -25,8 +24,6 @@ public class MyUserDetailsService implements UserDetailsService {
 		OwnerSecurityModel secModel = ownerRepo.findById(username).get();
 		return new User(secModel.getUserId(), secModel.getPassword(), new ArrayList<>());
 	}
-
-
 
 	// add owner details
 	public void addownerDetails(OwnerSecurityModel ownersecurityModel) {
@@ -41,6 +38,4 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	}
 
-	
-	
 }

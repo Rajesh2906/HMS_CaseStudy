@@ -19,6 +19,7 @@ import com.hms.receptionist.service.MyUserDetailsService;
 import com.hms.receptionist.util.JwtUtil;
 
 @RestController
+@RequestMapping("/receptionist")
 public class ReceptionistSecurityController {
 
 	@Autowired

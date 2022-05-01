@@ -15,9 +15,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.hms.manager.filter.JwtRequestFilter;
 import com.hms.manager.service.MyUserDetailsService;
 
-
-
-
 @EnableWebSecurity
 public class ManagerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -37,7 +34,7 @@ public class ManagerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable().authorizeRequests()
 				.antMatchers("/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/swagger-ui/**",
-						"/webjars/**", "/authenticate", "/addmanager")
+						"/webjars/**", "/manager/authenticate", "/manager/addmanager")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

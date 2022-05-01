@@ -21,6 +21,7 @@ import com.hms.manager.service.MyUserDetailsService;
 import com.hms.manager.util.JwtUtil;
 
 @RestController
+@RequestMapping("/manager")
 public class ManagerSecurityController {
 
 	@Autowired
@@ -60,7 +61,7 @@ public class ManagerSecurityController {
 
 	@PostMapping("/addreceptionist")
 	public void addReceeptionist(@RequestBody ReceptionistSecurityModel recepmodel) {
-		restTemplate.postForObject("http://ReceptionistEndUser:8097/addreceptionist", recepmodel,
+		restTemplate.postForObject("http://ReceptionistEndUser/receptionist/addreceptionist", recepmodel,
 				ReceptionistSecurityModel.class);
 	}
 
