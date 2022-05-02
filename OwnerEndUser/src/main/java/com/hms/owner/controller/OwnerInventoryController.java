@@ -24,17 +24,20 @@ public class OwnerInventoryController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Adds the inventory details the inventory database, when new stock is arrived
 	@PostMapping("/addinventory")
 	public void addInventory(@RequestBody Inventory inventory) {
 		restTemplate.postForObject("http://Inventory/inventory/addinventory", inventory, Inventory.class);
 
 	}
 
+	// Updates the inventory details when the items are added in the inventory
 	@PutMapping("/updateinventory")
 	public void updateInventory(@RequestBody Inventory inventory) {
 		restTemplate.put("http://Inventory/inventory/updateinventory", inventory);
 	}
 
+	// Retrieves all the inventory available in the inventory database
 	@GetMapping("/getallinventory")
 	public List<Inventory> getGuestList() {
 		ResponseEntity<List<Inventory>> responseEntity = restTemplate.exchange(
@@ -45,9 +48,10 @@ public class OwnerInventoryController {
 		return listOfInventory;
 	}
 
+	// Retrieves the specific inventory details using the given inventory code
 	@GetMapping("/getinventorybyid")
-	public Inventory getInventoryById(@RequestParam String inventoryCodse) {
-		return restTemplate.getForObject("http://Inventory/inventory/getinventorybyid?inventoryCodse=" + inventoryCodse,
+	public Inventory getInventoryById(@RequestParam String inventoryCode) {
+		return restTemplate.getForObject("http://Inventory/inventory/getinventorybyid?inventoryCodse=" + inventoryCode,
 				Inventory.class);
 
 	}

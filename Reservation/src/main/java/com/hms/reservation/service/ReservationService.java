@@ -15,6 +15,7 @@ public class ReservationService {
 	@Autowired
 	private ReservationRepository rep;
 
+	// Logic to add the reservation to the reservation database
 	public Reservation addReservation(Reservation reservation) {
 
 		reservation.setStatus_("Confirmed");
@@ -24,14 +25,18 @@ public class ReservationService {
 
 	}
 
+	// Logic to retrieve all the reservations form the reservation database
 	public List<Reservation> getAllReservation() {
 		return rep.findAll();
 	}
 
+	// Logic to update the reservation in the reservation database
 	public Reservation updateReservation(Reservation reservation) {
 		return rep.save(reservation);
 	}
 
+	// Logic to retrieve the specific reservation using the reservation code form
+	// the reservation database
 	public Reservation getreservationById(String ReservationcCode) {
 		return rep.findById(ReservationcCode).orElseThrow(
 				() -> new ResourceNotFoundException("Reservation code " + ReservationcCode + " is not found"));

@@ -23,12 +23,14 @@ public class OwnerRatesController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Adds the new rates to the rates database
 	@PostMapping("/addrate")
 	public void setRates(@RequestBody Rates rate) {
 		restTemplate.postForObject("http://Rates/rates/addrate", rate, Rates.class);
 
 	}
 
+	// Retrieves all the rates form the rates database
 	@GetMapping("/getallrates")
 	public List<Rates> getRates() {
 		ResponseEntity<List<Rates>> responseEntity = restTemplate.exchange("http://Rates/rates/getallrates",
@@ -38,6 +40,7 @@ public class OwnerRatesController {
 		return listOfRates;
 	}
 
+	// updates the rates in the database
 	@PutMapping("/updaterates")
 	public void updateRates(@RequestBody Rates rates) {
 		restTemplate.put("http://Rates/rates/updaterates", rates, Rates.class);

@@ -21,36 +21,38 @@ public class RoomsController {
 	@Autowired
 	private RoomsService roomservice;
 
+	// Retrieves all the rooms form the rooms database
 	@GetMapping("/getallrooms")
 	public List<Rooms> getAllRoomsData() {
 		return roomservice.getAllRooms();
 	}
 
+	// Retrieves all the available rooms to send the guest
 	@GetMapping("/availablerooms")
 	public List<Rooms> getAvailableRooms() {
 		return roomservice.availableRoooms();
 	}
 
+	// Adds rooms to the rooms database
 	@PostMapping("/addrooms")
 	public void addRooms(@RequestBody Rooms rooms) {
 		roomservice.addRoom(rooms);
 	}
 
+	// Makes the room status active when the guest enters to the room
 	@PostMapping("/makestatusactive")
 	public void makeStatusActive(@RequestParam String roomNumber) {
 		roomservice.makeStatusActive(roomNumber);
 	}
 
+	// Makes the room status not active when the guest leaves to the room
 	@PostMapping("/makestatusnotactive")
 	public void makeStatusNotActive(@RequestParam String roomNumber) {
 		roomservice.makeStatusNotActive(roomNumber);
 	}
 
-//	@PutMapping("/updatetotalrooms")
-//	public void updateRooms() {
-//		roomservice.updateNoofRooms();
-//	}
-
+	// Deletes the specific room using the room number provided in the rooms
+	// database
 	@DeleteMapping("/deleteRooms")
 	public void deleteRooms(@RequestParam String roomCode) {
 		roomservice.deleteRooms(roomCode);

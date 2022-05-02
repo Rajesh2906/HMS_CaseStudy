@@ -31,6 +31,7 @@ public class OwnerSecurityController {
 	@Autowired
 	private MyUserDetailsService userDetailsService;
 
+	// Authenticates the owner using user name and password and returns JWT token
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
 			throws Exception {
@@ -48,23 +49,27 @@ public class OwnerSecurityController {
 		return ResponseEntity.ok(jwt);
 	}
 
+	// Add new username and password for the owner
 	@PostMapping("/addowner")
 	public void addOwner(@RequestBody OwnerSecurityModel mod) {
 		userDetailsService.addownerDetails(mod);
 	}
 
+	// Add new username and password for the receptionist
 	@PostMapping("/addreceptionist")
 	public void addReceeptionist(@RequestBody ReceptionistSecurityModel recepmodel) {
 		restTemplate.postForObject("http://ReceptionistEndUser/receptionist/addreceptionist", recepmodel,
 				ReceptionistSecurityModel.class);
 	}
 
+	// Add username and password for the manager
 	@PostMapping("/addmanager")
 	public void addReceptionist(@RequestBody ManagerSecurityModel managerModel) {
 		restTemplate.postForObject("http://ManagerEndUser/manager/addmanager", managerModel,
 				ManagerSecurityModel.class);
 	}
 
+	// updates the owner username password
 	@PutMapping("/updateowner")
 	public void updateOwnerDetails(@RequestBody OwnerSecurityModel ownerSecurityModel, @RequestParam String newpassword)
 			throws Exception {

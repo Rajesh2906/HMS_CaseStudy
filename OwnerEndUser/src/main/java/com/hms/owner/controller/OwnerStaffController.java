@@ -34,6 +34,7 @@ public class OwnerStaffController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Retrieves all the staff from the staff database
 	@GetMapping("/getallstaff")
 	public List<Staff> getGuestList() {
 		ResponseEntity<List<Staff>> responseEntity = restTemplate.exchange("http://Staff/staff/getallstaff",
@@ -43,27 +44,33 @@ public class OwnerStaffController {
 		return listOfStaff;
 	}
 
+	// Adds the new employee to the staff database
 	@PostMapping("/addstaff")
-	public void setRates(@RequestBody Staff staff) {
+	public void setStaff(@RequestBody Staff staff) {
 		restTemplate.postForObject("http://Staff/staff/addstaff", staff, Rates.class);
 
 	}
 
+	// Retrieves the specific employee using the staff code form the staff database
 	@GetMapping("/getstaffbyid")
 	public Staff getStaffById(@RequestParam String staffCode) {
 		return restTemplate.getForObject("http://Staff/staff/getstaffbyid?staffCode=" + staffCode, Staff.class);
 	}
 
+	// updates the staff in the staff database
 	@PutMapping("/updatestaff")
 	public void updateById(@RequestBody Staff staff) {
 		restTemplate.put("http://Staff/staff/updatestaff", staff, Staff.class);
 	}
 
+	// Deletes the specific employee using the staffcode when employee leaves the
+	// hotel
 	@DeleteMapping("/deletestaff")
 	public void deleteById(@RequestParam String staffCode) {
 		restTemplate.delete("http://Staff/staff/deletestaff?staffCode=" + staffCode);
 	}
 
+	// Prints all the employee details as a report
 	@GetMapping("/printstaffreport")
 	public void generatePdf(HttpServletResponse response) throws DocumentException, IOException {
 

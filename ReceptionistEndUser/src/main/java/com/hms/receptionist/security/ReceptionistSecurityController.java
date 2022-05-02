@@ -27,9 +27,8 @@ public class ReceptionistSecurityController {
 	@Autowired
 	private MyUserDetailsService userDetailsService;
 
-	@Autowired
-	private ReceptionistSecurityRepository repo;
-
+	// Authenticates the receptionist using user name and password and returns JWT
+	// token
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
 			throws Exception {
@@ -47,11 +46,13 @@ public class ReceptionistSecurityController {
 		return ResponseEntity.ok(jwt);
 	}
 
+	// Add the username and password of the receptionist
 	@PostMapping("/addreceptionist")
 	public void addReceptionist(@RequestBody ReceptionistSecurityModel mod) {
 		userDetailsService.addUserdetails(mod);
 	}
 
+	// Updates the receptionist username and password
 	@PutMapping("/updatereceptionist")
 	public void updateReceptionst(@RequestBody ReceptionistSecurityModel receptionistSecurityModel,
 			@RequestParam String password) throws Exception {

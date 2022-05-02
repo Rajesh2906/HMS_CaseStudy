@@ -23,6 +23,7 @@ public class OwnerDepartmentController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Retrieves all the department details from the department database
 	@GetMapping("/getalldepartments")
 	public List<Department> findAllDepartment() {
 		ResponseEntity<List<Department>> responseEntity = restTemplate.exchange(
@@ -33,12 +34,15 @@ public class OwnerDepartmentController {
 		return listOfDepartment;
 	}
 
+	// Retrieves the specific department using the department id from the department
+	// database
 	@GetMapping("/getdepartmentbyid")
 	public Department findById(@RequestParam String departmentId) {
 		return restTemplate.getForObject("http://Department/department/getdepartmentbyid?departmentId=" + departmentId,
 				Department.class);
 	}
 
+	// Adds the new department to the department database
 	@PostMapping("/adddepartment")
 	public void addDepartment(@RequestBody Department deaprtment) {
 		restTemplate.postForObject("http://Department/department/adddepartment", deaprtment, Department.class);

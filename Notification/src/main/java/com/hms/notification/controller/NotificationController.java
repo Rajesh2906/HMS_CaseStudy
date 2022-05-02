@@ -31,6 +31,8 @@ public class NotificationController {
 	@Autowired
 	private GuestMailService guestMail;
 
+	// Sends notification(mail & SMS) to the given phone number and mail ID when
+	// reservation completes
 	@PostMapping("/reservationnotification")
 	public void run(@RequestBody ReservationNotification details) throws Exception {
 		Message.creator(new PhoneNumber(details.getPhoneNumber()), new PhoneNumber("+12185177445"),
@@ -40,6 +42,8 @@ public class NotificationController {
 		reservationMail.sendmail(details);
 	}
 
+	// Sends notification(mail & SMS) to the given phone number and mailID when
+	// guest sent to specific room
 	@PostMapping("/guestnotification")
 	public void guestRun(@RequestBody GuestNotification details) throws Exception {
 		Message.creator(new PhoneNumber(details.getPhoneNumber()), new PhoneNumber("+12185177445"),

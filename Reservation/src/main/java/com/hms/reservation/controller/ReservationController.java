@@ -29,6 +29,7 @@ public class ReservationController {
 	@Autowired
 	private ReservationNotification notificationDetails;
 
+	// Add the new reservation to the database
 	@PostMapping("/addreservation")
 	public void addReservations(@RequestBody Reservation reservation) {
 
@@ -42,16 +43,19 @@ public class ReservationController {
 
 	}
 
+	// Retrieves all the reservation details from the reservation database
 	@GetMapping("/getallreservation")
 	public List<Reservation> getAllReservations() {
 		return service.getAllReservation();
 	}
 
+	// Update the reservation details in the database
 	@PutMapping("/updatereservation")
 	public void updateReservation(@RequestBody Reservation reservation) {
 		service.updateReservation(reservation);
 	}
 
+	// Retrieves specific reservation details using given reservaiton ID
 	@GetMapping("/getreservationbyid")
 	public Reservation getById(@RequestParam String id) {
 		return service.getreservationById(id);

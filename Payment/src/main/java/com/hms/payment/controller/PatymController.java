@@ -31,11 +31,13 @@ public class PatymController {
 	@Autowired
 	private Environment env;
 
+	// Displays the home page of the payment gateway
 	@GetMapping("/pay")
 	public String home() {
 		return "home";
 	}
 
+	// Redirects to this page after entering the details in the home page
 	@PostMapping(value = "/pgredirect")
 	public ModelAndView getRedirect(@RequestParam(name = "CUST_ID") String customerId,
 			@RequestParam(name = "TXN_AMOUNT") String transactionAmount,
@@ -56,6 +58,7 @@ public class PatymController {
 		return modelAndView;
 	}
 
+	// Displays the receipt of the payment
 	@PostMapping(value = "/pgresponse")
 	public String getResponseRedirect(HttpServletRequest request, Model model) {
 

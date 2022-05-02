@@ -13,9 +13,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.hms.notification.models.ReservationNotification;
@@ -29,9 +27,7 @@ public class ReservationMailService {
 	@Value("${com.mail.password}")
 	private String password;
 
-	@Autowired
-	private Environment env;
-
+	// sends mail to given mailID when guest sent to specific room
 	public void sendmail(ReservationNotification details) throws AddressException, MessagingException, IOException {
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", "true");

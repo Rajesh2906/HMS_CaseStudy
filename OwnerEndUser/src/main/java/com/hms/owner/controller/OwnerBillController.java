@@ -31,12 +31,14 @@ public class OwnerBillController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// generates bill using guest code and rate ID
 	@PostMapping("/generatebill")
 	public void generateBill(@RequestParam String guestCode, @RequestParam String rateId, @RequestBody Bill bill) {
 		restTemplate.postForObject("http://Bill/bill/generatebill?guestCode=" + guestCode + "&rateId=" + rateId, bill,
 				Bill.class);
 	}
 
+	// Retrieves all the bills from the bills database
 	@GetMapping("/getallbills")
 	public List<Bill> getBillList() {
 		ResponseEntity<List<Bill>> responseEntity = restTemplate.exchange("http://Bill/bill/getallbills",
@@ -46,11 +48,13 @@ public class OwnerBillController {
 		return listOfBills;
 	}
 
+	// Retrieves specific bill using bill code form bill database
 	@GetMapping("/getbillbyid")
 	public Bill getBillById(@RequestParam String billCode) {
 		return restTemplate.getForObject("http://Bill/bill/getbillbyid?billNumber=" + billCode, Bill.class);
 	}
 
+	// prints the bill of the given bill number
 	@GetMapping("/printbill")
 	public void generatePdf(HttpServletResponse response, @RequestParam String BillCode)
 			throws DocumentException, IOException {

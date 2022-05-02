@@ -20,6 +20,7 @@ public class ReceptionistRoomsController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Checks all the available to rooms to send the guest
 	@GetMapping("/availablerooms")
 	public List<Rooms> getAvailableRooms() {
 		ResponseEntity<List<Rooms>> responseEntity = restTemplate.exchange("http://Rooms/Rooms/availablerooms",

@@ -24,12 +24,15 @@ public class OwnerReservationcontroller {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Retrieves the specific reservation form the reservation database using the
+	// given reservation code
 	@GetMapping("/getreservationbyid")
 	public Reservation reservationById(@RequestParam String id) {
 		return restTemplate.getForObject("http://Reservation/reservation/getreservationbyid?id=" + id,
 				Reservation.class);
 	}
 
+	// Retrieves all the reservation available in the reservation database
 	@GetMapping("/getallreservation")
 	public List<Reservation> allReservations() {
 		ResponseEntity<List<Reservation>> responseEntity = restTemplate.exchange(
@@ -40,11 +43,13 @@ public class OwnerReservationcontroller {
 		return listOfReservation;
 	}
 
+	// Adds the new reservation to the reservation database
 	@PostMapping("/addreservation")
 	public void postReservation(@RequestBody Reservation reservation) {
 		restTemplate.postForObject("http://Reservation/reservation/addreservation", reservation, Reservation.class);
 	}
 
+	// updates the reservation in the reservation database
 	@PutMapping("/updatereservation")
 	public void updateReservation(@RequestBody Reservation reservation) {
 		restTemplate.put("http://Reservation/reservation/updatereservation", reservation, Reservation.class);

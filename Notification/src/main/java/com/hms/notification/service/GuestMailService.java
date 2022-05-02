@@ -13,9 +13,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.hms.notification.models.GuestNotification;
@@ -29,9 +27,7 @@ public class GuestMailService {
 	@Value("${com.mail.password}")
 	private String password;
 
-	@Autowired
-	private Environment env;
-
+	// sends mail to given mailID when guest sent to specific room
 	public void sendmail(GuestNotification details) throws AddressException, MessagingException, IOException {
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", "true");
@@ -55,16 +51,6 @@ public class GuestMailService {
 				"text/html");
 		msg.setSentDate(new Date());
 
-//		MimeBodyPart messageBodyPart = new MimeBodyPart();
-//		messageBodyPart.setContent("Sample body and content", "text/html");
-//
-//		Multipart multipart = new MimeMultipart();
-//		multipart.addBodyPart(messageBodyPart);
-
-//		   MimeBodyPart attachPart = new MimeBodyPart();
-//		   attachPart.attachFile("C:\\Users\\navne\\Documents\\workspace-spring-tool-suite-4-4.13.1.RELEASE\\Mailer\\src\\main\\resources\\clock.png");
-//		   multipart.addBodyPart(attachPart);
-//		   msg.setContent(multipart);
 		Transport.send(msg);
 	}
 }
