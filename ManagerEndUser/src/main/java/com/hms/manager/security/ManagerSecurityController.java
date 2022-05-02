@@ -31,6 +31,7 @@ public class ManagerSecurityController {
 	@Autowired
 	private MyUserDetailsService userDetailsService;
 
+	//Authenticates the manager using user name and password and returns JWT token 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
 			throws Exception {
@@ -48,17 +49,20 @@ public class ManagerSecurityController {
 		return ResponseEntity.ok(jwt);
 	}
 
+	//Creates new user name and password for new manager
 	@PostMapping("/addmanager")
 	public void addManager(@RequestBody ManagerSecurityModel securityModel) {
 		userDetailsService.addManagerDetails(securityModel);
 	}
 
+	//Creates new user name and password for new receptionist
 	@PostMapping("/addreceptionist")
 	public void addReceeptionist(@RequestBody ReceptionistSecurityModel recepmodel) {
 		restTemplate.postForObject("http://ReceptionistEndUser/receptionist/addreceptionist", recepmodel,
 				ReceptionistSecurityModel.class);
 	}
 
+	//Update the user name and password for existing manager
 	@PutMapping("/updatemanager")
 	public void updateManagerDetails(@RequestBody ManagerSecurityModel managerSecurityModel,
 			@RequestParam String password) throws Exception {

@@ -21,23 +21,27 @@ public class InventoryController {
 	@Autowired
 	private InventoryService inventoryService;
 
+	//Adding the inventory details to the database
 	@PostMapping("/addinventory")
 	public void addInventory(@RequestBody Inventory inventory) {
 		inventoryService.addInventory(inventory);
 
 	}
 
+	//Updating inventory details by its Id
 	@PutMapping("/updateinventory")
 	public void updateInventory(@RequestBody Inventory inventory) {
 		inventoryService.updateInventory(inventory);
 	}
 
+	//Retrieving all the inventory details from database
 	@GetMapping("/getallinventory")
 	public List<Inventory> getAllInventory() {
 		return inventoryService.getAllInventory();
 
 	}
 
+	//Retrieving inventory details using Id from database 
 	@GetMapping("/getinventorybyid")
 	public Inventory getInventoryById(@RequestParam String inventoryCodse) {
 		return inventoryService.getInventoryById(inventoryCodse);

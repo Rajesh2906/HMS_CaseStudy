@@ -24,6 +24,7 @@ public class ManagerRoomsController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	//Retrieving all rooms details from rooms database 
 	@GetMapping("/getallrooms")
 	public List<Rooms> getAllRoomsData() {
 		ResponseEntity<List<Rooms>> responseEntity = restTemplate.exchange("http://Rooms/Rooms/getallrooms",
@@ -33,11 +34,13 @@ public class ManagerRoomsController {
 		return listOfAllRooms;
 	}
 
+	//Adding room details to the room database
 	@PostMapping("/addrooms")
 	public void addRooms(@RequestBody Rooms rooms) {
 		restTemplate.postForObject("http://Rooms/Rooms/addrooms", rooms, Rooms.class);
 	}
 
+	//Deleting room using room number in the database
 	@DeleteMapping("/deleteRooms")
 	public void deleteRooms(@RequestParam String roomCode) {
 		restTemplate.delete("http://Rooms/Rooms/deleteRooms?roomCode=" + roomCode);

@@ -24,17 +24,20 @@ public class ManagerInventoryController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	//Adding inventory details to the database
 	@PostMapping("/addinventory")
 	public void addInventory(@RequestBody Inventory inventory) {
 		restTemplate.postForObject("http://Inventory/inventory/addinventory", inventory, Inventory.class);
 
 	}
 
+	//Updating inventory details in the inventory database
 	@PutMapping("/updateinventory")
 	public void updateInventory(@RequestBody Inventory inventory) {
 		restTemplate.put("http://Inventory/inventory/updateinventory", inventory);
 	}
 
+	//Retrieving all the inventory details from database
 	@GetMapping("/getallinventory")
 	public List<Inventory> getGuestList() {
 		ResponseEntity<List<Inventory>> responseEntity = restTemplate.exchange(
@@ -45,6 +48,7 @@ public class ManagerInventoryController {
 		return listOfInventory;
 	}
 
+	//Retrieving specific inventory details using inventory code from database  
 	@GetMapping("/getinventorybyid")
 	public Inventory getInventoryById(@RequestParam String inventoryCodse) {
 		return restTemplate.getForObject("http://Inventory/inventory/getinventorybyid?inventoryCodse=" + inventoryCodse,

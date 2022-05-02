@@ -26,6 +26,7 @@ public class GuestService {
 	@Autowired
 	private GuestRepository guestrepo;
 
+	//Adding the new guest to guest repository
 	public Guest addguest(Guest guest) {
 		guest.setGuestStatus_("Checked In");
 		restTemplate.postForObject("http://Rooms/Rooms/makestatusactive?roomNumber=" + guest.getRoomNumber(), guest,
@@ -34,19 +35,23 @@ public class GuestService {
 		return guestrepo.insert(guest);
 	}
 
+	//Getting all the guests from guest repository
 	public List<Guest> getallguests() {
 		return guestrepo.findAll();
 	}
 
+	//Finding guest by given guest Id from guest repository
 	public Guest getGuestById(String guestCode) {
 		return guestrepo.findById(guestCode)
-				.orElseThrow(() -> new ResourceNotFoundException("Guest code " + guestCode + " is not found"));
+				.orElseThrow(() -> new ResourceNotFoundException("Guest code " + guestCode + " is not found"));//Throws not found exception when given guest code is not found in database
 	}
 
+	//Delete guest from repository given guest code
 	public void deleteguest(String guestCode) {
 		guestrepo.deleteById(guestCode);
 	}
 
+	//Adding the reserved guest to guest repository
 	public Guest addifGuest(String reservationcode, Guest guest, String roomNo) {
 
 		ResponseEntity<List<Reservation>> responseEntity = restTemplate.exchange(
@@ -55,6 +60,7 @@ public class GuestService {
 				});
 		List<Reservation> listOfReservation = responseEntity.getBody();
 
+		//Checks the given reservation code with all the reservations in the reservation repository and adds guest if reservation code matches 
 		if (listOfReservation.stream().anyMatch(p -> reservationcode.equals(p.getReservationCode_()))) {
 
 			restTemplate.postForObject("http://Rooms/Rooms/makestatusactive?roomNumber=" + roomNo, guest, Guest.class);
@@ -87,10 +93,12 @@ public class GuestService {
 
 	}
 
+	//Updates the guest details in the guest repository
 	public Guest updateGuest(Guest guest) {
 		return guestrepo.save(guest);
 	}
 
+	//Checkout the guest using guest code 
 	public void checkoutGuest(String guestCode) {
 
 		String roomNo = guestrepo.findById(guestCode).get().getRoomNumber();
