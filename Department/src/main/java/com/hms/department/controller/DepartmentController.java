@@ -20,17 +20,20 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
 
+	// Retrieves all the departments form department repository
 	@GetMapping("/getalldepartments")
 	public List<Department> findAllDepartment() {
 		return departmentService.findAllDepartments();
 	}
 
+	// Retrieves specific department details with department ID
 	@GetMapping("/getdepartmentbyid")
 	public Department findById(@RequestParam String departmentId) {
 		return departmentService.findById(departmentId);
 	}
 
-	@PostMapping("/adddepartment")
+	// Adds the department details to the repository
+	@PostMapping("/addepartment")
 	public void addDepartment(@RequestBody Department deaprtment) {
 		departmentService.addDepartment(deaprtment);
 	}

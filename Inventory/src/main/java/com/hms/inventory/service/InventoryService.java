@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hms.inventory.exception.ResourceNotFoundException;
 import com.hms.inventory.models.Inventory;
 import com.hms.inventory.repository.InventoryRepository;
 
@@ -27,7 +28,8 @@ public class InventoryService {
 	}
 
 	public Inventory getInventoryById(String inventoryCode) {
-		return inventoryRepository.findById(inventoryCode).get();
+		return inventoryRepository.findById(inventoryCode)
+				.orElseThrow(() -> new ResourceNotFoundException("Inventory code " + inventoryCode + " is not found"));
 	}
 
 }

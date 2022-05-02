@@ -20,18 +20,21 @@ public class BillController {
 	@Autowired
 	private BillService billservice;
 
+	// Retrieves bill by its ID
 	@GetMapping("/getbillbyid")
 	public Bill getBillById(@RequestParam String billNumber) {
 		return billservice.getBillById(billNumber);
 
 	}
 
+	// Retrieves all the bills
 	@GetMapping("/getallbills")
 	public List<Bill> getAllBills() {
 		return billservice.getAllBills();
 
 	}
 
+	// Generates the bill for the given guest ID
 	@PostMapping("/generatebill")
 	public Bill setBillByGuestId(@RequestBody Bill bill, @RequestParam String rateId, @RequestParam String guestCode) {
 		return billservice.setBillByGuestId(guestCode, bill, rateId);

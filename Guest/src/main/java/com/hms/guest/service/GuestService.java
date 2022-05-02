@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.hms.guest.exception.ResourceNotFoundException;
 import com.hms.guest.models.Guest;
 import com.hms.guest.models.Reservation;
 import com.hms.guest.repository.GuestRepository;
@@ -38,7 +39,8 @@ public class GuestService {
 	}
 
 	public Guest getGuestById(String guestCode) {
-		return guestrepo.findById(guestCode).get();
+		return guestrepo.findById(guestCode)
+				.orElseThrow(() -> new ResourceNotFoundException("Guest code " + guestCode + " is not found"));
 	}
 
 	public void deleteguest(String guestCode) {

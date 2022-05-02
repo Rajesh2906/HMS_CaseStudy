@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import com.hms.bill.exception.ResourceNotFoundException;
 import com.hms.bill.models.Bill;
 import com.hms.bill.models.Guest;
 import com.hms.bill.models.Rates;
@@ -24,10 +25,14 @@ public class BillService {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Logic to retrieve the specific bill with bill number
 	public Bill getBillById(String billNumber) {
-		return billRepository.findById(billNumber).get();
+		return billRepository.findById(billNumber)
+				.orElseThrow(() -> new ResourceNotFoundException("Bill Number " + billNumber + " is not found"));
 	}
 
+	// Logic to generate the bill using guest ID and rateID, by retriving the data
+	// from guest repository
 	public Bill setBillByGuestId(String guestCode, Bill bill, @RequestParam String rateId) {
 
 		ResponseEntity<List<Guest>> responseEntity = restTemplate.exchange("http://Guest/Guest/getallguests",
@@ -39,10 +44,7 @@ public class BillService {
 
 		if (listOfGuest.stream().anyMatch(p -> p.getGuestCode_().equals(guestCode))) {
 			bill.setGuestCode(guestCode);
-			/*
-			 * String reservationCode = listOfGuest.stream().filter(p ->
-			 * p.getGuestCode_().equals(guestCode)).findAny() .get().getReservationCode();
-			 */
+
 			Rates rate = restTemplate.getForObject("http://Rates/rates/getratesbyid?id=" + rateId, Rates.class);
 
 			double oneNight = rate.getFirstNightPrice();
@@ -73,6 +75,7 @@ public class BillService {
 		return null;
 	}
 
+	// Logic to retrieve all the bills from bill repository
 	public List<Bill> getAllBills() {
 		return billRepository.findAll();
 	}

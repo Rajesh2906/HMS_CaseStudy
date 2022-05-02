@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hms.rates.exception.ResourceNotFoundException;
 import com.hms.rates.models.Rates;
 import com.hms.rates.repository.RateRepository;
 
@@ -28,7 +29,8 @@ public class RateService {
 	}
 
 	public Rates getRateById(String id) {
-		return raterepo.findById(id).get();
+		return raterepo.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Rate id " + id + " is not found"));
 	}
 
 }

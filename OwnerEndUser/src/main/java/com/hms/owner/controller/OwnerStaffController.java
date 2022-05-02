@@ -1,6 +1,12 @@
 package com.hms.owner.controller;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -16,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.hms.owner.generator.StaffPDFGenerator;
 import com.hms.owner.models.Rates;
 import com.hms.owner.models.Staff;
+import com.lowagie.text.DocumentException;
 
 @RestController
 @Document("/owner/staff")
@@ -54,5 +62,25 @@ public class OwnerStaffController {
 	@DeleteMapping("/deletestaff")
 	public void deleteById(@RequestParam String staffCode) {
 		restTemplate.delete("http://Staff/staff/deletestaff?staffCode=" + staffCode);
+	}
+
+	@GetMapping("/printstaffreport")
+	public void generatePdf(HttpServletResponse response) throws DocumentException, IOException {
+
+		response.setContentType("application/pdf");
+		DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
+		String currentDateTime = dateFormat.format(new Date());
+		String headerkey = "Content-Disposition";
+		String headervalue = "attachment; filename=pdf_" + currentDateTime + "_Staff_list_report.pdf";
+
+		ResponseEntity<List<Staff>> responseEntity = restTemplate.exchange("http://Staff/staff/getallstaff",
+				HttpMethod.GET, null, new ParameterizedTypeReference<List<Staff>>() {
+				});
+		List<Staff> listOfStaff = responseEntity.getBody();
+
+		response.setHeader(headerkey, headervalue);
+		StaffPDFGenerator generator = new StaffPDFGenerator();
+		generator.generate(response, listOfStaff);
+
 	}
 }

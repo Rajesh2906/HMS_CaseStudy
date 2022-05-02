@@ -29,16 +29,19 @@ public class GuestController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	// Retrieves all the guest details form guest repository
 	@GetMapping("/getallguests")
 	public List<Guest> getGuestList() {
 		return service.getallguests();
 	}
 
+	// Retrieves the specific guest details using guest ID form the guest repository
 	@GetMapping("/getguestbyid")
 	public Guest getGuestById(@RequestParam String guestCode) {
 		return service.getGuestById(guestCode);
 	}
 
+	// Adds the new guest details to the guest repository
 	@PostMapping("/addnewguest")
 	public void addNewGuest(@RequestBody Guest guest) {
 		service.addguest(guest);
@@ -51,6 +54,7 @@ public class GuestController {
 				GuestNotification.class);
 	}
 
+	// Adds the reserved guest details to the guest repository
 	@PostMapping("/addreservedguest")
 	public void addGuest(@RequestParam String reservationcode, @RequestParam String roomNo, @RequestBody Guest guest) {
 		service.addifGuest(reservationcode, guest, roomNo);
@@ -63,16 +67,19 @@ public class GuestController {
 				GuestNotification.class);
 	}
 
+	// Updates the guest details in the guest repository
 	@PutMapping("/updateGuest")
 	public void updateGuest(@RequestBody Guest guest) {
 		service.updateGuest(guest);
 	}
 
+	// Updates the guest to checkout of the given guest ID
 	@PutMapping("/checkoutguest")
 	public void updatecheckoutGuest(@RequestParam String guestCode) {
 		service.checkoutGuest(guestCode);
 	}
 
+	// Deletes the guest of given guest code in the repository
 	@DeleteMapping("/deleteguest")
 	public void deleteGuest(@RequestParam String guestCode) {
 		service.deleteguest(guestCode);

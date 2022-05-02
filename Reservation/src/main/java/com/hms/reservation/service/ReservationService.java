@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hms.reservation.exception.ResourceNotFoundException;
 import com.hms.reservation.models.Reservation;
 import com.hms.reservation.repository.ReservationRepository;
 
@@ -32,7 +33,8 @@ public class ReservationService {
 	}
 
 	public Reservation getreservationById(String ReservationcCode) {
-		return rep.findById(ReservationcCode).get();
+		return rep.findById(ReservationcCode).orElseThrow(
+				() -> new ResourceNotFoundException("Reservation code " + ReservationcCode + " is not found"));
 	}
 
 }

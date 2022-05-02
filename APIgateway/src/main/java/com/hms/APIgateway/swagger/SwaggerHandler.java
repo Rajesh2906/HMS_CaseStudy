@@ -33,6 +33,7 @@ public class SwaggerHandler {
 		this.swaggerResources = swaggerResources;
 	}
 
+	// configuration for security of swagger
 	@GetMapping("/configuration/security")
 	public Mono<ResponseEntity<SecurityConfiguration>> securityConfiguration() {
 		return Mono.just(new ResponseEntity<>(
@@ -41,6 +42,7 @@ public class SwaggerHandler {
 
 	}
 
+	// swagger UI configuration
 	@GetMapping("/configuration/ui")
 	public Mono<ResponseEntity<UiConfiguration>> uiConfiguration() {
 		return Mono.just(new ResponseEntity<>(

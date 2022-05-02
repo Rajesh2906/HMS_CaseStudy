@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hms.staff.exception.ResourceNotFoundException;
 import com.hms.staff.models.Staff;
 import com.hms.staff.repository.StaffRepository;
 
@@ -19,6 +20,7 @@ public class StaffService {
 	}
 
 	public Staff addStaff(Staff staff) {
+		staff.setStaffCode("SF" + (staffrep.count() + 1));
 		return staffrep.insert(staff);
 	}
 
@@ -31,7 +33,8 @@ public class StaffService {
 	}
 
 	public Staff getStaffById(String staffCode) {
-		return staffrep.findById(staffCode).get();
+		return staffrep.findById(staffCode)
+				.orElseThrow(() -> new ResourceNotFoundException("staff code " + staffCode + " is not found"));
 	}
 
 }

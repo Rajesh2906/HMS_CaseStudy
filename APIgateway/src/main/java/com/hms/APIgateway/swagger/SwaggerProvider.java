@@ -22,6 +22,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
 		this.routeLocator = routeLocator;
 	}
 
+	// creates the list inside spec and routes between them
 	@Override
 	public List<SwaggerResource> get() {
 		List<SwaggerResource> resources = new ArrayList<>();
@@ -35,6 +36,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
 		return resources;
 	}
 
+	// swagger resource configuration with name, location and version
 	private SwaggerResource swaggerResource(String name, String location) {
 		SwaggerResource swaggerResource = new SwaggerResource();
 		swaggerResource.setName(name);
