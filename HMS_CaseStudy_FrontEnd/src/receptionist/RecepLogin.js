@@ -17,7 +17,7 @@ function RecepLogin() {
         try{
             await authService.login(data.username,data.password).then(
                 ()=>{
-                    navigate("/reservation");
+                    navigate("/recephome");
                     window.location.reload();
                     alert("login successfully");
                 },

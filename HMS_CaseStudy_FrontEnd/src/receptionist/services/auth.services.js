@@ -16,15 +16,13 @@ login(username, password) {
           console.log(token);
         });
     }
-    
-
 
   logout(){
-    localStorage.removeItem("user");
+    localStorage.removeItem("SavedToken");
   }
 
   getCurrentUser() {
-    return localStorage.getItem('user');
+    return localStorage.getItem('SavedToken');
   };
   
 }
