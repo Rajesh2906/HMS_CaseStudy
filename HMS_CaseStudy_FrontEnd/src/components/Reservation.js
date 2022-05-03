@@ -15,10 +15,17 @@ function Reservation() {
         checkIn:"",
         checkOut:"",
         numberOfNights:"",  
-        reservationCode_:"",
-        status_:"",
+         reservationCode_:"",
+         status_:"",
     })
-
+    axios.interceptors.request.use(
+        config => {
+        config.headers.authorization = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZWNlcDEiLCJleHAiOjE2NTE2MTExNTQsImlhdCI6MTY1MTU3NTE1NH0.AmeQxqOInoJNR8XS-tMUa7QfbE-NiVmimVIDtsz7RmI";
+        return config;
+        },
+        error => {
+        return Promise.reject(error);
+        });
     function submit(e){
         const item={
             name:data.name,
@@ -30,20 +37,17 @@ function Reservation() {
             numberOfChildren:data.numberOfChildren,
             company:data.company,
             checkIn:data.checkIn,
-            numberOfNights:data.numberOfNights
+            numberOfNights:data.numberOfNights,
+            reservationCode_:data.reservationCode_,
+            status_:data.status_
             }
         e.preventDefault();
-        const res = axios.post(url,item,{headers :{
-            'Authorization': your_token,
-            'Accept' : 'application/text',
-            'Content-Type': 'application/text'
-        }})
+        const res = axios.post(url,item )
             .then(res=>{
                 console.log(res.data);
                 alert("Reservation details successfully added");
             },
            );
-           res.data.headers
         
     }
 

@@ -1,12 +1,9 @@
 import axios from "axios";
 
-
-
-
 class AuthService {
 
 login(username, password) {
-
+  
   const API_URL = "Receptionist/receptionist/authenticate?password="+password+"&username="+username;
     return axios
         .post(API_URL , {
@@ -14,12 +11,13 @@ login(username, password) {
         password
         })
         .then(response => {
-        if (response.data.accessToken) {
-            const token = localStorage.setItem("user", response.data);
-            console.log(this.token);
-        }
+          const token = response.data
+        // if (response.data.accessToken) {
+        //     localStorage.setItem("user", response.data);
+        //     console.log(response.data.accessToken);
+        // }
 
-        return response.data;
+        // return response.data;
         });
     }
     
