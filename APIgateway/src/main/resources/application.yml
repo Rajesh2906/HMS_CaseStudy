@@ -5,6 +5,11 @@ spring:
                name: APIgateway              
         cloud: 
           gateway:
+            globalcors:
+              corsConfigurations:'[/**]':
+                allowedOrigins: "http://localhost:3000"
+                allowedHeaders: "*"
+                allowedMethods: "*"
             routes:
             - id: Receptionist
               uri: http://localhost:8097/
