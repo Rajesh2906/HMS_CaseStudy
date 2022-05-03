@@ -11,13 +11,9 @@ login(username, password) {
         password
         })
         .then(response => {
-          const token = response.data
-        // if (response.data.accessToken) {
-        //     localStorage.setItem("user", response.data);
-        //     console.log(response.data.accessToken);
-        // }
-
-        // return response.data;
+          const token = response.data;
+          localStorage.setItem("SavedToken" , token) 
+          console.log(token);
         });
     }
     

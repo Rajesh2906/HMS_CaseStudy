@@ -39,6 +39,7 @@ function RecepLogin() {
     }
 
     return (
+    <React.Fragment>
         <div>
             <form onSubmit={handleLogin}>
                 <h3>Login</h3>
@@ -48,6 +49,7 @@ function RecepLogin() {
 
             </form>
         </div>
+    </React.Fragment>
   )
 }
 

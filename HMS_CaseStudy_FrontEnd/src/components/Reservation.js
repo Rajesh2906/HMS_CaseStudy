@@ -20,7 +20,7 @@ function Reservation() {
     })
     axios.interceptors.request.use(
         config => {
-        config.headers.authorization = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZWNlcDEiLCJleHAiOjE2NTE2MTExNTQsImlhdCI6MTY1MTU3NTE1NH0.AmeQxqOInoJNR8XS-tMUa7QfbE-NiVmimVIDtsz7RmI";
+        config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
         return config;
         },
         error => {

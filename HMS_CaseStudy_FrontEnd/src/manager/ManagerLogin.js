@@ -39,15 +39,17 @@ function ManagerLogin() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleLogin}>
-                <h3>Login</h3>
-                <input onChange={(e)=>handle(e)} id="username" value={data.username} placeholder='username' type="text"/>
-                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='password' type="text"/>
-                <button type="submit">Log in</button>
+        <React.Fragment>
+            <div>
+                <form onSubmit={handleLogin}>
+                    <h3>Login</h3>
+                    <input onChange={(e)=>handle(e)} id="username" value={data.username} placeholder='username' type="text"/>
+                    <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='password' type="text"/>
+                    <button type="submit">Log in</button>
 
-            </form>
-        </div>
+                </form>
+            </div>
+        </React.Fragment>
   )
 }
 

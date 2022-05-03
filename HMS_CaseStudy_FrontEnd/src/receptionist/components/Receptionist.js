@@ -6,7 +6,7 @@ import Reservation from '../../components/Reservation'
 class Receptionist extends Component {
   render() {
     return (
-     <>
+     <React.Fragment>
 
       <div>
         <Link to="/">Home</Link>
@@ -19,9 +19,8 @@ class Receptionist extends Component {
           <Route path={"/reservation"} element={<Reservation/>}></Route>
         </Routes>
       </div>
-  
-      
-      </>
+ 
+      </React.Fragment>
     )
     }
 }

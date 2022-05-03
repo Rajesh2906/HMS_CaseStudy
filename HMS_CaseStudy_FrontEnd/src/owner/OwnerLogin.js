@@ -39,6 +39,7 @@ function OwnerLogin() {
     }
 
     return (
+    <React.Fragment>
         <div>
             <form onSubmit={handleLogin}>
                 <h3>Login</h3>
@@ -48,6 +49,7 @@ function OwnerLogin() {
 
             </form>
         </div>
+    </React.Fragment>
   )
 }
 

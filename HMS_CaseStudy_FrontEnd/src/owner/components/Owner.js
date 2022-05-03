@@ -11,21 +11,21 @@ import Reservation from '../Reservation';
  
 function Owner() {
   return (
-    <>
-    <div>
-      <Link to="/owner/reservation/">Reservation</Link>
-    </div> 
-           <div>
-      <Routes>
-        <Route path={"/reservation"} element={<Reservation/>}></Route>
-      </Routes>
-    </div>
+    <React.Fragment>
+      <div>
+        <Link to="/owner/reservation/">Reservation</Link>
+      </div> 
+            <div>
+        <Routes>
+          <Route path={"/reservation"} element={<Reservation/>}></Route>
+        </Routes>
+      </div>
+      
     
-   
-    <div>
-        Owner
-    </div>
-    </>
+      <div>
+          Owner
+      </div>
+    </React.Fragment>
   )
 }
 

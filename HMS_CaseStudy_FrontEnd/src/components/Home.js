@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
 return (
+	<React.Fragment>
 	<div>
 	<h1>ABC Hotel</h1>
 	<br />
@@ -27,6 +28,7 @@ return (
         </li>
 	</ul>
 	</div>
+	</React.Fragment>
 );
 };
 

@@ -2,9 +2,11 @@ import React from 'react'
 
 function Manager() {
   return (
-    <div>
-      GCBZFBXFBFXFBSFDBSD
-    </div>
+    <React.Fragment>
+      <div>
+        GCBZFBXFBFXFBSFDBSD
+      </div>
+    </React.Fragment>
   )
 }
 
