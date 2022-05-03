@@ -18,10 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.hms.receptionist.model.Reservation;
 
-//import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-
 @RestController
-//@SecurityRequirement(name = "javainuseapi")
 @RequestMapping("/Receptionist/reservation")
 @CrossOrigin("*")
 public class ReceptionistReservationcontroller {
