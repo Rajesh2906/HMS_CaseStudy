@@ -18,8 +18,8 @@ import com.twilio.type.PhoneNumber;
 @RequestMapping("/Notification")
 public class NotificationController {
 
-	private final static String ACCOUNT_SID = "AC7dc737df471c387e638c38bcdebba3a5";
-	private final static String AUTH_ID = "852b5fbeb8d20b9225fe8ea4a2d82c8d";
+	private final static String ACCOUNT_SID = "AC422ae1c14a4cfa4dcf903decf5b37059";
+	private final static String AUTH_ID = "bc0b91c0e7fe44db9d4ffb3c8d92d27d";
 
 	static {
 		Twilio.init(ACCOUNT_SID, AUTH_ID);
@@ -35,7 +35,7 @@ public class NotificationController {
 	// reservation completes
 	@PostMapping("/reservationnotification")
 	public void run(@RequestBody ReservationNotification details) throws Exception {
-		Message.creator(new PhoneNumber(details.getPhoneNumber()), new PhoneNumber("+12185177445"),
+		Message.creator(new PhoneNumber(details.getPhoneNumber()), new PhoneNumber("+17577928806"),
 				"Dear " + details.getName() + " Thank you for your reservation to ABC Hotel . Your reservation code is "
 						+ details.getReservationCode())
 				.create();
