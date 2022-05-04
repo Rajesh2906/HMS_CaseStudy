@@ -41,8 +41,7 @@ function RecepLogin() {
 
     return (
     <React.Fragment>       
-        <div>
-            
+        <div className='loginbody'> 
             <form onSubmit={handleLogin} className='mainlogin'>
                 <h3 className='heading'>Receptionist Login</h3>
                 <input onChange={(e)=>handle(e)} id="username" value={data.username} placeholder='username' type="text"/><br/><br/>

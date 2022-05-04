@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './home.css'
 import hotellobby from '../images/img1.jpg'
+import Slider from "./Slider/Slider";
 
 const Home = () => {
 return (
@@ -29,7 +30,8 @@ return (
         </li>
 	</ul>
 	</nav>
-	<img src={hotellobby} className='lobby'></img>
+	{/* <img src={hotellobby} className='lobby'></img> */}
+	<div className="slider"><Slider/></div>
 	<body className="about">
 		<h1>About</h1>
 		<div>
@@ -38,7 +40,7 @@ return (
 	</body>
 	<footer id="footer">
             <div>
-                <p>Marvel Studio</p>
+                <p>BABAI HOTEL</p>
             </div>
             <div>
                 <p>
