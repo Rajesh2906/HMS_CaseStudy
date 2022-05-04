@@ -5,17 +5,7 @@ import ResNavBar from './ResNavBar'
 
 function ResGetAll() {
 
-  const [searchTermById,setSearchTermById] = useState('');
-  const [searchTermByPh,setSearchTermByPh] = useState('');
   const [reservation, setreservation] = useState([]);
-  axios.interceptors.request.use(
-    config => {
-    config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
-    return config;
-    },
-    error => {
-    return Promise.reject(error);
-    });
 
   const url="Receptionist/Receptionist/reservation/getallreservation"
  
@@ -35,8 +25,6 @@ function ResGetAll() {
     <React.Fragment> 
         <ResNavBar/>
         <h1>Reservation update Form</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} />
-        <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} />
         <div>  
         <table>
           <thead className="thead-dark">
@@ -51,22 +39,7 @@ function ResGetAll() {
           </thead>
           <tbody>
           {
-            reservation.filter((reservation)=>{
-              if(searchTermById==""){
-                return reservation
-              }
-              else if(reservation.reservationCode_.toLowerCase().includes(searchTermById.toLowerCase())){
-                return reservation
-              }
-            }).filter((reservation)=>{
-              if(searchTermByPh==""){
-                return reservation
-              }
-              else if(reservation.phoneNumber.toLowerCase().includes(searchTermByPh.toLowerCase())){
-                return reservation
-              }
-            }).map(reservation => (
-              
+            reservation.map(reservation => (
               <tr key={reservation.reservationCode_}>
                 <td>{reservation.reservationCode_}</td>
                 <td>{reservation.name}</td>

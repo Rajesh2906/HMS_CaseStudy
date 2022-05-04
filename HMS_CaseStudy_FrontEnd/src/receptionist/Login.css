@@ -1,0 +1,31 @@
+body{
+    background-color: violet;
+
+}
+
+.mainlogin{
+    background-color: white;
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 500px;
+    min-height: 350px;
+    margin-top: 150px;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
+    left: 35%;
+    
+}
+#username{
+    font-size: 20px;
+}
+#password{
+    font-size: 20px;
+}
+
+.heading{
+    font-size: xx-large;     
+}

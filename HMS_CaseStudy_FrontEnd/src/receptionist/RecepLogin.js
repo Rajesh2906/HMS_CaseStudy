@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import authService from './services/auth.services';
+import './Login.css'
 
 
 function RecepLogin() {
@@ -39,14 +40,14 @@ function RecepLogin() {
     }
 
     return (
-    <React.Fragment>
+    <React.Fragment>       
         <div>
-            <form onSubmit={handleLogin}>
-                <h3>Login</h3>
-                <input onChange={(e)=>handle(e)} id="username" value={data.username} placeholder='username' type="text"/>
-                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='password' type="text"/>
+            
+            <form onSubmit={handleLogin} className='mainlogin'>
+                <h3 className='heading'>Receptionist Login</h3>
+                <input onChange={(e)=>handle(e)} id="username" value={data.username} placeholder='username' type="text"/><br/><br/>
+                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='password' type="text"/><br/><br/>
                 <button type="submit">Log in</button>
-
             </form>
         </div>
     </React.Fragment>

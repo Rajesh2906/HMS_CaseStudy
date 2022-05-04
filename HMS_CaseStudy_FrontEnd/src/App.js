@@ -20,7 +20,6 @@ import ResAdd from "./components/reservation/ResAdd";
 import ResUpdate from "./components/reservation/ResUpdate";
 import ResGetAll from "./components/reservation/ResGetAll";
 import ResGetById from "./components/reservation/ResGetById";
-import GetAllRes from "./components/reservation/GetAll";
 
   
 function App() {
@@ -40,7 +39,7 @@ function App() {
           <Route path="/managerhome" element={<ManagerHome/>} />  
           <Route path="/ownerhome" element={<OwnerHome/>} />  
 
-          <Route path="/getallres" element={<GetAllRes/>} />  
+         
 
           <Route path='/resupdate' element={<ResUpdate/>}></Route>
           <Route path='/resgetall' element={<ResGetAll/>}></Route>

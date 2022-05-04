@@ -21,7 +21,7 @@ function ResNavBar() {
             <li><NavLink to='/resupdate'>Update</NavLink></li>
             <li><NavLink to='/resgetall'>GetAll</NavLink></li>
             <li><NavLink to='/resgetbyid'>GetById</NavLink></li>
-            <li><NavLink to='/recephome'>ReseptionistHome</NavLink></li>
+            <li><NavLink to='/getallres'>GetAllRes</NavLink></li>
         </ul>
     </React.Fragment>
   )

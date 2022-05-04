@@ -1,47 +1,89 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
-import ResNavBar from './ResNavBar';
+import ResNavBar from './ResNavBar'
 
 function ResGetById() {
 
-  const[data,setData]=useState({        
-    ReservationiId:""})
-  const url="Receptionist/Receptionist/reservation/getreservationbyid?id="+
-  axios.interceptors.request.use(
-      config => {
-      config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
-      return config;
-      },
-      error => {
-      return Promise.reject(error);
-      });
-  function submit(e){
-      e.preventDefault();
-      axios.get(url+data.ReservationiId)
-          .then(res=>{
-            document.write(res.data);
-            console.log(res.data);
-          },
-         );   
-  }  
-  
+  const [reservation, setreservation] = useState({
+    name:"",
+    phoneNumber:"",
+    emailId:"",
+    gender:"",
+    address:"",  
+    numberOfAdult:"",
+    numberOfChildren:"",
+    company:"",
+    checkIn:"",
+    checkOut:"",
+    numberOfNights:"",  
+     reservationCode_:"",
+     status_:""
+  });
+
+  const url="Receptionist/Receptionist/reservation/getreservationbyid?id="+reservation.reservationCode_
+ 
+
   function handle(e){
-    const newdata={...data}
+    const newdata={...reservation}
     newdata[e.target.id]=e.target.value
-    setData(newdata)
-  }
-return (
-  <React.Fragment> 
-      <ResNavBar/>
-      <h1>Reservation update Form</h1>
-      <div> 
-          <form onSubmit={(e)=>submit(e)}>
-            <input onChange={(e)=>handle(e)} id="ReservationiId" value={data.ReservationiId} placeholder='ReservationiId' type="text"/>
-            <button>submit</button>
-          </form>
+    setreservation(newdata)
+}
+  
+
+        function submit(e){
+          const item={
+              reservationCode_:reservation.reservationCode_
+              }
+          e.preventDefault();
+          axios.get(url,item)
+              .then(res=>{
+                setreservation(res.data);
+                console.log(res.data);
+              },
+             );
+          
+      }
+
+  
+   
+  
+  return (
+    <React.Fragment> 
+        <ResNavBar/>
+        <h1>Reservation update Form</h1>
+        <form onSubmit={(e)=>submit(e)}></form>
+        <input onChange={(e)=>handle(e)} id="reservationCode_" value={reservation.reservationCode_} placeholder='ReservationCode' type="text"/>
+        <button type='submit'>submit</button>
+        <div>  
+        {/* <table>
+          <thead className="thead-dark">
+            <tr>
+            <th>ReservationCode_</th>
+              <th>name</th>
+              <th>phoneNumber</th>
+              <th>checkIn</th>
+              <th>checkOut</th>
+              <th>NoOfNights</th>
+            </tr>
+          </thead>
+          <tbody>
+          {
+            reservation.map(reservation => (
+              <tr key={reservation.reservationCode_}>
+                <td>{reservation.reservationCode_}</td>
+                <td>{reservation.name}</td>
+                <td>{reservation.phoneNumber}</td>
+                <td>{reservation.checkIn}</td>
+                <td>{reservation.checkOut}</td>
+                <td>{reservation.numberOfNights}</td>
+              </tr>))
+          }
+          </tbody>
+        </table> */}
       </div>
-  </React.Fragment>
-)
+    </React.Fragment>
+  )
 }
 
 export default ResGetById

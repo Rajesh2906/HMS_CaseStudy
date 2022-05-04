@@ -1,8 +1,47 @@
-h1{
+.hotelName{
+    position:sticky;
+    top: 0%;
+    margin-top: 0%;
+    margin-bottom: 0%;
     text-align: center;
-    background-color: aquamarine;
+    font-size: 30px;
+    background-color: #e2d0bd;
+    padding: 15px;
+    width: auto;
 }
-ul{
-    list-style: circle;
-    
+.about{
+    text-align: center;
+    padding: 50px;
+    background-color: antiquewhite;
+}
+nav {
+    background-color: rgb(111, 55, 55);
+    padding: 20px;
+    position:sticky;
+    top: 69px;
+}
+nav ul{
+    white-space: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+nav li{
+    width: 25%;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+.lobby{
+    width: 100%;
+}
+#footer{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(1);
+    text-align: center;
+    background-color: rgb(217, 201, 119);
 }

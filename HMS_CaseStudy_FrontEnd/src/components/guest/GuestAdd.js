@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
-import './reservation.css'
+
 import ResNavBar from './ResNavBar';
 
 
@@ -8,49 +8,48 @@ import ResNavBar from './ResNavBar';
 function ResAdd() {
     const url="Receptionist/Receptionist/reservation/addreservation"
     const[data,setData]=useState({        
-        name:"",
-        phoneNumber:"",
-        emailId:"",
-        gender:"",
-        address:"",  
-        numberOfAdult:"",
+        guestCode_:"",
+        reservationCode:"",
+        roomNumber:"",
+        todayDate_:"",
+        numberOfAdult:"",  
         numberOfChildren:"",
-        company:"",
         checkIn:"",
         checkOut:"",
-        numberOfNights:"",  
-         reservationCode_:"",
-         status_:""
+        numberOfNights:"",
+        name_:"",
+        emailId_:"",  
+        phoneNumber_:"",
+        gender_:"",
+        address_:"",
+        company_:"",
+        guestStatus_:""
     })
-    axios.interceptors.request.use(
-        config => {
-        config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
-        return config;
-        },
-        error => {
-        return Promise.reject(error);
-        });
+    
     function submit(e){
         const item={
-            name:data.name,
-            phoneNumber:data.phoneNumber,
-            emailId:data.emailId,
-            gender:data.gender,
-            address:data.address,
-            numberOfAdult:data.numberOfAdult,
+            guestCode_:data.guestCode_,
+            reservationCode:data.reservationCode,
+            roomNumber:data.roomNumber,
+            todayDate_:data.todayDate_,
+            numberOfAdult:data.numberOfAdult,  
             numberOfChildren:data.numberOfChildren,
-            company:data.company,
             checkIn:data.checkIn,
             checkOut:data.checkOut,
             numberOfNights:data.numberOfNights,
-            reservationCode_:data.reservationCode_,
-            status_:data.status_
+            name_:data.name_,
+            emailId_:data.emailId_,  
+            phoneNumber_:data.phoneNumber_,
+            gender_:data.gender_,
+            address_:data.address_,
+            company_:data.company_,
+            guestStatus_:data.guestStatus_
             }
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
                 console.log(res.data);
-                alert("Reservation details successfully added");
+                alert("Guest details successfully added");
             },
            );
         
@@ -62,10 +61,10 @@ function ResAdd() {
         setData(newdata)
     }
   return (
-    <React.Fragment className='addreservation'> 
+    <React.Fragment> 
         <ResNavBar/>
         <h1>Reservation Add Form</h1>
-        <div  className='addform'> 
+        <div> 
             <form onSubmit={(e)=>submit(e)}>
                 <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
                 <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
