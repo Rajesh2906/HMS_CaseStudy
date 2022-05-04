@@ -13,6 +13,8 @@ import RecepLogin from "./receptionist/RecepLogin";
 import ManagerLogin from "./manager/ManagerLogin";
 import Reservation from "./components/Reservation";
 import RecepHome from "./receptionist/components/RecepHome";
+import ManagerHome from "./manager/components/ManagerHome";
+import OwnerHome from "./owner/components/OwnerHome";
 
   
 function App() {
@@ -28,7 +30,9 @@ function App() {
           <Route path="/managerlogin/*" element={<ManagerLogin/>} />
           <Route path="/ownerlogin/*" element={<OwnerLogin/>} />
           <Route path="/reservation" element={<Reservation/>} />   
-          <Route path="/recephome" element={<RecepHome/>} />     
+          <Route path="/recephome" element={<RecepHome/>} />    
+          <Route path="/managerhome" element={<ManagerHome/>} />  
+          <Route path="/ownerhome" element={<OwnerHome/>} />   
         </Routes>
       </Router>
     </>

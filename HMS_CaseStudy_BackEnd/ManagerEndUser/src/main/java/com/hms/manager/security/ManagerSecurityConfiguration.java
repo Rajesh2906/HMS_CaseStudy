@@ -35,6 +35,7 @@ public class ManagerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.permitAll().anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+		httpSecurity.cors();
 
 	}
 

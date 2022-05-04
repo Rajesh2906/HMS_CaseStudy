@@ -12,9 +12,8 @@ login(username, password) {
         password
         })
         .then(response => {
-        if (response.data.accessToken) {
-            localStorage.setItem("user", JSON.stringify(response.data));
-        }
+        const token=response.data;
+        localStorage.setItem("SavedToken",token);
 
         return response.data;
         });
@@ -23,11 +22,11 @@ login(username, password) {
 
 
   logout(){
-    localStorage.removeItem("user");
+    localStorage.removeItem("SavedToken");
   }
 
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem('user'));
+    return localStorage.getItem('SavedToken');
   };
 }
 

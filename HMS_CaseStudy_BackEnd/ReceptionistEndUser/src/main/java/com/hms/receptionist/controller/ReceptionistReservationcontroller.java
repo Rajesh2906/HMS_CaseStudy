@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,11 +18,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.hms.receptionist.model.Reservation;
 
-//import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-
 @RestController
-//@SecurityRequirement(name = "javainuseapi")
 @RequestMapping("/Receptionist/reservation")
+@CrossOrigin("*")
 public class ReceptionistReservationcontroller {
 
 	@Autowired

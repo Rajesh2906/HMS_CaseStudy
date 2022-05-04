@@ -19,7 +19,7 @@ import com.twilio.type.PhoneNumber;
 public class NotificationController {
 
 	private final static String ACCOUNT_SID = "AC7dc737df471c387e638c38bcdebba3a5";
-	private final static String AUTH_ID = "852b5fbeb8d20b9225fe8ea4a2d82c8d";
+	private final static String AUTH_ID = "908394832b378522a2a92e7e8a9abba9";
 
 	static {
 		Twilio.init(ACCOUNT_SID, AUTH_ID);

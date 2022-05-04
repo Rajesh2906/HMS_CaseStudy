@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import AuthService from './services/AuthService';
+import AuthService from './services/auth.service';
 
 
 function OwnerLogin() {
@@ -17,7 +17,7 @@ function OwnerLogin() {
         try{
             await AuthService.login(data.username,data.password).then(
                 ()=>{
-                    navigate("/home");
+                    navigate("/ownerhome");
                     window.location.reload();
                     alert("login successfully");
                 },
