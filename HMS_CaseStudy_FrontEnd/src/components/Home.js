@@ -2,6 +2,7 @@ import React from "react";
 // importing Link from react-router-dom to navigate to
 // different end points.
 import { Link } from "react-router-dom";
+import './home.css'
 
 const Home = () => {
 return (

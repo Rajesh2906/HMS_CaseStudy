@@ -1,7 +1,11 @@
 import React,{useState} from 'react';
-import axios, {Axios} from 'axios';
+import axios from 'axios';
 
-function Reservation() {
+import ResNavBar from './ResNavBar';
+
+
+
+function ResAdd() {
     const url="Receptionist/Receptionist/reservation/addreservation"
     const[data,setData]=useState({        
         name:"",
@@ -42,7 +46,7 @@ function Reservation() {
             status_:data.status_
             }
         e.preventDefault();
-        const res = axios.post(url,item )
+        axios.post(url,item )
             .then(res=>{
                 console.log(res.data);
                 alert("Reservation details successfully added");
@@ -55,13 +59,12 @@ function Reservation() {
         const newdata={...data}
         newdata[e.target.id]=e.target.value
         setData(newdata)
-        console.log(newdata)
     }
   return (
-    <React.Fragment>
-        <h1>Reservation Form</h1>
-        <div>
-            <h2>Dance</h2>
+    <React.Fragment> 
+        <ResNavBar/>
+        <h1>Reservation Add Form</h1>
+        <div> 
             <form onSubmit={(e)=>submit(e)}>
                 <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
                 <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
@@ -81,4 +84,4 @@ function Reservation() {
   )
 }
 
-export default Reservation
+export default ResAdd
