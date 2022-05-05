@@ -3,7 +3,6 @@ import React from "react";
 // different end points.
 import { Link } from "react-router-dom";
 import './home.css'
-import hotellobby from '../images/img1.jpg'
 import Slider from "./Slider/Slider";
 
 const Home = () => {
@@ -12,7 +11,7 @@ return (
 	<h1 className='hotelName'>BABAI Hotel</h1>
 	<nav>
 	<ul className='navBar'>
-		<li className='homeli' >
+		<li className='homeli'>
 			{/* Endpoint to route to Home component */}
 			<Link to="/" className='link'>Home</Link>
 		</li>
@@ -30,7 +29,6 @@ return (
         </li>
 	</ul>
 	</nav>
-	{/* <img src={hotellobby} className='lobby'></img> */}
 	<div className="slider"><Slider/></div>
 	<body className="about">
 		<h1>About</h1>

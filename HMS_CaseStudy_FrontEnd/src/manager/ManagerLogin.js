@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import AuthService from './services/auth.services';
+import userlogin from './images/managerlogin.png'
+
 
 
 function ManagerLogin() {
@@ -40,15 +42,23 @@ function ManagerLogin() {
 
     return (
         <React.Fragment>
-            <div>
-                <form onSubmit={handleLogin}>
-                    <h3>Login</h3>
-                    <input onChange={(e)=>handle(e)} id="username" value={data.username} placeholder='username' type="text"/>
-                    <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='password' type="text"/>
-                    <button type="submit">Log in</button>
-
-                </form>
-            </div>
+            <body class="managerbody">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">    
+         <h2 class="active">Owner LogIn </h2>
+        <div class="fadeIn first">
+          <img src={userlogin} id="icon" alt="User Icon" />
+        </div>
+            <form   onSubmit={handleLogin}>
+               <input onChange={(e)=>handle(e)}  value={data.username} id="username" type="text" class="fadeIn second" name="login" placeholder="Username"/>
+               <input onChange={(e)=>handle(e)} value={data.password} type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+               <input type="submit" class="fadeIn fourth" value="Log In"/>
+            </form>    
+         <div id="formFooter">
+         </div>
+        </div>
+    </div>   
+    </body>
         </React.Fragment>
   )
 }

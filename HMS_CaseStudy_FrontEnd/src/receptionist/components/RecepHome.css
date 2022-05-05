@@ -1,0 +1,21 @@
+.reservationlink {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    background-color: #888;
+    text-align: center;
+    display: block;
+    width: 150px;
+    min-height: 50px;
+    margin-top: 90px;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
+    left: 3%;
+  
+}
+.recephome{
+    background-color: #e2d0bd;
+}

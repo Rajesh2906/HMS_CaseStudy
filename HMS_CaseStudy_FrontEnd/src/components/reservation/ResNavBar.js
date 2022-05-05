@@ -4,25 +4,20 @@ import {
     Route,
     Routes
   } from "react-router-dom";
-import ResAdd from './ResAdd';
-import ResGetAll from './ResGetAll';
-import ResGetById from './ResGetById';
-import ResUpdate from './ResUpdate';
+import './ResNavBar.css'
 
 
 function ResNavBar() {
   return (
       <React.Fragment>
-     
-        
+        <nav>
         <ul>
             {/* <li><NavLink to='/recephome'>Home</NavLink></li> */}
-            <li><NavLink to='/resadd'>Add</NavLink></li>
-            <li><NavLink to='/resupdate'>Update</NavLink></li>
-            <li><NavLink to='/resgetall'>GetAll</NavLink></li>
-            <li><NavLink to='/resgetbyid'>GetById</NavLink></li>
-            <li><NavLink to='/recephome'>ReseptionistHome</NavLink></li>
+            <li><NavLink to='/resadd' className='navlink'>Add</NavLink></li>
+            <li><NavLink to='/resupdate' className='navlink'>Update</NavLink></li>
+            <li><NavLink to='/resgetall' className='navlink'>GetAll</NavLink></li>
         </ul>
+        </nav>
     </React.Fragment>
   )
 }

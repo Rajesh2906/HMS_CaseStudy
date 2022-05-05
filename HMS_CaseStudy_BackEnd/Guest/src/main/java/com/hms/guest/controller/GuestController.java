@@ -65,7 +65,7 @@ public class GuestController {
 		notificationDetails.setEmailId(guest.getEmailId_());
 		notificationDetails.setName(guest.getName_());
 		notificationDetails.setGuestCode(guest.getGuestCode_());
-		restTemplate.postForObject("http://localhost:8092/Notification/guestnotification", notificationDetails,
+		restTemplate.postForObject("http://Notification/Notification/guestnotification", notificationDetails,
 				GuestNotification.class);
 	}
 

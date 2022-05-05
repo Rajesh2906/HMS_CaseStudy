@@ -1,9 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios';
-import './reservation.css'
 import ResNavBar from './ResNavBar';
-
-
+import './ResAdd.css'
 
 function ResAdd() {
     const url="Receptionist/Receptionist/reservation/addreservation"
@@ -62,22 +60,33 @@ function ResAdd() {
         setData(newdata)
     }
   return (
-    <React.Fragment className='addreservation'> 
+    <React.Fragment> 
         <ResNavBar/>
         <h1>Reservation Add Form</h1>
-        <div  className='addform'> 
-            <form onSubmit={(e)=>submit(e)}>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
-                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
-                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
-                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
-                <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
-                <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
-                <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text"/>
-                <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
+        <div  > 
+            <form onSubmit={(e)=>submit(e)} className='addform'>
+                <label for="name">Name : </label>
+                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"  /><br/><br/>
+                <label for="phoneNumber">phoneNumber : </label>
+                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/><br/><br/>
+                <label for="emailId">emailId : </label>
+                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/><br/><br/>
+                <label for="gender">Gender : </label>
+                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/><br/><br/>
+                <label for="address">Address : </label>
+                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/><br/><br/>
+                <label for="numberOfAdult">NumberOfAdult : </label>
+                <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/><br/><br/>
+                <label for="numberOfChildren">NumberOfChildren : </label>
+                <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/><br/><br/>
+                <label for="company">Company : </label>
+                <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/><br/><br/>
+                <label for="checkIn">CheckIn Date : </label>
+                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text"/><br/><br/>
+                <label for="checkOut">CheckOut Date : </label>
+                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text"/><br/><br/>
+                <label for="numberOfNights">NumberOfNights : </label>
+                <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/><br/><br/>
                 <button>submit</button>
             </form>
         </div>
