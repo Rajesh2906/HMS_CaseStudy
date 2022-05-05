@@ -21,6 +21,12 @@ import ResUpdate from "./components/reservation/ResUpdate";
 import ResGetAll from "./components/reservation/ResGetAll";
 import ResGetById from "./components/reservation/ResGetById";
 
+import ReservationAdd from "./receptionist/reservation/ReservationAdd";
+import GuestAdd from "./receptionist/Guest/GuestAdd"
+import BillAdd from "./receptionist/Bill/BillAdd";
+import RoomSearch from "./receptionist/rooms/RoomSearch";
+import Payment from "./receptionist/payment/Payment";
+
   
 function App() {
 
@@ -37,7 +43,15 @@ function App() {
           <Route path="/reservation" element={<ResAdd/>} />   
           <Route path="/recephome" element={<RecepHome/>} />    
           <Route path="/managerhome" element={<ManagerHome/>} />  
-          <Route path="/ownerhome" element={<OwnerHome/>} />  
+          <Route path="/ownerhome" element={<OwnerHome/>} /> 
+
+
+          {/* Receptionist Routes  */}
+          <Route path="/reservationadd" element={<ReservationAdd/>}/>
+          <Route path="/guestadd" element={<GuestAdd/>}/>
+          <Route path="/billgenerate" element={<BillAdd/>}/>
+          <Route path="/availablerooms" element={<RoomSearch/>}/>
+          <Route path="/payment" element={<Payment/>}/>
 
          
 

@@ -9,6 +9,7 @@ function RecepLogin() {
         username:"",
         password:""
     })
+    const[error,setError]=useState(null);
     const navigate =  useNavigate();
     const handleLogin = async  (e)=>{
         e.preventDefault();
@@ -20,7 +21,7 @@ function RecepLogin() {
                 },
                 (error)=>{
                     console.log(error);
-                    alert("incorrect credentials");
+                    setError("Incorrect credentials");
                 }
             )
         }
@@ -40,12 +41,13 @@ function RecepLogin() {
     <div class="wrapper fadeInDown">
         <div id="formContent">    
          <h2 class="active">Receptionist LogIn </h2>
-        <div class="fadeIn first">
+        <div class=" first">
           <img src={userlogin} id="icon" alt="User Icon" />
         </div>
             <form   onSubmit={handleLogin}>
+                {error && <div className='loginerror'>{error}</div>}
                <input onChange={(e)=>handle(e)}  value={data.username} id="username" type="text" class="fadeIn second" name="login" placeholder="Username"/>
-               <input onChange={(e)=>handle(e)} value={data.password} type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+               <input onChange={(e)=>handle(e)} value={data.password} type="password" id="password" class="fadeIn third" name="login" placeholder="password"/>
                <input type="submit" class="fadeIn fourth" value="Log In"/>
             </form>    
          <div id="formFooter">
