@@ -30,6 +30,7 @@ import RPrintBill from "./receptionist/bill/RPrintBill";
 import RGetAvailableRooms from "./receptionist/rooms/RGetAvailableRooms";
 import RresUpdate from "./receptionist/reservation/RresUpdate";
 import RresGetAll from "./receptionist/reservation/RresGetAll";
+import RGetRates from "./receptionist/rates/RGetRates";
 
   
 function App() {
@@ -65,6 +66,8 @@ function App() {
           <Route path="/rbillgenerate" element={<RGenerateBill/>}/>
           <Route path='/rgetallbills' element={<RGetAllBills/>}/>
           <Route path='/rprintbill' element={<RPrintBill/>}/>
+
+          <Route path='/rgetrates' element={<RGetRates/>}/>
 
           <Route path="/ravailablerooms" element={<RGetAvailableRooms/>}/>
           <Route path="/rpayment" element={<Payment/>}/>

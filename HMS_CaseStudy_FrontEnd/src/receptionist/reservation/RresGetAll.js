@@ -35,42 +35,33 @@ function RresGetAll() {
   return (
     <React.Fragment> 
         <RecepResNavBar/>
-        
         <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} />
         <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} />
-       
-          <div className='styled-table'>
+        <div className='styled-table'>
         <div >Reservation list off guest</div> 
-        <div className='showtable'>
-        <table >
+        <div className='showtable'>  
+        <table>
           <thead >
             <tr>
-              <th>ReservationCode_</th>
+            <th>ReservationCode_</th>
               <th>name</th>
               <th>phoneNumber</th>
               <th>checkIn</th>
               <th>checkOut</th>
-              <th>NoOfNights</th>
-              <th>NoOfNights</th>
-              <th>NoOfNights</th>
-              <th>NoOfNights</th>
-              <th>NoOfNights</th>
-              <th>NoOfNights</th>
-              <th>NoOfNights</th>
               <th>NoOfNights</th>
             </tr>
           </thead>
           <tbody>
           {
             reservation.filter((reservation)=>{
-              if(searchTermById===""){
+              if(searchTermById==""){
                 return reservation
               }
               else if(reservation.reservationCode_.toLowerCase().includes(searchTermById.toLowerCase())){
                 return reservation
               }
             }).filter((reservation)=>{
-              if(searchTermByPh===""){
+              if(searchTermByPh==""){
                 return reservation
               }
               else if(reservation.phoneNumber.toLowerCase().includes(searchTermByPh.toLowerCase())){
@@ -89,9 +80,9 @@ function RresGetAll() {
           }
           </tbody>
         </table>
-        </div>
       </div>
-     
+      </div>
+      
     </React.Fragment>
   )
 }

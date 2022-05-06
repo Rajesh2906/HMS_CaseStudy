@@ -4,7 +4,9 @@ import RecepGusNavBar from './RecepGuestNavBar';
 
 
 function RGuestUpdate() {
-  const url="Receptionist/receptionist/guest/updateGuest"
+    const[guest,setGuest]=useState({        
+        guestCode_:"",    
+    })
     const[data,setData]=useState({        
         todayDate_:"",
         reservationCode:"",
@@ -31,6 +33,17 @@ function RGuestUpdate() {
         error => {
         return Promise.reject(error);
         });
+    const idurl="Receptionist/receptionist/guest/getguestbyid?guestCode="+guest.guestCode_;
+    const url="Receptionist/receptionist/guest/updateGuest"
+    function guestsubmit(i){
+        i.preventDefault(); 
+        axios.get(idurl)
+            .then(res=>{
+                setData(res.data);
+            },
+           );
+        
+    }
     function submit(e){
         const item={
             reservationCode:data.reservationCode,
@@ -57,18 +70,31 @@ function RGuestUpdate() {
                 alert("Reservation details successfully updated");
             },
            );
+           window.location.reload();
         
     }
-
+    function guesthandle(i){
+        const newdata={...guest}
+        newdata[i.target.id]=i.target.value
+        setGuest(newdata)
+    }
+    
     function handle(e){
         const newdata={...data}
         newdata[e.target.id]=e.target.value
         setData(newdata)
-        console.log(newdata)
     }
+
   return (
     <React.Fragment> 
         <RecepGusNavBar/>
+        <h1>Enter Guest Id</h1>
+        <div> 
+            <form onSubmit={(i)=>guestsubmit(i)}> 
+                <input onChange={(i)=>guesthandle(i)} id="guestCode_" value={guest.guestCode_} placeholder='Guest Code' type="text"/>
+                <button>submit</button>
+            </form>
+        </div>
         <h1>Reservation update Form</h1>
         <div> 
         <form onSubmit={(e)=>submit(e)}> 

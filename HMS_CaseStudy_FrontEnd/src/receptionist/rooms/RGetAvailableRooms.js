@@ -47,7 +47,7 @@ function RGetAvailableRooms() {
           <tbody>
           {
             availableRooms.filter((availableRooms)=>{
-              if(searchByRoomNumber===""){
+              if(searchByRoomNumber==""){
                 return availableRooms
               }
               else if(availableRooms.roomNumber.toLowerCase().includes(searchByRoomNumber.toLowerCase())){

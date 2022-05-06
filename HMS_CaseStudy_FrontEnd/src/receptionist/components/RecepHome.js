@@ -38,7 +38,8 @@ function RecepHome() {
      <Link to="/rguestadd" className="redirectlink guest" ><img src={guest} id='logos'/><br/><h4> Guest</h4></Link>	
      <Link to="/rbillgenerate" className="redirectlink bill" ><img src={bill} id='logos'/><br/><h4> Generate Bill</h4></Link>	
      <Link to="/ravailablerooms" className="redirectlink rooms"><img src={rooms} id='logos'/><br/><h4> Available Rooms</h4></Link>	
-     <Link to="/rpayment" className="redirectlink payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4></Link>		
+     <Link to="/rpayment" className="redirectlink payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4></Link>	
+     <Link to="/rgetrates" className="redirectlink payment" ><img src={payment} id='logos'/><br/><h4>Rates</h4></Link>
     </div>
 
     <div className="gallery">

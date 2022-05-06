@@ -3,7 +3,10 @@ import axios from 'axios';
 import RecepResNavBar from './RecepResNavBar';
 
 function RresUpdate() {
-  const url="Receptionist/Receptionist/reservation/updatereservation"
+  const url="Receptionist/Receptionist/reservation/updatereservation";
+  const[reservation,setReservation]=useState({        
+    reservationCode_:"",    
+})
     const[data,setData]=useState({        
         resId:"",
         phoneNumber:"",
@@ -27,6 +30,17 @@ function RresUpdate() {
         error => {
         return Promise.reject(error);
         });
+    // ROUTE TO FIND RESERVATION BY ID
+    const idurl="Receptionist/Receptionist/reservation/getreservationbyid?id="+reservation.reservationCode_;
+    function reservationsubmit(i){
+        i.preventDefault(); 
+        axios.get(idurl)
+            .then(res=>{
+                setData(res.data);
+            },
+           );
+        
+    }
     function submit(e){
         const item={
             name:data.name,
@@ -47,9 +61,15 @@ function RresUpdate() {
             .then(res=>{
                 console.log(res.data);
                 alert("Reservation details successfully updated");
+                window.location.reload();
             },
            );
         
+    }
+    function reshandle(i){
+        const newdata={...reservation}
+        newdata[i.target.id]=i.target.value
+        setReservation(newdata)
     }
 
     function handle(e){
@@ -61,23 +81,60 @@ function RresUpdate() {
   return (
     <React.Fragment> 
         <RecepResNavBar/>
-        <h1>Reservation update Form</h1>
-        <div> 
-            <form onSubmit={(e)=>submit(e)}>
-                <input onChange={(e)=>handle(e)} id="reservationCode_" value={data.reservationCode_} placeholder='Reservation ID' type="text"/>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
-                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
-                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
-                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
-                <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
-                <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
-                <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text"/>
-                <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
+        <div>
+        <div class="title">Reservation ID</div>
+            <form onSubmit={(i)=>reservationsubmit(i)}> 
+                <input onChange={(i)=>reshandle(i)} id="reservationCode_" value={reservation.reservationCode_} placeholder='Enter Reservation ID' type="text"/>
                 <button>submit</button>
+        </form>
+        <div className='body'> 
+        <div class="container">
+        <div class="title">New Booking</div>
+        <div  className='content'> 
+            <form onSubmit={(e)=>submit(e)}>
+            <div class="user-details">
+                
+                <div class="input-box" >
+                    <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="date"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="date"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
+                </div> 
+            </div>
+            <div className="resclick">
+            <input type="submit" value="Register"/>
+            </div>
             </form>
+            </div>
+            </div>
+        </div>
         </div>
     </React.Fragment>
   )
