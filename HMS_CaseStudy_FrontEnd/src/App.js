@@ -15,17 +15,21 @@ import ManagerLogin from "./manager/ManagerLogin";
 import RecepHome from "./receptionist/components/RecepHome";
 import ManagerHome from "./manager/components/ManagerHome";
 import OwnerHome from "./owner/components/OwnerHome";
-import ResAdd from "./components/reservation/ResAdd";
 
-import ResUpdate from "./components/reservation/ResUpdate";
-import ResGetAll from "./components/reservation/ResGetAll";
-import ResGetById from "./components/reservation/ResGetById";
-
-import ReservationAdd from "./receptionist/reservation/ReservationAdd";
-import GuestAdd from "./receptionist/Guest/GuestAdd"
-import BillAdd from "./receptionist/Bill/BillAdd";
-import RoomSearch from "./receptionist/rooms/RoomSearch";
 import Payment from "./receptionist/payment/Payment";
+import RresAdd from "./receptionist/reservation/RresAdd";
+import RGuestAdd from "./receptionist/guest/RGuestAdd";
+import RGuestUpdate from "./receptionist/guest/RGuestUpdate";
+import RGuestGetAll from "./receptionist/guest/RGuestGetAll";
+import RGuestCheckout from "./receptionist/guest/RGuestCheckout";
+import RGuestAddReserved from "./receptionist/guest/RGuestAddReserved";
+import RGuestDelete from "./receptionist/guest/RGuestDelete";
+import RGenerateBill from "./receptionist/bill/RGenerateBill";
+import RGetAllBills from "./receptionist/bill/RGetAllBills";
+import RPrintBill from "./receptionist/bill/RPrintBill";
+import RGetAvailableRooms from "./receptionist/rooms/RGetAvailableRooms";
+import RresUpdate from "./receptionist/reservation/RresUpdate";
+import RresGetAll from "./receptionist/reservation/RresGetAll";
 
   
 function App() {
@@ -39,26 +43,34 @@ function App() {
           <Route path="/" element={<Home/>} />        
           <Route path="/receptionistlogin/*" element={<RecepLogin/>} />               
           <Route path="/managerlogin/*" element={<ManagerLogin/>} />
-          <Route path="/ownerlogin/*" element={<OwnerLogin/>} />
-          <Route path="/reservation" element={<ResAdd/>} />   
+          <Route path="/ownerlogin/*" element={<OwnerLogin/>} />  
           <Route path="/recephome" element={<RecepHome/>} />    
           <Route path="/managerhome" element={<ManagerHome/>} />  
           <Route path="/ownerhome" element={<OwnerHome/>} /> 
 
 
           {/* Receptionist Routes  */}
-          <Route path="/reservationadd" element={<ReservationAdd/>}/>
-          <Route path="/guestadd" element={<GuestAdd/>}/>
-          <Route path="/billgenerate" element={<BillAdd/>}/>
-          <Route path="/availablerooms" element={<RoomSearch/>}/>
-          <Route path="/payment" element={<Payment/>}/>
+          <Route path="/rreservationadd" element={<RresAdd/>}/>
+          <Route path="/rresupdate" element={<RresUpdate/>}/>
+          <Route path="/rresgetall" element={<RresGetAll/>}/>
+
+          <Route path="/rguestadd" element={<RGuestAdd/>}/>
+          <Route path='/rguestupdate' element={<RGuestUpdate/>}/>
+          <Route path='/rguestgetall' element={<RGuestGetAll/>}/>
+          <Route path='/rguestcheckout' element={<RGuestCheckout/>}/>
+          <Route path='/rguestaddreserved' element={<RGuestAddReserved/>}/>
+          <Route path='/rguestdelete' element={<RGuestDelete/>}/>
+
+
+          <Route path="/rbillgenerate" element={<RGenerateBill/>}/>
+          <Route path='/rgetallbills' element={<RGetAllBills/>}/>
+          <Route path='/rprintbill' element={<RPrintBill/>}/>
+
+          <Route path="/ravailablerooms" element={<RGetAvailableRooms/>}/>
+          <Route path="/rpayment" element={<Payment/>}/>
 
          
-
-          <Route path='/resupdate' element={<ResUpdate/>}></Route>
-          <Route path='/resgetall' element={<ResGetAll/>}></Route>
-          <Route path='/resgetbyid' element={<ResGetById/>}></Route>
-          <Route path='/resadd' element={<ResAdd/>}></Route>
+       
         </Routes>
       </Router>
     </>

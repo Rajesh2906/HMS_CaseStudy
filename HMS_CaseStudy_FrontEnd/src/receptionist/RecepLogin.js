@@ -44,7 +44,7 @@ function RecepLogin() {
         <div class=" first">
           <img src={userlogin} id="icon" alt="User Icon" />
         </div>
-            <form   onSubmit={handleLogin}>
+            <form   onSubmit={handleLogin} >
                 {error && <div className='loginerror'>{error}</div>}
                <input onChange={(e)=>handle(e)}  value={data.username} id="username" type="text" class="fadeIn second" name="login" placeholder="Username"/>
                <input onChange={(e)=>handle(e)} value={data.password} type="password" id="password" class="fadeIn third" name="login" placeholder="password"/>

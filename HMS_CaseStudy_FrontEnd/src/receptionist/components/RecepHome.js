@@ -6,28 +6,45 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import ResAdd from "../../components/reservation/ResAdd";
-import authServices from "../services/auth.services";
 import RecepHeader from "./RecepHeader";
 import './RecepHome.css'
+import reserve from '../images/reserve.png'
+import guest from '../images/guest.png'
+import bill from '../images/bill.png'
+import rooms from '../images/rooms.png'
+import payment from '../images/payment.png'
+import imagetest from '../images/imagetest.jpg'
 
 function RecepHome() {
 
 
   return (
-  <body className="background">
-    <div className="recephome">
-      <RecepHeader/>
+  <div className="background">
+     
+      <div className="parallax"> <RecepHeader/></div>
+      <div className="betweenbar">
+        <ul>
+          <li><a href="#img1">Gallery</a></li>
+          <li><a href="#img1">Events</a></li>
+          <li><a href="#img1">Support</a></li>
+          <li><a href="#img1">Services</a></li>
+        </ul>
+      </div>
+      
+     
     <div className="mapping">  
-			{/* Endpoint to route to Manager component */}
-			<Link to="/reservation" className="redirectlink reservation">Reservation</Link>	
-      <Link to="/guestadd" className="redirectlink guest">Guest</Link>	
-      <Link to="/billgenerate" className="redirectlink bill">Generate Bill</Link>	
-      <Link to="/availablerooms" className="redirectlink rooms">Available Rooms</Link>	
-      <Link to="/payment" className="redirectlink payment">Payment</Link>	
+			{/* Endpoint to route to receptionist component */}
+		 <Link to="/rreservationadd" className="redirectlink reservation" ><img src={reserve} id='logos'/><br/><h4>Reservation</h4></Link>	
+     <Link to="/rguestadd" className="redirectlink guest" ><img src={guest} id='logos'/><br/><h4> Guest</h4></Link>	
+     <Link to="/rbillgenerate" className="redirectlink bill" ><img src={bill} id='logos'/><br/><h4> Generate Bill</h4></Link>	
+     <Link to="/ravailablerooms" className="redirectlink rooms"><img src={rooms} id='logos'/><br/><h4> Available Rooms</h4></Link>	
+     <Link to="/rpayment" className="redirectlink payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4></Link>		
+    </div>
+
+    <div className="gallery">
+      <img id="img 1" src="{imagetest}"/>
     </div>
   </div>
-  </body>
   )
 }
 

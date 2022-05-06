@@ -1,37 +1,40 @@
-import React,{useState} from 'react';
+import React,{useState} from 'react'
 import axios from 'axios';
-
-import ResNavBar from './ResNavBar';
-
+import RecepGusNavBar from './RecepGuestNavBar';
 
 
-function ResAdd() {
-    const url="Receptionist/Receptionist/reservation/addreservation"
+function RGuestUpdate() {
+  const url="Receptionist/receptionist/guest/updateGuest"
     const[data,setData]=useState({        
-        guestCode_:"",
-        reservationCode:"",
-        roomNumber:"",
         todayDate_:"",
+        reservationCode:"",
+        name_:"",
+        phoneNumber_:"",
+        emailId_:"",
+        gender_:"",
+        address_:"",
+        company_:"",        
+        guestCode_:"",    
+        roomNumber:"",
         numberOfAdult:"",  
         numberOfChildren:"",
         checkIn:"",
         checkOut:"",
         numberOfNights:"",
-        name_:"",
-        emailId_:"",  
-        phoneNumber_:"",
-        gender_:"",
-        address_:"",
-        company_:"",
         guestStatus_:""
     })
-    
+    axios.interceptors.request.use(
+        config => {
+        config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
+        return config;
+        },
+        error => {
+        return Promise.reject(error);
+        });
     function submit(e){
         const item={
-            guestCode_:data.guestCode_,
             reservationCode:data.reservationCode,
             roomNumber:data.roomNumber,
-            todayDate_:data.todayDate_,
             numberOfAdult:data.numberOfAdult,  
             numberOfChildren:data.numberOfChildren,
             checkIn:data.checkIn,
@@ -43,13 +46,15 @@ function ResAdd() {
             gender_:data.gender_,
             address_:data.address_,
             company_:data.company_,
+            todayDate_:data.todayDate_,
+            guestCode_:data.guestCode_,
             guestStatus_:data.guestStatus_
             }
         e.preventDefault();
-        axios.post(url,item )
+        axios.put(url,item )
             .then(res=>{
                 console.log(res.data);
-                alert("Guest details successfully added");
+                alert("Reservation details successfully updated");
             },
            );
         
@@ -59,24 +64,27 @@ function ResAdd() {
         const newdata={...data}
         newdata[e.target.id]=e.target.value
         setData(newdata)
+        console.log(newdata)
     }
   return (
     <React.Fragment> 
-        <ResNavBar/>
-        <h1>Reservation Add Form</h1>
+        <RecepGusNavBar/>
+        <h1>Reservation update Form</h1>
         <div> 
-            <form onSubmit={(e)=>submit(e)}>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
-                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
-                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
-                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
+        <form onSubmit={(e)=>submit(e)}> 
+                <input onChange={(e)=>handle(e)} id="guestCode_" value={data.guestCode_} placeholder='Guest Code' type="text"/>
+                <input onChange={(e)=>handle(e)} id="name_" value={data.name_} placeholder='name' type="text"/>
+                <input onChange={(e)=>handle(e)} id="phoneNumber_" value={data.phoneNumber_} placeholder='phoneNumber' type="text"/>
+                <input onChange={(e)=>handle(e)} id="emailId_" value={data.emailId_} placeholder='emailId' type="email"/>
+                <input onChange={(e)=>handle(e)} id="gender_" value={data.gender_} placeholder='gender' type="text"/>
+                <input onChange={(e)=>handle(e)} id="address_" value={data.address_} placeholder='address' type="text"/>
                 <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
                 <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
-                <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/>
+                <input onChange={(e)=>handle(e)} id="company_" value={data.company_} placeholder='company' type="text"/>
                 <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text"/>
                 <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text"/>
                 <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
+                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='RoomNo' type="text"/>
                 <button>submit</button>
             </form>
         </div>
@@ -84,4 +92,4 @@ function ResAdd() {
   )
 }
 
-export default ResAdd
+export default RGuestUpdate

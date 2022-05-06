@@ -25,18 +25,13 @@ function RecepHeader() {
     };
   return (
     <div className='recepheader'>
-       
-            <NavLink to='/recephome' className='home'>Home</NavLink>
-       
-      
-            {currentUser ? (
-               
-                    <a href="/" onClick={logOut} className='logout'>Logout</a>              
-               
-            ) 
-            : null
-            }
-    
+      {currentUser ? (           
+        <a href="/" onClick={logOut} className='logout'><h4>Logout</h4></a>                    
+      ) 
+      : (      
+          <Link to={"/receptionistlogin/*"} className="nav-link">Login</Link>    
+        )
+      }  
     </div>
   )
 }

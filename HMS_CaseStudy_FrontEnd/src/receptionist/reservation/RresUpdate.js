@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import axios from 'axios';
-import ResNavBar from './ResNavBar';
+import RecepResNavBar from './RecepResNavBar';
 
-function ResUpdate() {
+function RresUpdate() {
   const url="Receptionist/Receptionist/reservation/updatereservation"
     const[data,setData]=useState({        
         resId:"",
@@ -60,7 +60,7 @@ function ResUpdate() {
     }
   return (
     <React.Fragment> 
-        <ResNavBar/>
+        <RecepResNavBar/>
         <h1>Reservation update Form</h1>
         <div> 
             <form onSubmit={(e)=>submit(e)}>
@@ -83,4 +83,4 @@ function ResUpdate() {
   )
 }
 
-export default ResUpdate
+export default RresUpdate

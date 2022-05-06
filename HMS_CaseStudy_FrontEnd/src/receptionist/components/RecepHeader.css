@@ -1,21 +1,16 @@
 .logout{
     position: relative;
     text-decoration: none;
-    color: black;
-    left: 90%;
     color: white;
+    left: 95%;
+    padding: 5px;
    
 }
-.home{
-    position: relative;
-    text-decoration: none;
-    color: black;
-    color: white;
-    left: 40px;
-    
-}
 .recepheader{
-    background-color: rgb(111, 55, 55);
     padding: 10px;
     top: 10px;
+}
+.logout :hover{
+    color: black;
+    
 }

@@ -1,9 +1,10 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ResNavBar from './ResNavBar'
+import RecepResNavBar from './RecepResNavBar'
+import './RresGetAll.css'
 
-function ResGetAll() {
+function RresGetAll() {
 
   const [searchTermById,setSearchTermById] = useState('');
   const [searchTermByPh,setSearchTermByPh] = useState('');
@@ -33,33 +34,43 @@ function ResGetAll() {
   
   return (
     <React.Fragment> 
-        <ResNavBar/>
-        <h1>Reservation update Form</h1>
+        <RecepResNavBar/>
+        
         <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} />
         <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} />
-        <div>  
-        <table>
-          <thead className="thead-dark">
+       
+          <div className='styled-table'>
+        <div >Reservation list off guest</div> 
+        <div className='showtable'>
+        <table >
+          <thead >
             <tr>
-            <th>ReservationCode_</th>
+              <th>ReservationCode_</th>
               <th>name</th>
               <th>phoneNumber</th>
               <th>checkIn</th>
               <th>checkOut</th>
+              <th>NoOfNights</th>
+              <th>NoOfNights</th>
+              <th>NoOfNights</th>
+              <th>NoOfNights</th>
+              <th>NoOfNights</th>
+              <th>NoOfNights</th>
+              <th>NoOfNights</th>
               <th>NoOfNights</th>
             </tr>
           </thead>
           <tbody>
           {
             reservation.filter((reservation)=>{
-              if(searchTermById==""){
+              if(searchTermById===""){
                 return reservation
               }
               else if(reservation.reservationCode_.toLowerCase().includes(searchTermById.toLowerCase())){
                 return reservation
               }
             }).filter((reservation)=>{
-              if(searchTermByPh==""){
+              if(searchTermByPh===""){
                 return reservation
               }
               else if(reservation.phoneNumber.toLowerCase().includes(searchTermByPh.toLowerCase())){
@@ -78,9 +89,11 @@ function ResGetAll() {
           }
           </tbody>
         </table>
+        </div>
       </div>
+     
     </React.Fragment>
   )
 }
 
-export default ResGetAll
+export default RresGetAll

@@ -1,11 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
 import axios from 'axios';
-import ResNavBar from './ResNavBar';
+import RecepResNavBar from './RecepResNavBar';
 
-function ResUpdate() {
-  const url="Receptionist/Receptionist/reservation/updatereservation"
+
+export function RresAdd() {
+
+   const url = "Receptionist/Receptionist/reservation/addreservation";
     const[data,setData]=useState({        
-        resId:"",
+        name:"",
         phoneNumber:"",
         emailId:"",
         gender:"",
@@ -17,7 +19,7 @@ function ResUpdate() {
         checkOut:"",
         numberOfNights:"",  
          reservationCode_:"",
-         status_:"",
+         status_:""
     })
     axios.interceptors.request.use(
         config => {
@@ -38,15 +40,15 @@ function ResUpdate() {
             numberOfChildren:data.numberOfChildren,
             company:data.company,
             checkIn:data.checkIn,
+            checkOut:data.checkOut,
             numberOfNights:data.numberOfNights,
             reservationCode_:data.reservationCode_,
             status_:data.status_
             }
         e.preventDefault();
-        axios.put(url,item )
+        axios.post(url,item)
             .then(res=>{
-                console.log(res.data);
-                alert("Reservation details successfully updated");
+                alert("Reservation details successfully added");
             },
            );
         
@@ -56,15 +58,15 @@ function ResUpdate() {
         const newdata={...data}
         newdata[e.target.id]=e.target.value
         setData(newdata)
-        console.log(newdata)
     }
-  return (
-    <React.Fragment> 
-        <ResNavBar/>
-        <h1>Reservation update Form</h1>
-        <div> 
+
+return(
+    <React.Fragment>     
+        <RecepResNavBar/>
+        <h1>Reservation Add Form</h1>
+        <div  className='addform'> 
             <form onSubmit={(e)=>submit(e)}>
-                <input onChange={(e)=>handle(e)} id="reservationCode_" value={data.reservationCode_} placeholder='Reservation ID' type="text"/>
+                <label for='name'className='details'>Name : </label>
                 <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
                 <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
                 <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
@@ -73,14 +75,14 @@ function ResUpdate() {
                 <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
                 <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
                 <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text"/>
+                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="date"/>
+                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="date"/>
                 <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
                 <button>submit</button>
             </form>
         </div>
     </React.Fragment>
-  )
+)
 }
 
-export default ResUpdate
+export default RresAdd
