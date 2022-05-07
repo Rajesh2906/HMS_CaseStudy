@@ -26,7 +26,7 @@ function ManagerHeader() {
     };
   return (
     <div className="managerheader">
-    <NavLink to="managerchangepassword" className="managerchangepassword">Change Password</NavLink>
+    <NavLink to="/managerchangepassword" className="managerchangepassword">Change Password</NavLink>
     {currentUser ? (      
       <a href="/" onClick={logOut}  className="logoutman">
         Logout

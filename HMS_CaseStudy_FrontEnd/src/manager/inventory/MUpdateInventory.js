@@ -7,6 +7,7 @@ function MUpdateInventory() {
     const[inventory,setInventory]=useState({        
         inventoryCode:"",    
     })
+    const[message , setMessage] = useState();
     const[data,setData]=useState({        
         inventoryCode:"",
         inventoryType:"",
@@ -42,8 +43,7 @@ function MUpdateInventory() {
         e.preventDefault();
         axios.put(url,item )
             .then(res=>{
-                console.log(res.data);
-                alert("Inventory details successfully updated");
+                setMessage("Reservation updated successfully")
             },
            );
            window.location.reload();
@@ -64,22 +64,32 @@ function MUpdateInventory() {
   return (
     <React.Fragment> 
         <ManagarInventoryNavBar/>
-        <h1>Enter Inventory Code</h1>
-        <div> 
+        <div className='backimage'>
+        <div class="reservesearchbar">
             <form onSubmit={(i)=>inventorysubmit(i)}> 
-                <input onChange={(i)=>inventoryhandle(i)} id="inventoryCode" value={inventory.inventoryCode} placeholder='Inventory Code' type="text"/>
-                <button>search</button>
+                <input  className='idsearch'  onChange={(i)=>inventoryhandle(i)} id="inventoryCode" value={inventory.inventoryCode} placeholder='Inventory Code' type="text"/>
+                <button className='idsearchbutton'>search</button>
             </form>
         </div>
-        <h1>Inventory Updated</h1>
-        <div> 
-        <form onSubmit={(e)=>submit(e)}> 
-                <input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text"/>
-                <input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='Inventory Type' type="text"/>
-                <input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number"/>
-                <button>save</button>
-            </form>
+        <div className='updatebody'> 
+            <div class="container">
+            <div class="title">Update Inventory</div>
+            <div  className='content'>
+                <form onSubmit={(e)=>submit(e)}>
+                    <div class="user-details"> 
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text"/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='Inventory Type' type="text"/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text"/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number"/></div>
+                    </div>
+                    {message && <div className='message'>{message}</div>}
+                    <div className="resclick">
+                        <input type="submit" value="Update"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )

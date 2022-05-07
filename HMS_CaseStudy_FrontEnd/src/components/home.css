@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 .hotelName{
     position:sticky;
     /* top: 0%; */
@@ -63,13 +64,40 @@ nav li{
 }
 p{
     font-size: medium; 
+    padding: 10px;
+    padding-left: 0%;
 }
 .abouticons{
     width: 25px;
 }
 h4{
-    position: relative;
-    bottom: 5px;
-    padding: 0%;
-   
+    padding-left: 10px;
 }
+.imagecenter{
+   display: flex;
+   align-items: center;
+  
+}
+.testimonialhome{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 30px;
+    padding: 20px;
+    text-align: center;
+    background-color: #e2d0bd;
+    align-self: center;
+    justify-self: center;
+    align-items: flex-end;
+}
+.testmonialtags{
+    border: 1px solid floralwhite;
+    border-radius: 7px;
+    box-sizing: border-box;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
+    width: 400px;
+
+}
+.testimoniallogos{
+    width: 100px;
+}
+

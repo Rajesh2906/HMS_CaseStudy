@@ -44,15 +44,32 @@ function MAddNewRate() {
   return (
     <React.Fragment> 
         <ManagerRatesNavBar/>
-        <h1>Add New Price</h1>
-        <div> 
+        <div className='body'>  
+        <div class="container">
+        <div class="title">Add New Price</div>
+        <div  className='content'>
             <form onSubmit={(e)=>submit(e)}> 
+            <div class="user-details">
+                
+            <div className="input-box" >
                 <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text"/>
+            </div>
+            <div className="input-box" >
                 <input onChange={(e)=>handle(e)} id="firstNightPrice" value={data.firstNightPrice} placeholder='Day1 Night Price' type="text"/>
+            </div>
+            <div className="input-box" >
                 <input onChange={(e)=>handle(e)} id="nightPrice" value={data.nightPrice} placeholder='Night Price' type="text"/>
+            </div>
+            <div className="input-box" >
                 <input onChange={(e)=>handle(e)} id="dayPrice" value={data.dayPrice} placeholder='Day Price' type="text"/>
-                <button>submit</button>
+            </div>
+            </div>
+            <div className="resclick">
+                <input type="submit" value="Submit"/>
+            </div>
             </form>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )

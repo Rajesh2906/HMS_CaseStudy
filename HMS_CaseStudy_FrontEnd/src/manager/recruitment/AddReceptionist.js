@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import {NavLink, useNavigate} from 'react-router-dom';
+import './DetailsNavBar.css';
+
 
 function AddReceptionist() {
     const url="Manager/manager/addreceptionist"
@@ -8,6 +10,7 @@ function AddReceptionist() {
         userId:"",
         password:""
     })
+    const[message , setMessage] = useState(null);
     axios.interceptors.request.use(
         config => {
         config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
@@ -25,8 +28,9 @@ function AddReceptionist() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                console.log(res.data);
-                alert("Receptionist details added");
+                setMessage("Staff Details updated")
+                setTimeout(function(){window.location.reload()},900);
+                navigate("/managerhome"); 
             },
            );
         
@@ -39,14 +43,23 @@ function AddReceptionist() {
     }
   return (
     <React.Fragment>
-        <NavLink to="/managerhome">Home</NavLink> 
-        <h1>Add Receptionist</h1>
-        <div> 
-            <form onSubmit={(e)=>submit(e)}> 
-                <input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/>
-                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/>
-                <button>submit</button>
+        <div className='detailsnavbar'><NavLink to="/managerhome" id='nli'>Home</NavLink></div> 
+        <div className='body'>  
+        <div className="container">
+        <div className="title">Add New Receptionist Login Details</div>
+        <div  className='content'> 
+            <form onSubmit={(e)=>submit(e)}>
+            <div class="user-details">  
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/></div>
+                </div>
+            {message && <div className='message'>{message}</div>}    
+            <div className="resclick">
+            <input type="submit" value="Add"/>
+            </div>
             </form>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )

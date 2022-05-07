@@ -34,12 +34,15 @@ function MGetAllInventory() {
   return (
     <React.Fragment> 
         <ManagarInventoryNavBar/>
-        <h1>Inventory List</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByInventoryId(e.target.value)} />
-        <input type="text" placeholder="seach by name" onChange={e=>setSearchByInventoryName(e.target.value)} />
-        <div>  
+        <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by id" onChange={e=>setSearchByInventoryId(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="seach by name" onChange={e=>setSearchByInventoryName(e.target.value)} className='reservatioinsearch'/>
+        </div>
+        <div className='styled-table'>
+        <div className='showtable'> 
         <table>
-          <thead className="thead-dark">
+          <thead>
             <tr>
                 <th>Inventory Code</th>
                 <th>Inventory Name</th>
@@ -73,6 +76,8 @@ function MGetAllInventory() {
           }
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   )

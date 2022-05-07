@@ -63,19 +63,19 @@ return(
             <form onSubmit={(e)=>submit(e)}>
             <div class="user-details">
                 <div class='input-box'>               
-                <input onChange={(e)=>handle(e)} id="home" value={data.guestCode} placeholder='Guest Code' type="text"/>
+                <input onChange={(e)=>handle(e)} id="guestCode" value={data.guestCode} placeholder='Guest Code' type="text"/>
                 </div>
                 <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.quantity} placeholder='Quantity' type="number"/>
+                <input onChange={(e)=>handle(e)} id="quantity" value={data.quantity} placeholder='Quantity' type="number"/>
                 </div>
                 <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.services} placeholder='Services' type="number"/>
+                <input onChange={(e)=>handle(e)} id="services" value={data.services} placeholder='Services' type="number"/>
                 </div>
                 <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="emailId" value={data.unit} placeholder='Unit' type="number"/>
+                <input onChange={(e)=>handle(e)} id="unit" value={data.unit} placeholder='Unit' type="number"/>
                 </div>
                 <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="Address" value={data.rateId} placeholder='Rate Id' type="text"/>
+                <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text"/>
                 </div>
                 </div>
                 <div className="resclick">

@@ -6,6 +6,12 @@ import './home.css'
 import Slider from "./Slider/Slider";
 import about from './images/About.png'
 import viewpoint from './images/viewpoint.png'
+import maintenance from './images/maintenance.png'
+import food from './images/food.png'
+import hygiene from './images/hygiene.png'
+import pricetag from './images/pricetag.png'
+import award from './images/award.png'
+import WWcoverage from './images/WWcoverage.png'
 
 const Home = () => {
 return (
@@ -35,18 +41,24 @@ return (
 	<div className="abouthotel">
 	<h1>About</h1>
 	<div className="gridabout">	
-	   <div><h4><img src={viewpoint} className="abouticons"/> View Point</h4>
+	   <div><div className="imagecenter"><img src={viewpoint} className="abouticons"/><h4>View Point</h4></div>
 		<p>
 			BABAI Hotel had started its base in vijayawada with classic look and attractive, it expanded drastically through the years and stated its stability as a grand hotel of vijayawada.
 		</p></div>
-		<div><h4>Maintainance</h4>
+		<div><div className="imagecenter"><img src={maintenance} className="abouticons"/><h4>Maintenance</h4></div>
 		<p>
-		is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+		is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
 		</p></div>
 		<img src={about} className='aboutimage'></img>
-		<div><h4>Food</h4></div>
-		<div><h4>Hygienic</h4></div>
+		<div><div className="imagecenter"><img src={food} className="abouticons"/><h4>Food</h4></div><p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</p></div>
+		<div><div className="imagecenter"><img src={hygiene} className="abouticons"/><h4>Hygiene</h4></div><p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</p></div>
 	</div>
+	</div>
+	<div className="testimonialhome">
+		<div className="testmonialtags"><img src={pricetag} className="testimoniallogos" /><br/><h4>Competetive Pricing</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
+		<div className="testmonialtags"><img src={award} className="testimoniallogos" /><br/><h4>Award winning service</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
+		<div className="testmonialtags"><img src={WWcoverage} className="testimoniallogos" /><br/><h4>WorldWide Coverage</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
+
 	</div>
 	<footer id="footer">
             <div>

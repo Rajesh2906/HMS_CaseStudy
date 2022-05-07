@@ -45,15 +45,24 @@ function MAddInventory() {
   return (
     <React.Fragment> 
         <ManagarInventoryNavBar/>
-        <h1>Add Inventory</h1>
-        <div> 
-            <form onSubmit={(e)=>submit(e)}> 
-                <input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text"/>
-                <input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='inventory Type' type="text"/>
-                <input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number"/>
-                <button>submit</button>
+        <div className='body'>  
+        <div className="container">
+        <div className="title">New Inventory</div>
+        <div  className='content'> 
+         
+            <form onSubmit={(e)=>submit(e)}>
+            <div className="user-details"> 
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='inventory Type' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number"/></div>
+            </div>
+            <div className="resclick">
+            <input type="submit" value="Add"/>
+            </div>
             </form>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )
