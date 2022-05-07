@@ -1,8 +1,11 @@
 import React from 'react'
 
+
 function Payment() {
   return (
-    <div>payment</div>
+    <script>{
+      window.location.replace("http://localhost:8090/pay")
+    }</script>
   )
 }
 

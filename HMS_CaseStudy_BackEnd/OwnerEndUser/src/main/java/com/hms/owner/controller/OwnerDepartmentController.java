@@ -47,7 +47,7 @@ public class OwnerDepartmentController {
 	// Adds the new department to the department database
 	@PostMapping("/adddepartment")
 	public void addDepartment(@RequestBody Department deaprtment) {
-		restTemplate.postForObject("http://Department/department/adddepartment", deaprtment, Department.class);
+		restTemplate.postForObject("http://Department/department/addepartment", deaprtment, Department.class);
 	}
 
 }

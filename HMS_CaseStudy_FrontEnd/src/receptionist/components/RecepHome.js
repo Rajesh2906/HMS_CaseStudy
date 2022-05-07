@@ -13,9 +13,10 @@ import guest from '../images/guest.png'
 import bill from '../images/bill.png'
 import rooms from '../images/rooms.png'
 import payment from '../images/payment.png'
-import imagetest from '../images/imagetest.jpg'
+import rates from '../images/rates.png'
 
 function RecepHome() {
+
 
 
   return (
@@ -38,9 +39,10 @@ function RecepHome() {
      <Link to="/rguestadd" className="redirectlink guest" ><img src={guest} id='logos'/><br/><h4> Guest</h4></Link>	
      <Link to="/rbillgenerate" className="redirectlink bill" ><img src={bill} id='logos'/><br/><h4> Generate Bill</h4></Link>	
      <Link to="/ravailablerooms" className="redirectlink rooms"><img src={rooms} id='logos'/><br/><h4> Available Rooms</h4></Link>	
-     <Link to="/rpayment" className="redirectlink payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4></Link>	
-     <Link to="/rgetrates" className="redirectlink payment" ><img src={payment} id='logos'/><br/><h4>Rates</h4></Link>
+     <Link to="/rpayment" className="redirectlink payment" id="payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4></Link>	
+     <Link to="/rgetrates" className="redirectlink rates" ><img src={rates} id='logos'/><br/><h4>Rates</h4></Link>
     </div>
+  
 
     <div className="gallery">
       <img id="img 1" src="{imagetest}"/>

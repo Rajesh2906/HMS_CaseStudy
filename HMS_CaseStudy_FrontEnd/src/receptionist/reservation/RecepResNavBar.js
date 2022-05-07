@@ -13,7 +13,6 @@ function RecepResNavBar() {
       <React.Fragment>
         <div className='resnavbar'>
         <ul>
-           
             <li><NavLink to='/rreservationadd'>Add</NavLink></li>
             <li><NavLink to='/rresupdate'>Update</NavLink></li>
             <li><NavLink to='/rresgetall'>GetAll</NavLink></li>

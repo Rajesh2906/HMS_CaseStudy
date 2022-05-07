@@ -29,7 +29,7 @@ function RecepHeader() {
         <a href="/" onClick={logOut} className='logout'><h4>Logout</h4></a>                    
       ) 
       : (      
-          <Link to={"/receptionistlogin/*"} className="nav-link">Login</Link>    
+          <Link to={"/receptionistlogin/*"} className="logout">Login</Link>    
         )
       }  
     </div>

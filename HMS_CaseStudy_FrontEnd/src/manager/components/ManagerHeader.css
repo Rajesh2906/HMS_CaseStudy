@@ -1,0 +1,16 @@
+.logoutman{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    left: 95%;
+    padding: 5px;
+   
+}
+.managerheader{
+    padding: 10px;
+    top: 10px;
+}
+.logoutman :hover{
+    color: black;
+    
+}

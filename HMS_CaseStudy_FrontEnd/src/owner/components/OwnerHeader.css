@@ -1,0 +1,16 @@
+.logoutown{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    left: 95%;
+    padding: 5px;
+   
+}
+.recepheaderown{
+    padding: 10px;
+    top: 10px;
+}
+.logoutown :hover{
+    color: black;
+    
+}
