@@ -81,30 +81,61 @@ function OResUpdate() {
   return (
     <React.Fragment> 
         <OwnerResNavBar/>
-        <h1>Enter Guest Id</h1>
-        <div> 
+        <div className='backimage'>
+        <div class="reservesearchbar">   
             <form onSubmit={(i)=>reservationsubmit(i)}> 
-                <input onChange={(i)=>reshandle(i)} id="reservationCode_" value={reservation.reservationCode_} placeholder='Reservation Code' type="text"/>
-                <button>submit</button>
-            </form>
-        </div>
-        <h1>Reservation update Form</h1>
-        <div> 
+                <input onChange={(i)=>reshandle(i)} id="reservationCode_" value={reservation.reservationCode_} placeholder='Enter Reservation ID' type="text" required className='idsearch'/>
+               <button className='idsearchbutton' >Search</button>
+        </form>
+        </div> 
+        <div className='updatebody'> 
+        <div class="container">
+        <div class="title">Update Booking</div>
+        <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
-                <input onChange={(e)=>handle(e)} id="reservationCode_" value={data.reservationCode_} placeholder='Reservation ID' type="text"/>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
-                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
-                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
-                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
+            <div class="user-details">
+                
+                <div class="input-box" >
+                    <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="date"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="date"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
-                <button>submit</button>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
+                </div> 
+            </div>
+            <div className="resclick">
+            <input type="submit" value="Update"/>
+            </div>
             </form>
+            </div>
+            </div>
+        </div>
         </div>
     </React.Fragment>
   )

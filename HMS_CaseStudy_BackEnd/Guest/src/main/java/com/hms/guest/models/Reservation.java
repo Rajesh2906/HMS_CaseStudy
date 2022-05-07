@@ -17,10 +17,10 @@ public class Reservation {
 	private int numberOfAdult;
 	private int numberOfChildren;
 
-	@JsonFormat(pattern = "yyyy/MM/dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date checkIn;
 
-	@JsonFormat(pattern = "yyyy/MM/dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date checkOut;
 	private int numberOfNights;
 	private String name;

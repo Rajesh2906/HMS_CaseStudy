@@ -7,6 +7,7 @@ import "./RresAdd.css"
 export function RresAdd() {
 
    const url = "Receptionist/Receptionist/reservation/addreservation";
+   const[message,setMessage]=useState(null);
     const[data,setData]=useState({        
         name:"",
         phoneNumber:"",
@@ -49,7 +50,8 @@ export function RresAdd() {
         e.preventDefault();
         axios.post(url,item)
             .then(res=>{
-                alert("Reservation details successfully added");
+                window.location.reload();
+                setMessage("Reservation Added successfully");
             },
            );
         
@@ -101,25 +103,12 @@ return(
                 <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
                 </div>
-                {/* <div class="input-box">
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
-                </div> */}
-                <div class="gender-details">
-                    <input type="radio" name="gender"  value={data.gender} id="dot-1"/>
-                    <input type="radio" name="gender"  value={data.gender} id="dot-2"/>
-                    <span class="gender-title">Gender</span>
-                    <div class="category">
-                        <label for="dot-1">
-                        <span class="dot one"></span>
-                        <span class="gender">Male</span>
-                    </label>
-                    <label for="dot-2">
-                        <span class="dot two"></span>
-                        <span class="gender">Female</span>
-                    </label>
-                    </div>
                 </div>
+               
             </div>
+            {message && <div className='message'>{message}</div>}
             <div className="resclick">
             <input type="submit" value="Register"/>
             </div>

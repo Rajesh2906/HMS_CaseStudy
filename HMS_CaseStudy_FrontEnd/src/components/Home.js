@@ -4,6 +4,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './home.css'
 import Slider from "./Slider/Slider";
+import about from './images/About.png'
+import viewpoint from './images/viewpoint.png'
 
 const Home = () => {
 return (
@@ -30,12 +32,22 @@ return (
 	</ul>
 	</nav>
 	<div className="slider"><Slider/></div>
-	<body className="about">
-		<h1>About</h1>
-		<div>
+	<div className="abouthotel">
+	<h1>About</h1>
+	<div className="gridabout">	
+	   <div><h4><img src={viewpoint} className="abouticons"/> View Point</h4>
+		<p>
 			BABAI Hotel had started its base in vijayawada with classic look and attractive, it expanded drastically through the years and stated its stability as a grand hotel of vijayawada.
-		</div>
-	</body>
+		</p></div>
+		<div><h4>Maintainance</h4>
+		<p>
+		is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+		</p></div>
+		<img src={about} className='aboutimage'></img>
+		<div><h4>Food</h4></div>
+		<div><h4>Hygienic</h4></div>
+	</div>
+	</div>
 	<footer id="footer">
             <div>
                 <p>BABAI HOTEL</p>

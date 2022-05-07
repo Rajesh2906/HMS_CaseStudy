@@ -4,12 +4,16 @@ import {NavLink} from "react-router-dom";
 function ManagarInventoryNavBar() {
   return (
       <React.Fragment>
-        <ul>
-            <li><NavLink to='/managerhome'>Home</NavLink></li>
-            <li><NavLink to='/maddinventory'>Add Inventory</NavLink></li>
-            <li><NavLink to='/mgetinventory'>Get All</NavLink></li>
-            <li><NavLink to='/mupdateinventory'>Update Inventory</NavLink></li>
-        </ul>
+        <div className='ManagerInventoryNavBar'>
+        <div className='mratesnavbar'>
+          <ul>
+              <li><NavLink to='/managerhome'>Home</NavLink></li>
+              <li><NavLink to='/maddinventory'>Add</NavLink></li>
+              <li><NavLink to='/mgetinventory'>Get</NavLink></li>
+              <li><NavLink to='/mupdateinventory'>Update</NavLink></li>
+          </ul>
+        </div>
+        </div>
     </React.Fragment>
   )
 }

@@ -65,23 +65,69 @@ export function OResAdd() {
 return(
     <React.Fragment>     
         <OwnerResNavBar/>
-        <h1>Reservation Add Form</h1>
-        <div  className='addform'> 
-            <form onSubmit={(e)=>submit(e)}>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
-                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
-                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
-                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
+        <div className='body'>  
+        <div class="container">
+        <div class="title">New Booking</div>
+        <div  className='content'> 
+            <form onSubmit={(e)=>submit(e)}>    
+            <div class="user-details">
+                
+                <div class="input-box" >
+                    <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="phoneNumber" value={data.phoneNumber} placeholder='phoneNumber' type="text"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="emailId" value={data.emailId} placeholder='emailId' type="email"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="date"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="address" value={data.address} placeholder='address' type="text"/>
+                </div>
+                <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="date"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="company" value={data.company} placeholder='company' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text"/>
-                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text"/>
+                </div>
+                <div class="input-box">
                 <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
-                <button>submit</button>
-            </form>
+                </div>
+                {/* <div class="input-box">
+                <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
+                </div> */}
+                <div class="gender-details">
+                    <input type="radio" name="gender"  value={data.gender} id="dot-1"/>
+                    <input type="radio" name="gender"  value={data.gender} id="dot-2"/>
+                    <span class="gender-title">Gender</span>
+                    <div class="category">
+                        <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Male</span>
+                    </label>
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">Female</span>
+                    </label>
+                    </div>
+                </div>
+            </div>
+            <div className="resclick">
+            <input type="submit" value="Register"/>
+            </div>
+                </form>
+            </div>
         </div>
+    </div>
     </React.Fragment>
 )
 }

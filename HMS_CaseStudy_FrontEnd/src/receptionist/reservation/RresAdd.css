@@ -16,6 +16,12 @@
     background-image: url('../images/recepreservation.jpg');
     background-size: 100%;
   }
+  .resclick{
+    text-align: center;
+}
+.message{
+  color: green;
+}
   .updatebody{
     height: 80vh;
     display: flex;

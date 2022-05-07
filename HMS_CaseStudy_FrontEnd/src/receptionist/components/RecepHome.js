@@ -11,7 +11,7 @@ import './RecepHome.css'
 import reserve from '../images/reserve.png'
 import guest from '../images/guest.png'
 import bill from '../images/bill.png'
-import rooms from '../images/rooms.png'
+import rooms from '../images/rooms2.png'
 import payment from '../images/payment.png'
 import rates from '../images/rates.png'
 
@@ -35,15 +35,13 @@ function RecepHome() {
      
     <div className="mapping">  
 			{/* Endpoint to route to receptionist component */}
-		 <Link to="/rreservationadd" className="redirectlink reservation" ><img src={reserve} id='logos'/><br/><h4>Reservation</h4></Link>	
-     <Link to="/rguestadd" className="redirectlink guest" ><img src={guest} id='logos'/><br/><h4> Guest</h4></Link>	
-     <Link to="/rbillgenerate" className="redirectlink bill" ><img src={bill} id='logos'/><br/><h4> Generate Bill</h4></Link>	
-     <Link to="/ravailablerooms" className="redirectlink rooms"><img src={rooms} id='logos'/><br/><h4> Available Rooms</h4></Link>	
-     <Link to="/rpayment" className="redirectlink payment" id="payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4></Link>	
-     <Link to="/rgetrates" className="redirectlink rates" ><img src={rates} id='logos'/><br/><h4>Rates</h4></Link>
+		 <NavLink to="/rreservationadd" className="redirectlink reservation" ><img src={reserve} id='logos'/><br/><h4>Reservation</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rguestadd" className="redirectlink guest" ><img src={guest} id='logos'/><br/><h4> Guest</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rbillgenerate" className="redirectlink bill" ><img src={bill} id='logos'/><br/><h4> Generate Bill</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/ravailablerooms" className="redirectlink rooms"><img src={rooms} id='logos'/><br/><h4> Available Rooms</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rpayment" className="redirectlink payment" id="payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rgetrates" className="redirectlink rates" ><img src={rates} id='logos'/><br/><h4>Rates</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>
     </div>
-  
-
     <div className="gallery">
       <img id="img 1" src="{imagetest}"/>
     </div>

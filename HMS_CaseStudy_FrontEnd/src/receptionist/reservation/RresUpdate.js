@@ -7,6 +7,7 @@ function RresUpdate() {
   const[reservation,setReservation]=useState({        
     reservationCode_:"",    
 })
+const[message,setMessage]=useState(null);
     const[data,setData]=useState({        
         resId:"",
         phoneNumber:"",
@@ -59,8 +60,7 @@ function RresUpdate() {
         e.preventDefault();
         axios.put(url,item )
             .then(res=>{
-                console.log(res.data);
-               
+                setMessage("Reservation updated successfully");
                 window.location.reload();
             },
            );
@@ -129,6 +129,7 @@ function RresUpdate() {
                 <input onChange={(e)=>handle(e)} id="gender" value={data.gender} placeholder='gender' type="text"/>
                 </div> 
             </div>
+            {message && <div className='message'>{message}</div>}
             <div className="resclick">
             <input type="submit" value="Update"/>
             </div>

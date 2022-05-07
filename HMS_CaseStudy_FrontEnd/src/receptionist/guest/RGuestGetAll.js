@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import RecepGusNavBar from './RecepGuestNavBar';
+import '../reservation/RresGetAll.css'
 
 
 function RGuestGetAll() {
@@ -34,12 +35,15 @@ function RGuestGetAll() {
   return (
     <React.Fragment> 
         <RecepGusNavBar/>
-        <h1>Guest List</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} />
-        <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} />
-        <div>  
+        <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} className='reservatioinsearch' />
+        </div> 
+        <div className='styled-table'>
+        <div className='showtable'>  
         <table>
-          <thead className="thead-dark">
+          <thead>
             <tr>
             <th>Guest Code</th>
               <th>name</th>
@@ -53,14 +57,14 @@ function RGuestGetAll() {
           <tbody>
           {
             guest.filter((guest)=>{
-              if(searchTermById==""){
+              if(searchTermById===""){
                 return guest
               }
               else if(guest.guestCode_.toLowerCase().includes(searchTermById.toLowerCase())){
                 return guest
               }
             }).filter((guest)=>{
-              if(searchTermByPh==""){
+              if(searchTermByPh===""){
                 return guest
               }
               else if(guest.phoneNumber_.toLowerCase().includes(searchTermByPh.toLowerCase())){
@@ -79,6 +83,8 @@ function RGuestGetAll() {
           }
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   )

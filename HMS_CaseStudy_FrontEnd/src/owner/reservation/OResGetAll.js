@@ -34,12 +34,15 @@ function OResGetAll() {
   return (
     <React.Fragment> 
         <OwnerResNavBar/>
-        <h1>Reservation list off guest</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} />
-        <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} />
-        <div>  
+        <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} className='reservatioinsearch' />
+        </div>
+        <div className='styled-table'>
+        <div className='showtable'>  
         <table>
-          <thead className="thead-dark">
+          <thead >
             <tr>
             <th>ReservationCode_</th>
               <th>name</th>
@@ -79,6 +82,9 @@ function OResGetAll() {
           </tbody>
         </table>
       </div>
+      </div>
+      </div>
+      
     </React.Fragment>
   )
 }

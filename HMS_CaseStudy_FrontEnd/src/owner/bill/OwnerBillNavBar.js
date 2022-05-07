@@ -9,12 +9,14 @@ import {
 function OwnerBillNavBar() {
   return (
       <React.Fragment>
-        <ul>
-            <li><NavLink to='/ownerhome'>Home</NavLink></li>
+          <div className='resnavbar'>
+        <ul>  
             <li><NavLink to='/ogeneratebill'>Generate</NavLink></li>
             <li><NavLink to='/ogetallbills'>All Bills</NavLink></li>
             <li><NavLink to='/oprintbill'>Print Bill</NavLink></li>
+            <li><NavLink to='/ownerhome'>Home</NavLink></li>
         </ul>
+        </div>
     </React.Fragment>
   )
 }

@@ -18,3 +18,10 @@
     font-size: 20px;
     text-align: right;
 }
+.guestnavbar li :hover{
+    color: beige;
+    width: 150px;
+    display: inline-block;
+    font-size: 20px;
+    text-align: right;
+}

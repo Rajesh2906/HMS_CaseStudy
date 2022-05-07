@@ -45,7 +45,7 @@ function ManagerLogin() {
             <body class="managerbody">
     <div class="wrapper fadeInDown">
         <div id="formContent">    
-         <h2 class="active">Owner LogIn </h2>
+         <h2 class="active">Manager LogIn </h2>
         <div class="fadeIn first">
           <img src={userlogin} id="icon" alt="User Icon" />
         </div>

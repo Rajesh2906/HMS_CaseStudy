@@ -39,12 +39,23 @@ function handle(e){
 return (
 <React.Fragment> 
     <ManagerRoomsNavBar/>
-    <h1>Delete Room details</h1>
+    <div className='body'> 
+        <div class="container">
+        <div class="title">Delete Room Details</div>
+        <br/>
     <div> 
-        <form onSubmit={(e)=>submit(e)}> 
+        <form onSubmit={(e)=>submit(e)}>
+        <div class="user-details">
+        <div class="input-box" > 
             <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
-            <button>submit</button>
+        </div>
+        </div>
+        <div className="resclick">
+             <input type="submit" value="Submit"/>
+        </div>
         </form>
+    </div>
+    </div>    
     </div>
 </React.Fragment>
 )

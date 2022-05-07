@@ -42,12 +42,23 @@ function MAddRoom() {
   return (
     <React.Fragment> 
         <ManagerRoomsNavBar/>
-        <h1>Add Rooms</h1>
+        <div className='body'> 
+        <div class="container">
+        <div class="title">Add Rooms</div>
+        <br/>
         <div> 
             <form onSubmit={(e)=>submit(e)}>
+            <div class="user-details">
+            <div class="input-box" >
                 <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
-                <button>Add</button>
+            </div>
+            </div>    
+            <div className="resclick">
+             <input type="submit" value="Add"/>
+            </div>
             </form>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )

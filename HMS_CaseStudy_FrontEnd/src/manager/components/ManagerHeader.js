@@ -4,7 +4,8 @@ import {
   Link,
   Switch,
   Route,
-  Routes
+  Routes,
+  NavLink
 } from "react-router-dom";
 import authServices from "../services/auth.services";
 import './ManagerHeader.css'
@@ -25,19 +26,16 @@ function ManagerHeader() {
     };
   return (
     <div className="managerheader">
-    {currentUser ? (
-        
-            <a href="/" onClick={logOut}  className="logoutman">
-              Logout
-            </a>
-      
+    <NavLink to="managerchangepassword" className="managerchangepassword">Change Password</NavLink>
+    {currentUser ? (      
+      <a href="/" onClick={logOut}  className="logoutman">
+        Logout
+      </a>
       ) 
-      : (
-        
-            <Link to={"/managerlogin/*"} className="logoutman">
-              Login
-            </Link>
-          
+      : (  
+          <Link to={"/managerlogin/*"} className="logoutman">
+            Login
+          </Link>       
       )
       }
   </div>

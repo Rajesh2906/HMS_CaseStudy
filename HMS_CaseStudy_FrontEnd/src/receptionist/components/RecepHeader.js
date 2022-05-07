@@ -25,6 +25,7 @@ function RecepHeader() {
     };
   return (
     <div className='recepheader'>
+      <NavLink to="/receppasswordupdate" className="changepassword"><h4>Change Password</h4></NavLink>
       {currentUser ? (           
         <a href="/" onClick={logOut} className='logout'><h4>Logout</h4></a>                    
       ) 

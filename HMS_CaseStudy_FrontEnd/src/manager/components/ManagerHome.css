@@ -20,6 +20,9 @@
 h4{
     margin: 0%;
 }
+p{
+    font-size: smaller;
+}
 .mappingman{
     margin-top: 40px;
     display: grid;

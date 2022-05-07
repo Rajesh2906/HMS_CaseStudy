@@ -1,9 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import {
-  NavLink
-} from "react-router-dom";
 import axios from 'axios';
+import RecepRatesNavBar from './RecepRatesNavBar';
 
 
 function RGetRates() {
@@ -34,12 +32,15 @@ function RGetRates() {
           });
   return (
     <React.Fragment> 
-        <li><NavLink to='/recephome'>Home</NavLink></li>
-        <h1>Rates</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRateId(e.target.value)} />
-        <div>  
+      <RecepRatesNavBar/>
+         <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRateId(e.target.value)} className='reservatioinsearch' />
+        </div>  
+          <div className='styled-table'>
+          <div className='showtable'>  
         <table>
-          <thead className="thead-dark">
+          <thead>
             <tr>
             <th>Rate Id</th>
               <th>Day1 Night Price</th>
@@ -66,6 +67,8 @@ function RGetRates() {
           }
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   )

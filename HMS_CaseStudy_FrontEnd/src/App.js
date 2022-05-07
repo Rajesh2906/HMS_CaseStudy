@@ -79,6 +79,7 @@ import OAddStaff from "./owner/staff/OAddStaff";
 import OUpdateStaff from "./owner/staff/OUpdateStaff";
 import OGetAllStaff from "./owner/staff/OGetAllStaff";
 import ODeleteStaff from "./owner/staff/ODeleteStaff";
+import UpdateRecepPassword from "./receptionist/components/UpdateRecepPassword";
 
   
 function App() {
@@ -96,6 +97,7 @@ function App() {
           <Route path="/recephome" element={<RecepHome/>} />    
           <Route path="/managerhome" element={<ManagerHome/>} />  
           <Route path="/ownerhome" element={<OwnerHome/>} /> 
+          <Route path="/receppasswordupdate" element={<UpdateRecepPassword/>} /> 
 
 
           {/* Receptionist Routes  */}
@@ -146,7 +148,7 @@ function App() {
 
           {/* MANAGER DETAILS ROUTES */}
           <Route path='/addreceptionist' element={<AddReceptionist/>}/>
-          <Route path='/changepassword' element={<UpdateManagerDetails/>}/>
+          <Route path='/managerchangepassword' element={<UpdateManagerDetails/>}/>
 
         {/* OWNER DETAILS ROUTES */}
           <Route path='/owneraddreceptionist' element={<OwnerAddReceptionist/>}/>

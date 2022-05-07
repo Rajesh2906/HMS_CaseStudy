@@ -1,5 +1,5 @@
 import React from 'react'
-import error from './404.jpg'
+import error from './images/404.jpg'
 
 function Error() {
   return (

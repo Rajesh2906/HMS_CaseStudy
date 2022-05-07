@@ -2,9 +2,17 @@
     position: relative;
     text-decoration: none;
     color: white;
-    left: 95%;
+    left: 85%;
     padding: 5px;
    
+}
+.changepassword{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    left: 83%;
+    padding: 5px;
+
 }
 .recepheader{
     padding: 10px;

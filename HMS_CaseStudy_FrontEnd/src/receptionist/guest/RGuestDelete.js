@@ -72,32 +72,43 @@ function handle(e){
 return (
 <React.Fragment> 
     <RecepGuestNavBar/>
-    <h1>Enter Guest Id</h1>
-        <div> 
+    <div className='backimage'>
+        <div  class="reservesearchbar">
             <form onSubmit={(i)=>guestsubmit(i)}> 
-                <input onChange={(i)=>guesthandle(i)} id="guestCode_" value={guest.guestCode_} placeholder='Guest Code' type="text"/>
-                <button>submit</button>
+                <input className='idsearch' onChange={(i)=>guesthandle(i)} id="guestCode_" value={guest.guestCode_} placeholder='Guest Code' type="text"/>
+                <button  className='idsearchbutton'>Search</button>
             </form>
         </div>
-        <h1>Reservation update Form</h1>
-        <div> 
-            <form> 
-                <input  value={data.guestCode_} placeholder='Guest Code' type="text"/>
-                <input  value={data.name_} placeholder='name' type="text"/>
-                <input  value={data.phoneNumber_} placeholder='phoneNumber' type="text"/>
-                <input  value={data.emailId_} placeholder='emailId' type="email"/>
-                <input  value={data.gender_} placeholder='gender' type="text"/>
-                <input  value={data.address_} placeholder='address' type="text"/>
-                <input  value={data.numberOfAdult} placeholder='numberOfAdult' type="number"/>
-                <input  value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/>
-                <input  value={data.company_} placeholder='company' type="text"/>
-                <input  value={data.checkIn} placeholder='checkIn' type="text"/>
-                <input  value={data.checkOut} placeholder='checkOut' type="text"/>
-                <input  value={data.numberOfNights} placeholder='numberOfNights' type="number"/>
-                <input  value={data.roomNumber} placeholder='RoomNo' type="text"/>
-                <button onClick={(e)=>submit(e)}>submit</button>
+        <div className='updatebody'>  
+            <div className="container">
+            <div className="title">New Guest</div>
+            <div  className='content'> 
+            <div> 
+            <form onSubmit={(e)=>submit(e)}>
+                <div className="user-details">  
+                    <div className="input-box"><input value={data.guestCode_} placeholder='Guest Code' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.name_} placeholder='name' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.phoneNumber_} placeholder='phoneNumber' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.emailId_} placeholder='emailId' type="email" readOnly/></div>
+                    <div className="input-box"><input value={data.gender_} placeholder='gender' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.address_} placeholder='address' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.numberOfAdult} placeholder='numberOfAdult' type="number" readOnly/></div>
+                    <div className="input-box"><input value={data.numberOfChildren} placeholder='numberOfChildren' type="number" readOnly/></div>
+                    <div className="input-box"><input value={data.company_} placeholder='company' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.checkIn} placeholder='checkIn' type="date" readOnly/></div>
+                    <div className="input-box"><input value={data.checkOut} placeholder='checkOut' type="date" readOnly/></div>
+                    <div className="input-box"><input value={data.numberOfNights} placeholder='numberOfNights' type="number" readOnly/></div>
+                    <div className="input-box"><input value={data.roomNumber} placeholder='RoomNo' type="text" readOnly/></div>
+                </div>
+                <div className="resclick">
+                        <input type="submit" value="Delete"/>
+                </div>   
             </form>
-        </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    </div>
 </React.Fragment>
 )
 }

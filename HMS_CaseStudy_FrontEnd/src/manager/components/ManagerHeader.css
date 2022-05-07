@@ -2,7 +2,7 @@
     position: relative;
     text-decoration: none;
     color: white;
-    left: 95%;
+    left: 85%;
     padding: 5px;
    
 }
@@ -13,4 +13,12 @@
 .logoutman :hover{
     color: black;
     
+}
+.managerchangepassword{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    left: 83%;
+    padding: 5px;
+
 }

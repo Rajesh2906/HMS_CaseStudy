@@ -1,12 +1,13 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import RecepGusNavBar from './RecepGuestNavBar';
-
+import '../reservation/RresAdd';
 
 
 
 function RGuestAdd() {
     const url="Receptionist/receptionist/guest/addnewguest"
+    const[message,setMessage]=useState(null);
     const[data,setData]=useState({
         todayDate_:"",
         reservationCode:"",
@@ -56,7 +57,8 @@ function RGuestAdd() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                console.log(res.data);
+                setMessage("Reservation updated successfully");
+                setTimeout(function(){window.location.reload()},900)
             },
            );
         
@@ -71,43 +73,30 @@ function RGuestAdd() {
     <React.Fragment> 
         <RecepGusNavBar/>
         <div className='body'>  
-        <div class="container">
-        <div class="title">New Guest</div>
+        <div className="container">
+        <div className="title">New Guest</div>
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}> 
-            <div class="user-details">
-                <input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="name" value={data.name} placeholder='name' type="text"  class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="phoneNumber_" value={data.phoneNumber_} placeholder='phoneNumber' type="text" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="emailId_" value={data.emailId_} placeholder='emailId' type="email" class="input-box"/>
-                {/* <input onChange={(e)=>handle(e)} id="gender_" value={data.gender_} placeholder='gender' type="text" class="inputguest"/> */}
-                <input onChange={(e)=>handle(e)} id="address_" value={data.address_} placeholder='address' type="text" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="company_" value={data.company_} placeholder='company' type="text" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="text" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="text" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number" class="input-box"/>
-                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='RoomNo' type="text" class="input-box"/>
-                <div class="gender-details">
-                    <input type="radio" name="gender"  value={data.gender} id="dot-1"/>
-                    <input type="radio" name="gender"  value={data.gender} id="dot-2"/>
-                    <span class="gender-title">Gender</span>
-                    <div class="category">
-                        <label for="dot-1">
-                        <span class="dot one"></span>
-                        <span class="gender">Male</span>
-                    </label>
-                    <label for="dot-2">
-                        <span class="dot two"></span>
-                        <span class="gender">Female</span>
-                    </label>
-                    </div>
-                </div>
-                </div>
+            <div className="user-details">
+                <div  className="input-box"><input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text"/></div>
+                <div  className="input-box"><input onChange={(e)=>handle(e)} id="name_" value={data.name_} placeholder='name' type="text"/></div>
+                <div  className="input-box"><input onChange={(e)=>handle(e)} id="phoneNumber_" value={data.phoneNumber_} placeholder='phoneNumber' type="text"/></div>
+                <div   className="input-box"><input onChange={(e)=>handle(e)} id="emailId_" value={data.emailId_} placeholder='emailId' type="email" /></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="gender_" value={data.gender_} placeholder='gender' type="text" class="inputguest"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="address_" value={data.address_} placeholder='address' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='numberOfAdult' type="number" /></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='numberOfChildren' type="number"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="company_" value={data.company_} placeholder='company' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="checkIn" value={data.checkIn} placeholder='checkIn' type="date"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="checkOut" value={data.checkOut} placeholder='checkOut' type="date"/></div>
+                <div className="input-box" ><input onChange={(e)=>handle(e)} id="numberOfNights" value={data.numberOfNights} placeholder='numberOfNights' type="number"/></div>
+                <div className="input-box" ><input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='RoomNo' type="text"/></div>
+               
+               </div>
+               {message && <div className='message'>{message}</div>}
                 <div className="resclick">
                     <input type="submit" value="Register"/>
-                </div>
+                 </div>                
             </form>
         </div>
         </div>

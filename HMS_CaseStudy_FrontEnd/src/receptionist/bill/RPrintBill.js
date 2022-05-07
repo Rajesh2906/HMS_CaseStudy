@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import RecepBillNavBar from './RecepBillNavBar';
+import '../reservation/RresAdd.css'
+
 
 
 function RPrintBill() {
@@ -29,12 +31,23 @@ function handle(e){
 return (
 <React.Fragment> 
     <RecepBillNavBar/>
-    <h1>Print Bill</h1>
+    <div className='body'> 
+    <div class="container">
+    <div class="title">Print Bill</div>
+    <br/>
     <div> 
         <form> 
+        <div class="user-details">
+        <div class="input-box" >
             <input onChange={(e)=>handle(e)} id="billNumber" value={data.billNumber} placeholder='Bill Code' type="text"/>
-            <button type='button'>Download</button>
+        </div>   
+        </div>
+        <div className="resclick">
+             <input type="submit" value="Submit"/>
+        </div>
         </form>
+    </div>
+    </div>
     </div>
 </React.Fragment>
 )

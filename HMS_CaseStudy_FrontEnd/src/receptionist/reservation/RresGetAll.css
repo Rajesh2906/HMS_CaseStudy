@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 .styled-table {
     border-collapse: collapse;
     margin: 50px 20px;
@@ -40,9 +41,7 @@
 .showtable{
     margin-left: 20px;
 }
-.resclick{
-    text-align: center;
-}
+
 .reservatioinsearch{
     height: 35px;
     width: 200px;

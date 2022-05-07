@@ -34,12 +34,15 @@ function RGetAllBills() {
   return (
     <React.Fragment> 
         <RecepBillNavBar/>
-        <h1>Reservation list off guest</h1>
-        <input type="text" placeholder="seach by bill number" onChange={e=>setSearchTermByBillNumber(e.target.value)} />
-        <input type="text" placeholder="seach by guest code" onChange={e=>setSearchTermByGuestCode(e.target.value)} />
-        <div>  
+        <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by bill number" onChange={e=>setSearchTermByBillNumber(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="seach by guest code" onChange={e=>setSearchTermByGuestCode(e.target.value)} className='reservatioinsearch' />
+        </div>
+        <div className='styled-table'>
+        <div className='showtable'>    
         <table>
-          <thead className="thead-dark">
+          <thead >
             <tr>
               <th>Date</th>
               <th>Bill Number</th>
@@ -54,17 +57,17 @@ function RGetAllBills() {
           <tbody>
           {
             bills.filter((bills)=>{
-              if(searchTermByBillNumber==""){
+              if(searchTermByBillNumber===""){
                 return bills
               }
               else if(bills.billNumber.toLowerCase().includes(searchTermByBillNumber.toLowerCase())){
                 return bills
               }
             }).filter((bills)=>{
-              if(searchTermByGuestCode==""){
+              if(searchTermByGuestCode===""){
                 return bills
               }
-              else if(bills.phoneNumber.toLowerCase().includes(searchTermByGuestCode.toLowerCase())){
+              else if(bills.guestCode.toLowerCase().includes(searchTermByGuestCode.toLowerCase())){
                 return bills
               }
             }).map(bills => (
@@ -82,6 +85,8 @@ function RGetAllBills() {
           }
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   )

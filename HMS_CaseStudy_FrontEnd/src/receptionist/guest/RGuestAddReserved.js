@@ -1,8 +1,10 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import RecepGusNavBar from './RecepGuestNavBar';
+import '../reservation/RresAdd.css'
 
 function RGuestAddReserved() {
+    const[message,setMessage]=useState(null);
     const[data,setData]=useState({
         todayDate_:"",
         reservationCode:"",
@@ -54,7 +56,8 @@ function RGuestAddReserved() {
         axios.post(url,item )
             .then(res=>{
                 console.log(res.data);
-                alert("Guest details successfully added");
+                setMessage("Reservation added successfully");
+                setTimeout(function(){window.location.reload()},900)
             },
            );
         
@@ -66,20 +69,30 @@ function RGuestAddReserved() {
         setData(newdata)
     }
   return (
-    <React.Fragment> 
+    <React.Fragment className='addreservation'> 
         <RecepGusNavBar/>
-        <h1>Reservation Add Form</h1>
-        <div> 
+        <div className='body'>   
+        <div class="container">
+        <div class="title">Reserved Guest</div>
+        <br/>
             <form onSubmit={(e)=>submit(e)}> 
+                <div class="user-details">
+                <div class="input-box" >
                 <input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text"/>
+                </div>
+                <div class="input-box" >
                 <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
-                <button>submit</button>
+                </div>
+                </div>
+                {message && <div className='message'>{message}</div>}
+                <div className="resclick">
+                <input type="submit" value="Submit"/>
+                </div>
             </form>
+        </div>
         </div>
     </React.Fragment>
   )
 }
 
 export default RGuestAddReserved;
-
-
