@@ -1,6 +1,6 @@
 .styled-table {
     border-collapse: collapse;
-    margin: 90px 20px;
+    margin: 50px 20px;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
@@ -24,6 +24,10 @@
 
 .styled-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
+    opacity: 0.8;
+}
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: floralwhite;
 }
 
 .styled-table tbody tr:last-of-type {
@@ -38,4 +42,25 @@
 }
 .resclick{
     text-align: center;
+}
+.reservatioinsearch{
+    height: 35px;
+    width: 200px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+}
+.backimageall{
+    height: 100vh;
+    background-image: url('../images/recepreservation.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+}
+.searchdivall{
+    padding: 20px;
+   text-align: center;
+   padding-top: 40px;
+   padding-bottom: 0%;
 }

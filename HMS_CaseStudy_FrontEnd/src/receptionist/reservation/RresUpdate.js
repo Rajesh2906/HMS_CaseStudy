@@ -60,7 +60,7 @@ function RresUpdate() {
         axios.put(url,item )
             .then(res=>{
                 console.log(res.data);
-                alert("Reservation details successfully updated");
+               
                 window.location.reload();
             },
            );
@@ -81,15 +81,16 @@ function RresUpdate() {
   return (
     <React.Fragment> 
         <RecepResNavBar/>
-        <div>
-        <div class="title">Reservation ID</div>
+        <div className='backimage'>
+        <div class="reservesearchbar">   
             <form onSubmit={(i)=>reservationsubmit(i)}> 
-                <input onChange={(i)=>reshandle(i)} id="reservationCode_" value={reservation.reservationCode_} placeholder='Enter Reservation ID' type="text"/>
-                <button>submit</button>
+                <input onChange={(i)=>reshandle(i)} id="reservationCode_" value={reservation.reservationCode_} placeholder='Enter Reservation ID' type="text" required className='idsearch'/>
+               <button className='idsearchbutton' >Search</button>
         </form>
-        <div className='body'> 
+        </div> 
+        <div className='updatebody'> 
         <div class="container">
-        <div class="title">New Booking</div>
+        <div class="title">Update Booking</div>
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
             <div class="user-details">
@@ -129,7 +130,7 @@ function RresUpdate() {
                 </div> 
             </div>
             <div className="resclick">
-            <input type="submit" value="Register"/>
+            <input type="submit" value="Update"/>
             </div>
             </form>
             </div>

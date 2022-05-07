@@ -7,12 +7,65 @@
   }
 
 .body{
-    height: 85vh;
+    height: 90.6vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
+    background-image: url('../images/recepreservation.jpg');
+    background-size: 100%;
+  }
+  .updatebody{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .backimage{
+    background-image: url('../images/recepreservation.jpg');
+    background-size: 100%;
+  }
+  
+  .reservesearchbar{
+  border: none;
+  color: white;
+  padding-top: 40px;
+  padding-bottom: 0%;
+  text-align: center;
+  text-decoration: none;
+  width: 30%;
+  margin-left: 35%;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-radius: 5px 5px 5px 5px;
+  }
+  .idsearch{
+  
+    height: 35px;
+    width: 200px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+  }
+  .idsearchbutton{
+    background-color: rgb(111, 55, 55);
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+   
+    border-radius: 5px 5px 5px 5px;
+  
+   
   }
   .container{
     max-width: 700px;
