@@ -12,11 +12,13 @@ import hygiene from './images/hygiene.png'
 import pricetag from './images/pricetag.png'
 import award from './images/award.png'
 import WWcoverage from './images/WWcoverage.png'
+import logobrown from './images/logobrown.png'
+
 
 const Home = () => {
 return (
 	<React.Fragment>	
-	<h1 className='hotelName'>BABAI Hotel</h1>
+	<div className='hotelName'><img src={logobrown} className="logobrown"/><div className="babaihotelName">BABAI Hotel</div></div>
 	<nav>
 	<ul className='navBar'>
 		<li className='homeli'>
@@ -38,6 +40,12 @@ return (
 	</ul>
 	</nav>
 	<div className="slider"><Slider/></div>
+	<div className="testimonialhome">
+		<div className="testmonialtags"><img src={pricetag} className="testimoniallogos" /><br/><h4>Competetive Pricing</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
+		<div className="testmonialtags"><img src={award} className="testimoniallogos" /><br/><h4>Award winning service</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
+		<div className="testmonialtags"><img src={WWcoverage} className="testimoniallogos" /><br/><h4>WorldWide Coverage</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
+
+	</div>
 	<div className="abouthotel">
 	<h1>About</h1>
 	<div className="gridabout">	
@@ -54,12 +62,7 @@ return (
 		<div><div className="imagecenter"><img src={hygiene} className="abouticons"/><h4>Hygiene</h4></div><p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</p></div>
 	</div>
 	</div>
-	<div className="testimonialhome">
-		<div className="testmonialtags"><img src={pricetag} className="testimoniallogos" /><br/><h4>Competetive Pricing</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
-		<div className="testmonialtags"><img src={award} className="testimoniallogos" /><br/><h4>Award winning service</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
-		<div className="testmonialtags"><img src={WWcoverage} className="testimoniallogos" /><br/><h4>WorldWide Coverage</h4><div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</div></div>
-
-	</div>
+	
 	<footer id="footer">
             <div>
                 <p>BABAI HOTEL</p>

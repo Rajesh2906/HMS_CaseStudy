@@ -45,6 +45,7 @@ function OwnerHome() {
    <NavLink to="/oaddstaff" className="redirectlink staffown" ><img src={staff} id='logos'/><br/><h4>Staff</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>
    <NavLink to="/rpayment" className="redirectlink paymentown" id="payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
    <NavLink to="/oadddepartment" className="redirectlink departmentown" ><img src={department} id='logos'/><br/><h4>Department</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>
+   <NavLink to="/oaddmanager" className="redirectlink addmanager" ><img src={department} id='logos'/><br/><h4>Recruit</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>
   </div>
 
   <div className="galleryown">

@@ -51,7 +51,7 @@ import UpdateManagerDetails from "./manager/recruitment/UpdateManagerDetails";
 
 import OwnerAddReceptionist from "./owner/recruitment/OwnerAddReceptionist";
 import AddManager from "./owner/recruitment/AddManager";
-import OwnerDetails from "./owner/recruitment/UpdateOwnerDetails";
+import UpdateOwnerDetails from "./owner/recruitment/UpdateOwnerDetails";
 import OGenerateBill from "./owner/bill/OGenerateBill";
 import OGetAllBills from "./owner/bill/OGetAllBills";
 import OPrintBill from "./owner/bill/OPrintBill";
@@ -150,10 +150,10 @@ function App() {
           <Route path='/addreceptionist' element={<AddReceptionist/>}/>
           <Route path='/managerchangepassword' element={<UpdateManagerDetails/>}/>
 
-        {/* OWNER DETAILS ROUTES */}
-          <Route path='/owneraddreceptionist' element={<OwnerAddReceptionist/>}/>
-          <Route path='/addmanager' element={<AddManager/>}/>
-          <Route path='/ochangepassword' element={<OwnerDetails/>}/>
+       {/* OWNER DETAILS ROUTES */}
+       <Route path='/oowneraddreceptionist' element={<OwnerAddReceptionist/>}/>
+          <Route path='/oaddmanager' element={<AddManager/>}/>
+          <Route path='/ochangepassword' element={<UpdateOwnerDetails/>}/>
 
           {/* OWNER BILL ROUTES */}
           <Route path='/ogeneratebill' element={<OGenerateBill/>}/>

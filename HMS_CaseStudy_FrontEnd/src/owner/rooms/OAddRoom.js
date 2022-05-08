@@ -42,12 +42,23 @@ function OAddRoom() {
   return (
     <React.Fragment> 
         <OwnerRoomsNavBar/>
-        <h1>Add Rooms</h1>
+        <div className='body'> 
+        <div className="container">
+        <div className="title">Add Rooms</div>
+        <br/>
         <div> 
             <form onSubmit={(e)=>submit(e)}>
+            <div className="user-details">
+            <div className="input-box" >
                 <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
-                <button>Add</button>
+             </div>  
+             </div>
+             <div className="resclick">
+             <input type="submit" value="Add"/>
+            </div>
             </form>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )

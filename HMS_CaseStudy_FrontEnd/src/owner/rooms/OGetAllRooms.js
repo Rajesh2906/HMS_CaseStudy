@@ -33,11 +33,14 @@ function OGetAllRooms() {
   return (
     <React.Fragment> 
         <OwnerRoomsNavBar/>
-        <h1>List Of Rooms</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRoomNumber(e.target.value)} />
-        <div>  
+        <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRoomNumber(e.target.value)} className='reservatioinsearch'/>
+        </div>
+        <div className='styled-table'>
+        <div className='showtable'>    
         <table>
-          <thead className="thead-dark">
+          <thead>
             <tr>
             <th>Room Number</th>
               <th>Room Status</th>
@@ -62,6 +65,8 @@ function OGetAllRooms() {
           }
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   )

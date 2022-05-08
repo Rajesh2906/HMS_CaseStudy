@@ -1,7 +1,7 @@
 import React, { Component,useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
-  Link,
+  NavLink,
   Switch,
   Route,
   Routes
@@ -26,15 +26,16 @@ function OwnerHeader() {
 
   return (
     <div className='ownerheader'>
+       <NavLink to="/ochangepassword" className="changepasswordown">Change Password</NavLink>
        {currentUser ? (
                <a href="/"  onClick={logOut} className='logoutown'>
                  Logout
                </a>
          ) 
          : (
-               <Link to={"/ownerlogin/*"} className='logoutown'>
+               <NavLink to={"/ownerlogin/*"} className='logoutown'>
                  Login
-               </Link>
+               </NavLink>
          )
          }
   </div>

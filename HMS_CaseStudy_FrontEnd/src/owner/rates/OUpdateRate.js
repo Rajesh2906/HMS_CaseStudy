@@ -44,15 +44,32 @@ function OUpdateRate() {
       return (
         <React.Fragment> 
             <OwnerRatesNavBar/>
-            <h1>Price Update Form</h1>
-            <div> 
-                <form onSubmit={(e)=>submit(e)}> 
+            <div className='body'>  
+        <div className="container">
+        <div className="title">Price Update Form</div>
+        <div  className='content'> 
+                <form onSubmit={(e)=>submit(e)}>
+                <div className="user-details">
+
+                    <div className="input-box" > 
                     <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text"/>
+                    </div>
+                    <div className="input-box" >
                     <input onChange={(e)=>handle(e)} id="firstNightPrice" value={data.firstNightPrice} placeholder='Day1 Night Price' type="text"/>
+                    </div>
+                    <div className="input-box" >
                     <input onChange={(e)=>handle(e)} id="nightPrice" value={data.nightPrice} placeholder='Night Price' type="text"/>
+                    </div>
+                    <div className="input-box" >
                     <input onChange={(e)=>handle(e)} id="dayPrice" value={data.dayPrice} placeholder='Day Price' type="text"/>
-                    <button>submit</button>
+                    </div>
+                </div>
+                <div className="resclick">
+                <input type="submit" value="Submit"/>
+                </div>
                 </form>
+            </div>
+            </div>
             </div>
         </React.Fragment>
       )

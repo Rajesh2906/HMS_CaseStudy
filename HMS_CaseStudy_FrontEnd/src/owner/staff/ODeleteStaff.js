@@ -8,6 +8,7 @@ function ODeleteStaff() {
 const[staff,setStaff]=useState({        
     staffCode:"",    
 })
+const[message , setMessage] = useState(null);
 const[data,setData]=useState({
     staffCode:"",
     departmentId:"",
@@ -33,7 +34,8 @@ function submit(e){
     e.preventDefault();
     axios.delete(url)
         .then(res=>{
-            window.location.reload();
+            setMessage("Staff Removed")
+            setTimeout(function(){window.location.reload()},900);
         },
        );
     
@@ -57,27 +59,39 @@ function staffhandle(i){
 return (
 <React.Fragment> 
     <OwnerStaffNavBar/>
-    <h1>Enter Staff Code</h1>
-        <div> 
+    <div className='backimage'>
+        <div  className="reservesearchbar">
             <form onSubmit={(i)=>staffsubmit(i)}> 
-                <input onChange={(i)=>staffhandle(i)} id="staffCode" value={staff.staffCode} placeholder='Staff Code' type="text"/>
-                <button>search</button>
+                <input className='idsearch' onChange={(i)=>staffhandle(i)} id="staffCode" value={staff.staffCode} placeholder='Staff Code' type="text"/>
+                <button className='idsearchbutton'>search</button>
             </form>
         </div>
-        <h1>Staff Removed</h1>
-        <div> 
-            <form> 
-                <input  value={data.staffCode} placeholder='Staff Code'/>
-                <input  value={data.departmentId} placeholder='Department Id'/>
-                <input  value={data.employeeName} placeholder='Name'/>
-                <input  value={data.phoneNo} placeholder='Phone Number'/>
-                <input  value={data.email} placeholder='email'/>
-                <input  value={data.age} placeholder='age'/>
-                <input  value={data.employeeAddress} placeholder='Address'/>
-                <input  value={data.salary} placeholder='Salary'/>
-                <button onClick={(e)=>submit(e)}>Delete</button>
+        <div className='updatebody'>  
+            <div className="container">
+            <div className="title">Remove Staff</div>
+            <div  className='content'> 
+            <div>
+            <form>
+                <div className="user-details"> 
+                    <div className="input-box"><input  value={data.staffCode} placeholder='Staff Code'/></div>
+                    <div className="input-box"><input  value={data.departmentId} placeholder='Department Id'/></div>
+                    <div className="input-box"><input  value={data.employeeName} placeholder='Name'/></div>
+                    <div className="input-box"><input  value={data.phoneNo} placeholder='Phone Number'/></div>
+                    <div className="input-box"><input  value={data.email} placeholder='email'/></div>
+                    <div className="input-box"><input  value={data.age} placeholder='age'/></div>
+                    <div className="input-box"><input  value={data.employeeAddress} placeholder='Address'/></div>
+                    <div className="input-box"><input  value={data.salary} placeholder='Salary'/></div>
+                </div>
+                {message && <div className='message'>{message}</div>}
+                <div className="resclick">
+                    <input type="submit" value="Remove"/>
+                </div>            
             </form>
-        </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    </div>
 </React.Fragment>
 )
 }

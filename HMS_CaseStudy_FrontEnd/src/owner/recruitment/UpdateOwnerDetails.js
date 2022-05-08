@@ -1,14 +1,16 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 import {useNavigate ,NavLink} from 'react-router-dom';
+import './OwnerDetailsNavBar.css';
 
 
-function OwnerDetails() {
+function UpdateOwnerDetails() {
     const[data,setData]=useState({
         userId:"",
         password:"",
         newpassword:""
     })
+    const[message , setMessage] = useState(null);
     axios.interceptors.request.use(
         config => {
         config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
@@ -28,9 +30,9 @@ function OwnerDetails() {
         e.preventDefault();
         axios.put(url,item )
             .then(res=>{
-                navigate("/ownerhome");
-                window.location.reload();
-                alert("Owner Details Updated");
+                setMessage("Owner Details updated")
+                setTimeout(function(){window.location.reload()},900);
+                navigate("/ownerhome");   
             },
            );
         
@@ -43,18 +45,29 @@ function OwnerDetails() {
     }
   return (
     <React.Fragment>
-        <NavLink to="/ownerhome">Home</NavLink> 
-        <h1>Change Password</h1>
-        <div> 
-            <form onSubmit={(e)=>submit(e)}> 
-                <input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/>
-                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/>
-                <input onChange={(e)=>handle(e)} id="newpassword" value={data.newpassword} placeholder='New Password' type="password" required/>
-                <button>submit</button>
+        <div className='odetailsnavbar'><NavLink to="/ownerhome">Home</NavLink></div> 
+        <div className='backimage'>
+        <div className='updatebody'> 
+            <div className="container">
+            <div className="title">Update Manager Details</div>
+            <div  className='content'> 
+            <form onSubmit={(e)=>submit(e)}>
+                <div class="user-details"> 
+                    <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
+                    <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Old Password' type="password" required/></div>
+                    <div className="input-box"><input onChange={(e)=>handle(e)} id="newpassword" value={data.newpassword} placeholder='New Password' type="password" required/></div>
+                </div>
+                {message && <div className='message'>{message}</div>}
+                <div className="resclick">
+                    <input type="submit" value="Update"/>
+                </div>
             </form>
+            </div>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )
     }
 
-export default OwnerDetails;
+export default UpdateOwnerDetails;

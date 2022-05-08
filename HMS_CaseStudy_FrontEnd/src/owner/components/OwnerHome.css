@@ -46,6 +46,9 @@ p{
 .staffown{
     grid-column: 2/3;
 }
+.addmanager{
+    grid-column: 2/3;
+}
 .parallaxown {
     background-image: url("../images/ownerhome.jpg");
     min-height: 500px; 

@@ -33,11 +33,14 @@ function OGetRates() {
   return (
     <React.Fragment> 
         <OwnerRatesNavBar/>
-        <h1>Rates</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRateId(e.target.value)} />
-        <div>  
+        <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRateId(e.target.value)} className='reservatioinsearch' />
+        </div>  
+          <div className='styled-table'>
+          <div className='showtable'>      
         <table>
-          <thead className="thead-dark">
+          <thead>
             <tr>
             <th>Rate Id</th>
               <th>Day1 Night Price</th>
@@ -64,6 +67,8 @@ function OGetRates() {
           }
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   )

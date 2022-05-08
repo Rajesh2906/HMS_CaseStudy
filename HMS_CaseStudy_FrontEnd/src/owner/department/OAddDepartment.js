@@ -4,6 +4,7 @@ import OwnerDepartmentNavBar from './OwnerDepartmentNavBar';
 
 function OAddDepartment() {
     const url="Owner/owner/department/adddepartment"
+    const[message , setMessage] = useState(null);
     const[data,setData]=useState({
         departmentId:"",
         departmentName:"",
@@ -27,8 +28,8 @@ function OAddDepartment() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                console.log(res.data);
-                alert("Department successfully added");
+                setMessage("New Department Added")
+                setTimeout(function(){window.location.reload()},900);
             },
            );
         
@@ -42,14 +43,23 @@ function OAddDepartment() {
   return (
     <React.Fragment> 
         <OwnerDepartmentNavBar/>
-        <h1>Add New Department</h1>
-        <div> 
-            <form onSubmit={(e)=>submit(e)}> 
-                <input onChange={(e)=>handle(e)} id="departmentId" value={data.departmentId} placeholder='Department Id' type="text"/>
-                <input onChange={(e)=>handle(e)} id="departmentName" value={data.departmentName} placeholder='Department Name' type="text"/>
-                <input onChange={(e)=>handle(e)} id="numberOfEmplyees" value={data.numberOfEmplyees} placeholder='Employee Count' type="number"/>
-                <button>submit</button>
+        <div className='body'>  
+        <div className="container">
+        <div className="title">New Department</div>
+        <div  className='content'> 
+            <form onSubmit={(e)=>submit(e)}>
+            <div className="user-details"> 
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="departmentId" value={data.departmentId} placeholder='Department Id' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="departmentName" value={data.departmentName} placeholder='Department Name' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="numberOfEmplyees" value={data.numberOfEmplyees} placeholder='Employee Count' type="number"/></div>
+            </div>
+            {message && <div className='message'>{message}</div>}
+            <div className="resclick">
+                <input type="submit" value="Register"/>
+                </div>        
             </form>
+            </div>
+        </div>
         </div>
     </React.Fragment>
   )

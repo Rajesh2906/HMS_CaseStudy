@@ -1,9 +1,10 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
+import './OwnerStaffNavBar.css'
 
 function OwnerStaffNavBar() {
   return (
-    <div>
+    <div className='ownerstaffnavbar'>
       <ul>
             <li><NavLink to='/ownerhome'>Home</NavLink></li>
             <li><NavLink to='/oaddstaff'>Add Staff</NavLink></li>

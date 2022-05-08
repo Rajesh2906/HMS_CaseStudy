@@ -10,6 +10,12 @@
     padding: 15px;
     width: auto;
     z-index: 1;
+    display: flex;
+}
+.babaihotelName{
+    padding: 0%;
+    font-weight: 600;
+    color: rgb(111, 55, 55);
 }
 .abouthotel{
     text-align: left;
@@ -81,13 +87,9 @@ h4{
 .testimonialhome{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    column-gap: 30px;
     padding: 20px;
     text-align: center;
     background-color: #e2d0bd;
-    align-self: center;
-    justify-self: center;
-    align-items: flex-end;
 }
 .testmonialtags{
     border: 1px solid floralwhite;
@@ -95,9 +97,14 @@ h4{
     box-sizing: border-box;
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
     width: 400px;
+    margin-left: 40px;
 
 }
 .testimoniallogos{
     width: 100px;
+}
+.logobrown{
+    width: 60px;
+    height: 50px;
 }
 

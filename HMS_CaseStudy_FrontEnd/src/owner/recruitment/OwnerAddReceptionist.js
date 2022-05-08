@@ -1,9 +1,11 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import {NavLink, useNavigate} from 'react-router-dom';
+import OwnerDetailsNavBar from './OwnerDetailsNavBar';
 
 function OwnerAddReceptionist() {
-    const url="Owner/owner/addreceptionist"
+    const url="Owner/owner/addreceptionist";
+    const[message , setMessage] = useState(null);
     const[data,setData]=useState({
         userId:"",
         password:""
@@ -25,9 +27,9 @@ function OwnerAddReceptionist() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
+                setMessage("Receptionist Details Added")
+                setTimeout(function(){window.location.reload()},900);
                 navigate("/ownerhome");
-                window.location.reload();
-                alert("Receptionist details added");
             },
            );
         
@@ -40,14 +42,23 @@ function OwnerAddReceptionist() {
     }
   return (
     <React.Fragment>
-        <NavLink to="/ownerhome">Home</NavLink> 
-        <h1>Add Receptionist</h1>
-        <div> 
-            <form onSubmit={(e)=>submit(e)}> 
-                <input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/>
-                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/>
-                <button>submit</button>
+        <OwnerDetailsNavBar/>
+        <div className='body'>  
+        <div className="container">
+        <div className="title">Add New Receptionist Login Details</div>
+        <div  className='content'> 
+            <form onSubmit={(e)=>submit(e)}>
+            <div class="user-details">  
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/></div>
+                </div>
+            {message && <div className='message'>{message}</div>}    
+            <div className="resclick">
+            <input type="submit" value="Add"/>
+            </div>
             </form>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )

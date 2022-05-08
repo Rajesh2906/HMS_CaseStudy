@@ -34,10 +34,13 @@ function OGetAllStaff() {
   return (
     <React.Fragment> 
         <OwnerStaffNavBar/>
-        <h1>Staff List</h1>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermByStaffCode(e.target.value)} />
-        <input type="text" placeholder="seach by name" onChange={e=>setsearchTermByEmployeeName(e.target.value)} />
-        <div>  
+        <div className='backimageall'>
+        <div className='searchdivall'>
+        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermByStaffCode(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="seach by name" onChange={e=>setsearchTermByEmployeeName(e.target.value)} className='reservatioinsearch'/>
+        </div>
+        <div className='styled-table'>
+        <div className='showtable'>  
         <table>
           <thead className="thead-dark">
             <tr>
@@ -81,6 +84,8 @@ function OGetAllStaff() {
           }
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   )

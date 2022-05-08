@@ -44,16 +44,26 @@ function UpdateRecepPassword() {
     }
   return (
     <React.Fragment>
-        <NavLink to="/recephome">Home</NavLink> 
-        <h1>Change Password</h1>
-        <div> 
-            <form onSubmit={(e)=>submit(e)}> 
-                <input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/>
-                <input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/>
-                <input onChange={(e)=>handle(e)} id="newpassword" value={data.newpassword} placeholder='New Password' type="password" required/>
+        <div className='detailsnavbar'><NavLink to="/recephome" id='nli'>Home</NavLink></div> 
+        <div className='backimage'>
+        <div className='updatebody'> 
+            <div className="container">
+            <div className="title">Update Receptionist Details</div>
+            <div  className='content'>  
+            <form onSubmit={(e)=>submit(e)}>
+                <div class="user-details"> 
+                    <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
+                    <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Old Password' type="password" required/></div>
+                    <div className="input-box"><input onChange={(e)=>handle(e)} id="newpassword" value={data.newpassword} placeholder='New Password' type="password" required/></div>
+                </div>
                 {message && <div className='message'>{message}</div>}
-                <button>submit</button>
+                <div className="resclick">
+                    <input type="submit" value="Update"/>
+                </div>
             </form>
+            </div>
+        </div>
+        </div>
         </div>
     </React.Fragment>
   )
