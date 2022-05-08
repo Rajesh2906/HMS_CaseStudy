@@ -35,7 +35,7 @@ function RGetAvailableRooms() {
         <RecepRoomsNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRoomNumber(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Search By Room.No" onChange={e=>setSearchByRoomNumber(e.target.value)} className='reservatioinsearch' />
         </div>  
         <div className='styled-table'>
         <div className='showtable'>  
@@ -50,7 +50,7 @@ function RGetAvailableRooms() {
           <tbody>
           {
             availableRooms.filter((availableRooms)=>{
-              if(searchByRoomNumber==""){
+              if(searchByRoomNumber===""){
                 return availableRooms
               }
               else if(availableRooms.roomNumber.toLowerCase().includes(searchByRoomNumber.toLowerCase())){

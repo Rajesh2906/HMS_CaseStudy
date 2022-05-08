@@ -9,7 +9,6 @@ function RresUpdate() {
 })
 const[message,setMessage]=useState(null);
     const[data,setData]=useState({        
-        resId:"",
         phoneNumber:"",
         emailId:"",
         gender:"",
@@ -20,8 +19,8 @@ const[message,setMessage]=useState(null);
         checkIn:"",
         checkOut:"",
         numberOfNights:"",  
-         reservationCode_:"",
-         status_:"",
+        reservationCode_:"",
+        status_:"",
     })
     axios.interceptors.request.use(
         config => {
@@ -53,6 +52,7 @@ const[message,setMessage]=useState(null);
             numberOfChildren:data.numberOfChildren,
             company:data.company,
             checkIn:data.checkIn,
+            checkOut:data.checkOut,
             numberOfNights:data.numberOfNights,
             reservationCode_:data.reservationCode_,
             status_:data.status_
@@ -61,7 +61,7 @@ const[message,setMessage]=useState(null);
         axios.put(url,item )
             .then(res=>{
                 setMessage("Reservation updated successfully");
-                window.location.reload();
+                setTimeout(function(){window.location.reload()},900);
             },
            );
         

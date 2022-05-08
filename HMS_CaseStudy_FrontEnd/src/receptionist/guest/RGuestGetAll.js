@@ -37,8 +37,8 @@ function RGuestGetAll() {
         <RecepGusNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} className='reservatioinsearch' />
-        <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Search By Id" onChange={e=>setSearchTermById(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Search By Ph" onChange={e=>setSearchTermByPh(e.target.value)} className='reservatioinsearch' />
         </div> 
         <div className='styled-table'>
         <div className='showtable'>  

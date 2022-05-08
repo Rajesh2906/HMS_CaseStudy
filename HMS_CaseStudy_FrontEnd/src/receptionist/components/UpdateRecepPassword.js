@@ -18,7 +18,7 @@ function UpdateRecepPassword() {
         error => {
         return Promise.reject(error);
         });
-    const url = "Receptionist/receptionist/updatereceptionist?password=w"+data.newpassword
+    const url = "Receptionist/receptionist/updatereceptionist?password="+data.newpassword;
     const navigate =  useNavigate();
     function submit(e){
         const item={
@@ -29,9 +29,8 @@ function UpdateRecepPassword() {
         e.preventDefault();
         axios.put(url,item )
             .then(res=>{
-                console.log(res.data);
                 setMessage("Details Updated Successfully");
-                navigate("/recephome");
+                setTimeout(function(){window.location.reload()},900)
             },
            );
         

@@ -32,18 +32,18 @@ return (
 <React.Fragment> 
     <RecepBillNavBar/>
     <div className='body'> 
-    <div class="container">
-    <div class="title">Print Bill</div>
+    <div className="container">
+    <div className="title">Print Bill</div>
     <br/>
     <div> 
         <form> 
-        <div class="user-details">
-        <div class="input-box" >
-            <input onChange={(e)=>handle(e)} id="billNumber" value={data.billNumber} placeholder='Bill Code' type="text"/>
+        <div className="user-details">
+        <div className="input-box" >
+            <input onChange={(e)=>handle(e)} id="billNumber" value={data.billNumber} placeholder='Bill Code' type="text" required/>
         </div>   
         </div>
         <div className="resclick">
-             <input type="submit" value="Submit"/>
+             <input type="submit" value="Print"/>
         </div>
         </form>
     </div>

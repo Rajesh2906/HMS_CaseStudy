@@ -56,7 +56,7 @@ function RGuestAddReserved() {
         axios.post(url,item )
             .then(res=>{
                 console.log(res.data);
-                setMessage("Reservation added successfully");
+                setMessage("Reservation Booked Successfully");
                 setTimeout(function(){window.location.reload()},900)
             },
            );
@@ -72,21 +72,21 @@ function RGuestAddReserved() {
     <React.Fragment className='addreservation'> 
         <RecepGusNavBar/>
         <div className='body'>   
-        <div class="container">
-        <div class="title">Reserved Guest</div>
+        <div className="container">
+        <div className="title">Reserved Guest</div>
         <br/>
             <form onSubmit={(e)=>submit(e)}> 
-                <div class="user-details">
-                <div class="input-box" >
-                <input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text"/>
+                <div className="user-details">
+                <div className="input-box" >
+                <input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text" required/>
                 </div>
-                <div class="input-box" >
-                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
+                <div className="input-box" >
+                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text" required/>
                 </div>
                 </div>
                 {message && <div className='message'>{message}</div>}
                 <div className="resclick">
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Register"/>
                 </div>
             </form>
         </div>

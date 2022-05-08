@@ -5,9 +5,7 @@ import axios from 'axios';
 import '../reservation/RresAdd';
 
 function RGuestCheckout() {
-  const[checkoutguest,setCheckoutGuest]=useState({        
-    guestCode_:"",    
-})
+const[message,setMessage]=useState(null);
 const[guest,setGuest]=useState({        
     guestCode_:"",    
 })
@@ -54,8 +52,8 @@ function submit(e){
     e.preventDefault();
     axios.put(url)
         .then(res=>{
-            console.log(res.data);
-            window.location.reload()
+            setMessage("Guest Checked Out");
+            setTimeout(function(){window.location.reload()},900)
         },
        );
     
@@ -74,7 +72,7 @@ return (
             <div  class="reservesearchbar">
                 <form onSubmit={(i)=>guestsubmit(i)}> 
                     <input className='idsearch' onChange={(i)=>guesthandle(i)} id="guestCode_" value={guest.guestCode_} placeholder='Guest Code' type="text"/>
-                    <button  className='idsearchbutton'>submit</button>
+                    <button  className='idsearchbutton'>search</button>
                 </form>
             </div>
             <div className='updatebody'>  
@@ -98,6 +96,7 @@ return (
                         <div className="input-box"><input readOnly value={data.numberOfNights} placeholder='numberOfNights' type="number"/></div>
                         <div className="input-box"><input readOnly value={data.roomNumber} placeholder='RoomNo' type="text"/></div>
                     </div>
+                    {message && <div className='message'>{message}</div>}
                     <div className="resclick">
                         <input type="submit" value="Check Out"/>
                     </div>    

@@ -23,7 +23,7 @@ function RecepHeader() {
     const logOut = () => {
       authServices.logout();
     };
-  return (
+  return (  
     <div className='recepheader'>
       <NavLink to="/receppasswordupdate" className="changepassword"><h4>Change Password</h4></NavLink>
       {currentUser ? (           

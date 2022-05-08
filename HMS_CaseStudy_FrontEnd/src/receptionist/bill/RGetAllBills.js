@@ -36,8 +36,8 @@ function RGetAllBills() {
         <RecepBillNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by bill number" onChange={e=>setSearchTermByBillNumber(e.target.value)} className='reservatioinsearch' />
-        <input type="text" placeholder="seach by guest code" onChange={e=>setSearchTermByGuestCode(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Search By Bill Number" onChange={e=>setSearchTermByBillNumber(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Search By Guest Code" onChange={e=>setSearchTermByGuestCode(e.target.value)} className='reservatioinsearch' />
         </div>
         <div className='styled-table'>
         <div className='showtable'>    

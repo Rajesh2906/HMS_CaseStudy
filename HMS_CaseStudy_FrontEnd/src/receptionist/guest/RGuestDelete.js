@@ -7,6 +7,7 @@ function RGuestDelete() {
   const[deletedata,setDeleteData]=useState({        
     guestCode_:"",    
 })
+const[message,setMessage]=useState(null);
 const[guest,setGuest]=useState({        
     guestCode_:"",    
 })
@@ -42,7 +43,8 @@ function submit(e){
     e.preventDefault();
     axios.delete(url)
         .then(res=>{
-            window.location.reload();
+            setMessage("Guest Details Removed");
+            setTimeout(function(){window.location.reload()},900)
         },
        );
     
@@ -73,7 +75,7 @@ return (
 <React.Fragment> 
     <RecepGuestNavBar/>
     <div className='backimage'>
-        <div  class="reservesearchbar">
+        <div  className="reservesearchbar">
             <form onSubmit={(i)=>guestsubmit(i)}> 
                 <input className='idsearch' onChange={(i)=>guesthandle(i)} id="guestCode_" value={guest.guestCode_} placeholder='Guest Code' type="text"/>
                 <button  className='idsearchbutton'>Search</button>
@@ -87,19 +89,20 @@ return (
             <form onSubmit={(e)=>submit(e)}>
                 <div className="user-details">  
                     <div className="input-box"><input value={data.guestCode_} placeholder='Guest Code' type="text" readOnly/></div>
-                    <div className="input-box"><input value={data.name_} placeholder='name' type="text" readOnly/></div>
-                    <div className="input-box"><input value={data.phoneNumber_} placeholder='phoneNumber' type="text" readOnly/></div>
-                    <div className="input-box"><input value={data.emailId_} placeholder='emailId' type="email" readOnly/></div>
-                    <div className="input-box"><input value={data.gender_} placeholder='gender' type="text" readOnly/></div>
-                    <div className="input-box"><input value={data.address_} placeholder='address' type="text" readOnly/></div>
-                    <div className="input-box"><input value={data.numberOfAdult} placeholder='numberOfAdult' type="number" readOnly/></div>
-                    <div className="input-box"><input value={data.numberOfChildren} placeholder='numberOfChildren' type="number" readOnly/></div>
-                    <div className="input-box"><input value={data.company_} placeholder='company' type="text" readOnly/></div>
-                    <div className="input-box"><input value={data.checkIn} placeholder='checkIn' type="date" readOnly/></div>
-                    <div className="input-box"><input value={data.checkOut} placeholder='checkOut' type="date" readOnly/></div>
-                    <div className="input-box"><input value={data.numberOfNights} placeholder='numberOfNights' type="number" readOnly/></div>
+                    <div className="input-box"><input value={data.name_} placeholder='Name' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.phoneNumber_} placeholder='Phone Number' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.emailId_} placeholder='EmailId' type="email" readOnly/></div>
+                    <div className="input-box"><input value={data.gender_} placeholder='Gender' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.address_} placeholder='Address' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.numberOfAdult} placeholder='Number Of Adult' type="number" readOnly/></div>
+                    <div className="input-box"><input value={data.numberOfChildren} placeholder='Number Of Children' type="number" readOnly/></div>
+                    <div className="input-box"><input value={data.company_} placeholder='Company' type="text" readOnly/></div>
+                    <div className="input-box"><input value={data.checkIn} placeholder='Check In' type="date" readOnly/></div>
+                    <div className="input-box"><input value={data.checkOut} placeholder='Check Out' type="date" readOnly/></div>
+                    <div className="input-box"><input value={data.numberOfNights} placeholder='Number Of Nights' type="number" readOnly/></div>
                     <div className="input-box"><input value={data.roomNumber} placeholder='RoomNo' type="text" readOnly/></div>
                 </div>
+                {message && <div className='message'>{message}</div>}
                 <div className="resclick">
                         <input type="submit" value="Delete"/>
                 </div>   

@@ -6,7 +6,7 @@ import RecepBillNavBar from './RecepBillNavBar';
 
 
 function RGenerateBill() {
-
+    const[message,setMessage]=useState(null);
     const[data,setData]=useState({        
         billNumber:"",
         guestCode:"",
@@ -41,7 +41,8 @@ function RGenerateBill() {
         e.preventDefault();
         axios.post(url,item)
             .then(res=>{
-                alert("Bill generated successfully added");
+                setMessage("Bill Generated");
+                setTimeout(function(){window.location.reload()},900)
             },
            );
         
@@ -57,29 +58,30 @@ return(
     <React.Fragment>     
         <RecepBillNavBar/>
         <div className='body'>  
-        <div class="container">
-        <div class="title">Generate Bill</div>
+        <div className="container">
+        <div className="title">Generate Bill</div>
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
-            <div class="user-details">
-                <div class='input-box'>               
-                <input onChange={(e)=>handle(e)} id="guestCode" value={data.guestCode} placeholder='Guest Code' type="text"/>
+            <div className="user-details">
+                <div className='input-box'>               
+                <input onChange={(e)=>handle(e)} id="guestCode" value={data.guestCode} placeholder='Guest Code' type="text" required/>
                 </div>
-                <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="quantity" value={data.quantity} placeholder='Quantity' type="number"/>
+                <div className="input-box">
+                <input onChange={(e)=>handle(e)} id="quantity" value={data.quantity} placeholder='Quantity' type="number" required/>
                 </div>
-                <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="services" value={data.services} placeholder='Services' type="number"/>
+                <div className="input-box">
+                <input onChange={(e)=>handle(e)} id="services" value={data.services} placeholder='Services' type="number" required/>
                 </div>
-                <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="unit" value={data.unit} placeholder='Unit' type="number"/>
+                <div className="input-box">
+                <input onChange={(e)=>handle(e)} id="unit" value={data.unit} placeholder='Unit' type="number" required/>
                 </div>
-                <div class="input-box">
-                <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text"/>
+                <div className="input-box">
+                <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text" required/>
                 </div>
                 </div>
+                {message && <div className='message'>{message}</div>}
                 <div className="resclick">
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Generate"/>
                 </div>
                 
             </form>
