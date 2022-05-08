@@ -7,6 +7,7 @@ import userlogin from './images/managerlogin.png'
 
 function ManagerLogin() {
  
+    const[error,setError]=useState(null);
     const[data,setData]=useState({
         username:"",
         password:""
@@ -22,8 +23,7 @@ function ManagerLogin() {
                     navigate("/managerhome");
                 },
                 (error)=>{
-                    console.log(error);
-                    alert("Incorrect credentials");
+                    setError("Incorrect credentials");
                 }
             )
         }
@@ -48,6 +48,7 @@ function ManagerLogin() {
                     <img src={userlogin} id="icon" alt="User Icon" />
                     </div>
                         <form   onSubmit={handleLogin}>
+                        {error && <div className='loginerror'>{error}</div>}
                             <input onChange={(e)=>handle(e)}  value={data.username} id="username" type="text" className="fadeIn second" name="login" placeholder="Username"/>
                             <input onChange={(e)=>handle(e)} value={data.password} type="password" id="password" className="fadeIn third" name="login" placeholder="password"/>
                             <input type="submit" className="fadeIn fourth" value="Log In"/>

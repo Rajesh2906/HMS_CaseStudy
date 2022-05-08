@@ -7,6 +7,7 @@ import '../components/Login.css'
 
 function OwnerLogin() {
  
+    const[error,setError]=useState(null);
     const[data,setData]=useState({
         username:"",
         password:""
@@ -23,8 +24,7 @@ function OwnerLogin() {
                     window.location.reload();
                 },
                 (error)=>{
-                    console.log(error);
-                    alert("incorrect credentials");
+                    setError("Incorrect credentials");
                 }
             )
         }
@@ -49,8 +49,9 @@ function OwnerLogin() {
           <img src={userlogin} id="icon" alt="User Icon" />
         </div>
             <form   onSubmit={handleLogin}>
+            {error && <div className='loginerror'>{error}</div>}
                <input onChange={(e)=>handle(e)}  value={data.username} id="username" type="text" class="fadeIn second" name="login" placeholder="Username"/>
-               <input onChange={(e)=>handle(e)} value={data.password} type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+               <input onChange={(e)=>handle(e)} value={data.password} type="password" id="password" class="fadeIn third" name="login" placeholder="password"/>
                <input type="submit" class="fadeIn fourth" value="Log In"/>
             </form>    
          <div id="formFooter">

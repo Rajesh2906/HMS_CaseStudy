@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios';
 import {useNavigate ,NavLink} from 'react-router-dom';
 import './OwnerDetailsNavBar.css';
-
+import logobrown from '../images/logobrown.png'
 
 function UpdateOwnerDetails() {
     const[data,setData]=useState({
@@ -44,7 +44,7 @@ function UpdateOwnerDetails() {
     }
   return (
     <React.Fragment>
-        <div className='odetailsnavbar'><NavLink to="/ownerhome">Home</NavLink></div> 
+        <div className='odetailsnavbar'> <img src={logobrown} className="logobrown" alt='logo' /><ul><li><NavLink to="/ownerhome">Home</NavLink></li></ul></div> 
         <div className='backimage'>
         <div className='updatebody'> 
             <div className="container">

@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 import {NavLink} from 'react-router-dom';
+import './updatepasswordmanager.css'
+import logobrown from '../images/logobrown.png'
 
 
 function UpdateManagerDetails() {
@@ -45,7 +47,7 @@ function UpdateManagerDetails() {
     }
   return (
     <React.Fragment>
-        <div className='detailsnavbar'><NavLink to="/managerhome" id='nli'>Home</NavLink></div> 
+        <div className='detailsnavbar'> <img src={logobrown} className="logobrown" alt='logo' /><ul><li><NavLink to="/managerhome" id='nli'>Home</NavLink></li></ul></div> 
         <div className='backimage'>
         <div className='updatebody'> 
             <div className="container">

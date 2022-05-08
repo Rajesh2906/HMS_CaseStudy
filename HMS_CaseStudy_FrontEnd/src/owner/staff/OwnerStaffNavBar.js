@@ -1,10 +1,11 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
-import './OwnerStaffNavBar.css'
+import logobrown from '../images/logobrown.png'
 
 function OwnerStaffNavBar() {
   return (
-    <div className='ownerstaffnavbar'>
+    <div className='resnavbar'>
+      <img src={logobrown} className="logobrown" alt='logo' />
       <ul>       
             <li><NavLink to='/oaddstaff'>Add</NavLink></li>
             <li><NavLink to='/oupdatestaff'>Update</NavLink></li>

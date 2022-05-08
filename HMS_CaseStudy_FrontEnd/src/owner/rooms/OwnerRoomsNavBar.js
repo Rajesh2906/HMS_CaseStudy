@@ -1,14 +1,15 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
-import './OwnerRoomsNavBar'
+import logobrown from '../images/logobrown.png'
 
 function OwnerRoomsNavBar() {
   return (
-      <div className='oroomsnavbar'>
+      <div className='ownresnavbar'>
+          <img src={logobrown} className="logobrown" alt='logo' />
       <ul>
-            <li><NavLink to='/oaddroom'>Add Room</NavLink></li>
-            <li><NavLink to='/ogetallrooms'>Get All Rooms</NavLink></li>
-            <li><NavLink to='/odeleteroom'>Delete Rooms</NavLink></li>
+            <li><NavLink to='/oaddroom'>Add </NavLink></li>
+            <li><NavLink to='/ogetallrooms'>GetAll </NavLink></li>
+            <li><NavLink to='/odeleteroom'>Delete </NavLink></li>
             <li><NavLink to='/ownerhome'>Home</NavLink></li>
         </ul>
       </div>

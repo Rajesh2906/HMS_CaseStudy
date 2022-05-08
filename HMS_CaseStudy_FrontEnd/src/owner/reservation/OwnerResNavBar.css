@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 .ownresnavbar{
-    background-color: rgb(248, 154, 154);
-    padding: 20px;
+    display: flex;
+    background-color: #e2d0bd;
+    padding:10px 20px;
     position:sticky;
-    top: 0%;
     text-align: right;
-    
+    position: sticky;
+    top: 0%;
 }
 .ownresnavbar ul{
     white-space: nowrap;
     max-width: 1200px;
     margin: 0 auto;
+    margin-right: 0%;
+    margin-top: 8px;
 }
 .ownresnavbar li{
     width: 150px;
@@ -25,3 +28,4 @@
     font-size: 20px;
     text-align: right;
 }
+
