@@ -36,8 +36,8 @@ function MGetAllInventory() {
         <ManagarInventoryNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByInventoryId(e.target.value)} className='reservatioinsearch'/>
-        <input type="text" placeholder="seach by name" onChange={e=>setSearchByInventoryName(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="Search By Id" onChange={e=>setSearchByInventoryId(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="Search By Name" onChange={e=>setSearchByInventoryName(e.target.value)} className='reservatioinsearch'/>
         </div>
         <div className='styled-table'>
         <div className='showtable'> 
@@ -53,14 +53,14 @@ function MGetAllInventory() {
           <tbody>
           {
             inventory.filter((inventory)=>{
-              if(searchByInventoryId==""){
+              if(searchByInventoryId===""){
                 return inventory
               }
               else if(inventory.inventoryCode.toLowerCase().includes(searchByInventoryId.toLowerCase())){
                 return inventory
               }
             }).filter((inventory)=>{
-              if(searchByInventoryName==""){
+              if(searchByInventoryName===""){
                 return inventory
               }
               else if(inventory.inventoryName.toLowerCase().includes(searchByInventoryName.toLowerCase())){

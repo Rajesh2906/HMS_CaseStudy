@@ -7,9 +7,9 @@ function OwnerDepartmentNavBar() {
       <React.Fragment>
         <div className='odepartmentnavbar'>
           <ul>
-            <li><NavLink to='/ownerhome'>Home</NavLink></li>
             <li><NavLink to='/oadddepartment'>Add</NavLink></li>
             <li><NavLink to='/ogetdepartments'>Get All</NavLink></li>
+            <li><NavLink to='/ownerhome'>Home</NavLink></li>
           </ul>
         </div>
     </React.Fragment>

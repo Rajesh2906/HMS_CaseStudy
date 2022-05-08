@@ -4,8 +4,9 @@ import axios from 'axios';
 import ManagerRoomsNavBar from './ManagerRoomsNavBar';
 
 function MDeleteRoom() {
-  const[data,setData]=useState({        
-    roomNumber:"",    
+    const[message , setMessage] = useState();
+    const[data,setData]=useState({        
+        roomNumber:"",    
 })
 axios.interceptors.request.use(
     config => {
@@ -24,8 +25,8 @@ function submit(e){
     e.preventDefault();
     axios.delete(url,item)
         .then(res=>{
-            console.log(res.data);
-            alert("Room Deleted successfully");
+            setMessage("Room Deleted")
+            setTimeout(function(){window.location.reload()},900);
         },
        );
     
@@ -40,18 +41,19 @@ return (
 <React.Fragment> 
     <ManagerRoomsNavBar/>
     <div className='body'> 
-        <div class="container">
-        <div class="title">Delete Room Details</div>
+        <div className="container">
+        <div className="title">Delete Room Details</div>
         <br/>
     <div> 
         <form onSubmit={(e)=>submit(e)}>
-        <div class="user-details">
-        <div class="input-box" > 
-            <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
+        <div className="user-details">
+        <div className="input-box" > 
+            <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text" required/>
         </div>
         </div>
+        {message && <div className='message'>{message}</div>}
         <div className="resclick">
-             <input type="submit" value="Submit"/>
+             <input type="submit" value="Delete"/>
         </div>
         </form>
     </div>

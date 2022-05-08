@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,NavLink,
+    NavLink
 
 } from "react-router-dom";
 import RecepHeader from "./RecepHeader";
@@ -26,8 +26,8 @@ function RecepHome() {
       <div className="parallax"> <RecepHeader/></div>
       <div className="betweenbar">
         <ul>
+          <li><a href="#eventheading">Events</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#event">Events</a></li>
           <li><a href="#sectionheading">Services</a></li>
           <li><a href="#support">Support</a></li>
         </ul>
@@ -36,14 +36,14 @@ function RecepHome() {
      
     <div className="mapping">  
 			{/* Endpoint to route to receptionist component */}
-		 <NavLink to="/rreservationadd" className="redirectlink reservation" ><img src={reserve} id='logos'/><br/><h4>Reservation</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
-     <NavLink to="/rguestadd" className="redirectlink guest" ><img src={guest} id='logos'/><br/><h4> Guest</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
-     <NavLink to="/rbillgenerate" className="redirectlink bill" ><img src={bill} id='logos'/><br/><h4> Generate Bill</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
-     <NavLink to="/ravailablerooms" className="redirectlink rooms"><img src={rooms} id='logos'/><br/><h4> Available Rooms</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
-     <NavLink to="/rpayment" className="redirectlink payment" id="payment" ><img src={payment} id='logos'/><br/><h4>Payment</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
-     <NavLink to="/rgetrates" className="redirectlink rates" ><img src={rates} id='logos'/><br/><h4>Rates</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>
+		 <NavLink to="/rreservationadd" className="redirectlink reservation" ><img src={reserve} id='logos' alt="logos" /><br/><h4>Reservation</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rguestadd" className="redirectlink guest" ><img src={guest} id='logos' alt="logos"/><br/><h4> Guest</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rbillgenerate" className="redirectlink bill" ><img src={bill} id='logos' alt="logos"/><br/><h4> Generate Bill</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/ravailablerooms" className="redirectlink rooms"><img src={rooms} id='logos' alt="logos"/><br/><h4> Available Rooms</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rpayment" className="redirectlink payment" id="payment" ><img src={payment} id='logos' alt="logos"/><br/><h4>Payment</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>	
+     <NavLink to="/rgetrates" className="redirectlink rates" ><img src={rates} id='logos' alt="logos"/><br/><h4>Rates</h4><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></NavLink>
     </div>
-  
+  <div className="eventheading" id="eventheading">Events</div>
   <div className="eventshome" id="event">
     <div className="event">
       <div className="datelogo">02 NOV</div>
@@ -74,9 +74,19 @@ function RecepHome() {
       </div>
     </div>
   </div>
+
+  {/* Gallery */}
+  <div id="gallery">Gallery</div>
+  <div className="imagegallery">
+    <img src={image1} className="imagesgal" alt="images"/>
+    <img src={image2} className="imagesgal" alt="images"/>
+    <img src={image3} className="imagesgal" alt="images"/>
+    <img src={image4} className="imagesgal" alt="images"/>
+  </div>
+
   <section>
       <div className="row">
-        <h2 id="sectionheading">Our Services</h2>
+        <h2 id="sectionheading">Services</h2>
       </div>
       <div className="row">
         <div className="column">
@@ -84,7 +94,7 @@ function RecepHome() {
             <div className="icon-wrapper">
               <i className="fas fa-hammer"></i>
             </div>
-            <h3>Service Heading</h3>
+            <h3>Rooms</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
               consequatur necessitatibus eaque.
@@ -96,7 +106,7 @@ function RecepHome() {
             <div className="icon-wrapper">
               <i className="fas fa-brush"></i>
             </div>
-            <h3>Service Heading</h3>
+            <h3>Food</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
               consequatur necessitatibus eaque.
@@ -108,7 +118,7 @@ function RecepHome() {
             <div className="icon-wrapper">
               <i className="fas fa-wrench"></i>
             </div>
-            <h3>Service Heading</h3>
+            <h3>Laundry</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
               consequatur necessitatibus eaque.
@@ -120,7 +130,7 @@ function RecepHome() {
             <div className="icon-wrapper">
               <i className="fas fa-truck-pickup"></i>
             </div>
-            <h3>Service Heading</h3>
+            <h3>Functions</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
               consequatur necessitatibus eaque.
@@ -132,7 +142,7 @@ function RecepHome() {
             <div className="icon-wrapper">
               <i className="fas fa-broom"></i>
             </div>
-            <h3>Service Heading</h3>
+            <h3>Parties</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
               consequatur necessitatibus eaque.
@@ -144,7 +154,7 @@ function RecepHome() {
             <div className="icon-wrapper">
               <i className="fas fa-plug"></i>
             </div>
-            <h3>Service Heading</h3>
+            <h3>DanceShow</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
               consequatur necessitatibus eaque.

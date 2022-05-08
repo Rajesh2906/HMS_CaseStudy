@@ -69,7 +69,7 @@ function RGuestAddReserved() {
         setData(newdata)
     }
   return (
-    <React.Fragment className='addreservation'> 
+    <React.Fragment> 
         <RecepGusNavBar/>
         <div className='body'>   
         <div className="container">

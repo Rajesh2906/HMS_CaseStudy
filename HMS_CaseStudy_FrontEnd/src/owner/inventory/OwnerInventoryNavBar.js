@@ -6,11 +6,11 @@ function OwnerInventoryNavBar() {
   return (
       <React.Fragment>
         <div className='oinventorynavbar'>
-          <ul>
-              <li><NavLink to='/ownerhome'>Home</NavLink></li>
+          <ul>              
               <li><NavLink to='/oaddinventory'>Add</NavLink></li>
               <li><NavLink to='/ogetinventory'>Get</NavLink></li>
               <li><NavLink to='/oupdateinventory'>Update</NavLink></li>
+              <li><NavLink to='/ownerhome'>Home</NavLink></li>
           </ul>
         </div>
     </React.Fragment>

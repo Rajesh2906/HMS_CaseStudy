@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios';
-import {NavLink, useNavigate} from 'react-router-dom';
-import './DetailsNavBar.css';
+import {NavLink} from 'react-router-dom';
+import logobrown from '../images/logobrown.png'
 
 
 function AddReceptionist() {
@@ -19,7 +19,6 @@ function AddReceptionist() {
         error => {
         return Promise.reject(error);
         });
-    const navigate =  useNavigate();
     function submit(e){
         const item={
             userId:data.userId,
@@ -28,9 +27,8 @@ function AddReceptionist() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                setMessage("Staff Details updated")
+                setMessage("Receptionist Details Added")
                 setTimeout(function(){window.location.reload()},900);
-                navigate("/managerhome"); 
             },
            );
         
@@ -43,13 +41,13 @@ function AddReceptionist() {
     }
   return (
     <React.Fragment>
-        <div className='detailsnavbar'><NavLink to="/managerhome" id='nli'>Home</NavLink></div> 
+        <div className='minventorynavbar'> <img src={logobrown} className="logobrown" alt='logo' /><ul><li><NavLink to="/managerhome">Home</NavLink></li></ul></div> 
         <div className='body'>  
         <div className="container">
         <div className="title">Add New Receptionist Login Details</div>
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
-            <div class="user-details">  
+            <div className="user-details">  
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/></div>
                 </div>

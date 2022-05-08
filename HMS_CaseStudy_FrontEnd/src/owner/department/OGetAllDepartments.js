@@ -35,7 +35,7 @@ function OGetAllDepartments() {
         <OwnerDepartmentNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByDepartmentId(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="Search By Id" onChange={e=>setSearchByDepartmentId(e.target.value)} className='reservatioinsearch'/>
         </div>
         <div className='styled-table'>
         <div className='showtable'>   

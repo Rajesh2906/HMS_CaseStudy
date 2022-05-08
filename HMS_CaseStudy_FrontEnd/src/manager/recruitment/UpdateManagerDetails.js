@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios';
-import {useNavigate ,NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 
 function UpdateManagerDetails() {
@@ -19,7 +19,7 @@ function UpdateManagerDetails() {
         return Promise.reject(error);
         });
     const url = "Manager/manager/updatemanager?password="+data.newpassword
-    const navigate =  useNavigate();
+  
     function submit(e){
         const item={
             userId:data.userId,
@@ -30,9 +30,9 @@ function UpdateManagerDetails() {
         axios.put(url,item )
             .then(res=>{
                 console.log(res.data);
-                setMessage("Staff Details updated")
+                setMessage("Credentials Updated")
                 setTimeout(function(){window.location.reload()},900);
-                navigate("/managerhome");      
+                  
             },
            );
         
@@ -49,10 +49,10 @@ function UpdateManagerDetails() {
         <div className='backimage'>
         <div className='updatebody'> 
             <div className="container">
-            <div className="title">Update Inventory</div>
+            <div className="title">Change Password</div>
             <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
-                <div class="user-details"> 
+                <div className="user-details"> 
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Old Password' type="password" required/></div>
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="newpassword" value={data.newpassword} placeholder='New Password' type="password" required/></div>

@@ -21,7 +21,6 @@ function OwnerLogin() {
                 ()=>{
                     navigate("/ownerhome");
                     window.location.reload();
-                    alert("login successfully");
                 },
                 (error)=>{
                     console.log(error);

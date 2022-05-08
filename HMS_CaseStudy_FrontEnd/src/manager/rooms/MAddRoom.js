@@ -3,7 +3,8 @@ import axios from 'axios';
 import ManagerRoomsNavBar from './ManagerRoomsNavBar';
 
 function MAddRoom() {
-    const url="Manager/manager/rooms/addrooms"
+    const url="Manager/manager/rooms/addrooms";
+    const[message , setMessage] = useState();
     const[data,setData]=useState({       
         roomNumber:"",
         roomStatus_:"",
@@ -27,8 +28,8 @@ function MAddRoom() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                console.log(res.data);
-                alert("Room Added Successfull");
+                setMessage("Room Added")
+                setTimeout(function(){window.location.reload()},900);
             },
            );
         
@@ -43,16 +44,17 @@ function MAddRoom() {
     <React.Fragment> 
         <ManagerRoomsNavBar/>
         <div className='body'> 
-        <div class="container">
-        <div class="title">Add Rooms</div>
+        <div className="container">
+        <div className="title">Add Rooms</div>
         <br/>
         <div> 
             <form onSubmit={(e)=>submit(e)}>
-            <div class="user-details">
-            <div class="input-box" >
-                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
+            <div className="user-details">
+            <div className="input-box" >
+                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text" required/>
             </div>
-            </div>    
+            </div>
+            {message && <div className='message'>{message}</div>}    
             <div className="resclick">
              <input type="submit" value="Add"/>
             </div>

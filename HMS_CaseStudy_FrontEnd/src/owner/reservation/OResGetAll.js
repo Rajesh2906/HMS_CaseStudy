@@ -17,7 +17,7 @@ function OResGetAll() {
     return Promise.reject(error);
     });
 
-  const url="Owner/owner/reservation/getallreservation"
+    const url="Owner/owner/reservation/getallreservation"
  
     const init = () => { 
       axios.get(url )
@@ -36,8 +36,8 @@ function OResGetAll() {
         <OwnerResNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermById(e.target.value)} className='reservatioinsearch' />
-        <input type="text" placeholder="seach by ph" onChange={e=>setSearchTermByPh(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Seach By Id" onChange={e=>setSearchTermById(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Seach By Ph.No" onChange={e=>setSearchTermByPh(e.target.value)} className='reservatioinsearch' />
         </div>
         <div className='styled-table'>
         <div className='showtable'>  

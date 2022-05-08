@@ -5,7 +5,7 @@ import ManagerRatesNavBar from './ManagerRatesNavBar';
 
 
 function MGetRates() {
-
+  
   const [rates, setRates] = useState([]);
   const [searchByRateId,setSearchByRateId] = useState('');
   
@@ -51,7 +51,7 @@ function MGetRates() {
           <tbody>
           {
             rates.filter((rates)=>{
-              if(searchByRateId==""){
+              if(searchByRateId===""){
                 return rates
               }
               else if(rates.rateId.toLowerCase().includes(searchByRateId.toLowerCase())){

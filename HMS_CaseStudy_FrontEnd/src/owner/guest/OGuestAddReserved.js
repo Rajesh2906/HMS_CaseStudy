@@ -2,8 +2,9 @@ import React,{useState} from 'react';
 import axios from 'axios';
 import OwnerGuestNavBar from './OwnerGuestNavBar';
 
+
 function OGuestAddReserved() {
-    const[message , setMessage] = useState(null);
+    const[message,setMessage]=useState(null);
     const[data,setData]=useState({
         todayDate_:"",
         reservationCode:"",
@@ -54,8 +55,9 @@ function OGuestAddReserved() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                setMessage("Guest Checked In")
-                setTimeout(function(){window.location.reload()},900);
+                console.log(res.data);
+                setMessage("Guest CheckedIn");
+                setTimeout(function(){window.location.reload()},900)
             },
            );
         
@@ -67,7 +69,7 @@ function OGuestAddReserved() {
         setData(newdata)
     }
   return (
-    <React.Fragment className='addreservation'> 
+    <React.Fragment> 
         <OwnerGuestNavBar/>
         <div className='body'>   
         <div className="container">
@@ -76,15 +78,15 @@ function OGuestAddReserved() {
             <form onSubmit={(e)=>submit(e)}> 
                 <div className="user-details">
                 <div className="input-box" >
-                <input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text"/>
+                <input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text" required/>
                 </div>
                 <div className="input-box" >
-                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
+                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text" required/>
                 </div>
                 </div>
                 {message && <div className='message'>{message}</div>}
                 <div className="resclick">
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Register"/>
                 </div>
             </form>
         </div>

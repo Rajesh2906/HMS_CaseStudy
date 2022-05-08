@@ -5,11 +5,11 @@ import OwnerDetailsNavBar from './OwnerDetailsNavBar';
 
 function OwnerAddReceptionist() {
     const url="Owner/owner/addreceptionist";
-    const[message , setMessage] = useState(null);
     const[data,setData]=useState({
         userId:"",
         password:""
     })
+    const[message , setMessage] = useState(null);
     axios.interceptors.request.use(
         config => {
         config.headers.authorization = "Bearer " + localStorage.getItem("SavedToken");
@@ -18,7 +18,6 @@ function OwnerAddReceptionist() {
         error => {
         return Promise.reject(error);
         });
-    const navigate =  useNavigate();
     function submit(e){
         const item={
             userId:data.userId,
@@ -29,7 +28,6 @@ function OwnerAddReceptionist() {
             .then(res=>{
                 setMessage("Receptionist Details Added")
                 setTimeout(function(){window.location.reload()},900);
-                navigate("/ownerhome");
             },
            );
         
@@ -42,13 +40,13 @@ function OwnerAddReceptionist() {
     }
   return (
     <React.Fragment>
-        <OwnerDetailsNavBar/>
+       <OwnerDetailsNavBar/> 
         <div className='body'>  
         <div className="container">
         <div className="title">Add New Receptionist Login Details</div>
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
-            <div class="user-details">  
+            <div className="user-details">  
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/></div>
                 </div>

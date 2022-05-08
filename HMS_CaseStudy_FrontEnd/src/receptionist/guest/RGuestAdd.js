@@ -78,11 +78,11 @@ function RGuestAdd() {
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}> 
             <div className="user-details">
-                <div  className="input-box"><input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text"/></div>
-                <div  className="input-box"><input onChange={(e)=>handle(e)} id="name_" value={data.name_} placeholder='Name' type="text"/></div>
-                <div  className="input-box"><input onChange={(e)=>handle(e)} id="phoneNumber_" value={data.phoneNumber_} placeholder='Phone Number' type="text"/></div>
-                <div   className="input-box"><input onChange={(e)=>handle(e)} id="emailId_" value={data.emailId_} placeholder='Email Id' type="email" /></div>
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="gender_" value={data.gender_} placeholder='Gender' type="text" class="inputguest"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="reservationCode" value={data.reservationCode} placeholder='Reservation Code' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="name_" value={data.name_} placeholder='Name' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="phoneNumber_" value={data.phoneNumber_} placeholder='Phone Number' type="text"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="emailId_" value={data.emailId_} placeholder='Email Id' type="email" /></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="gender_" value={data.gender_} placeholder='Gender' type="text" /></div>
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="address_" value={data.address_} placeholder='Address' type="text"/></div>
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="numberOfAdult" value={data.numberOfAdult} placeholder='Number Of Adult' type="number" /></div>
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="numberOfChildren" value={data.numberOfChildren} placeholder='Number Of Children' type="number"/></div>

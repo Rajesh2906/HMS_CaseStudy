@@ -9,7 +9,7 @@ function OGetRates() {
   const [rates, setRates] = useState([]);
   const [searchByRateId,setSearchByRateId] = useState('');
   
-  const url="Owner/owner/rates/getallrates"
+  const url="Owner/owner/rates/getallrates";
  
     const init = () => { 
       axios.get(url)
@@ -51,7 +51,7 @@ function OGetRates() {
           <tbody>
           {
             rates.filter((rates)=>{
-              if(searchByRateId==""){
+              if(searchByRateId===""){
                 return rates
               }
               else if(rates.rateId.toLowerCase().includes(searchByRateId.toLowerCase())){

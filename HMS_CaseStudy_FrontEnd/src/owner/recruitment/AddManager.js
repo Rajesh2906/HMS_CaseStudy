@@ -27,9 +27,9 @@ function AddManager() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                setMessage("Receptionist Details Added")
+                setMessage("Manager Details Added")
                 setTimeout(function(){window.location.reload()},900);
-                navigate("/ownerhome");
+               
             },
            );
         
@@ -48,7 +48,7 @@ function AddManager() {
         <div className="title">Add New Manager Login Details</div>
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
-            <div class="user-details">  
+            <div className="user-details">  
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
                 <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Password' type="password" required/></div>
                 </div>

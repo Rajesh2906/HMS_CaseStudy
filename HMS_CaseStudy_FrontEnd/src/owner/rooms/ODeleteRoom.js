@@ -4,8 +4,9 @@ import axios from 'axios';
 import OwnerRoomsNavBar from './OwnerRoomsNavBar';
 
 function ODeleteRoom() {
-  const[data,setData]=useState({        
-    roomNumber:"",    
+    const[message , setMessage] = useState();
+    const[data,setData]=useState({        
+        roomNumber:"",    
 })
 axios.interceptors.request.use(
     config => {
@@ -24,8 +25,8 @@ function submit(e){
     e.preventDefault();
     axios.delete(url,item)
         .then(res=>{
-            console.log(res.data);
-            window.location.reload();
+            setMessage("Room Deleted")
+            setTimeout(function(){window.location.reload()},900);
         },
        );
     
@@ -44,14 +45,15 @@ return (
         <div className="title">Delete Room Details</div>
         <br/>
     <div> 
-        <form onSubmit={(e)=>submit(e)}> 
+        <form onSubmit={(e)=>submit(e)}>
         <div className="user-details">
         <div className="input-box" > 
-            <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
+            <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text" required/>
         </div>
-        </div>   
+        </div>
+        {message && <div className='message'>{message}</div>}
         <div className="resclick">
-             <input type="submit" value="Submit"/>
+             <input type="submit" value="Delete"/>
         </div>
         </form>
     </div>

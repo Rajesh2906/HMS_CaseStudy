@@ -71,16 +71,16 @@ return (
             <div className="title">Remove Staff</div>
             <div  className='content'> 
             <div>
-            <form>
+            <form onSubmit={(e)=>submit(e)}>
                 <div className="user-details"> 
-                    <div className="input-box"><input  value={data.staffCode} placeholder='Staff Code'/></div>
-                    <div className="input-box"><input  value={data.departmentId} placeholder='Department Id'/></div>
-                    <div className="input-box"><input  value={data.employeeName} placeholder='Name'/></div>
-                    <div className="input-box"><input  value={data.phoneNo} placeholder='Phone Number'/></div>
-                    <div className="input-box"><input  value={data.email} placeholder='email'/></div>
-                    <div className="input-box"><input  value={data.age} placeholder='age'/></div>
-                    <div className="input-box"><input  value={data.employeeAddress} placeholder='Address'/></div>
-                    <div className="input-box"><input  value={data.salary} placeholder='Salary'/></div>
+                    <div className="input-box"><input  value={data.staffCode} placeholder='Staff Code' readOnly/></div>
+                    <div className="input-box"><input  value={data.departmentId} placeholder='Department Id' readOnly/></div>
+                    <div className="input-box"><input  value={data.employeeName} placeholder='Name' readOnly/></div>
+                    <div className="input-box"><input  value={data.phoneNo} placeholder='Phone Number' readOnly/></div>
+                    <div className="input-box"><input  value={data.email} placeholder='Email' readOnly/></div>
+                    <div className="input-box"><input  value={data.age} placeholder='Age' readOnly/></div>
+                    <div className="input-box"><input  value={data.employeeAddress} placeholder='Address' readOnly/></div>
+                    <div className="input-box"><input  value={data.salary} placeholder='Salary' readOnly/></div>
                 </div>
                 {message && <div className='message'>{message}</div>}
                 <div className="resclick">

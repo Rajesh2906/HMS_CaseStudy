@@ -32,7 +32,6 @@ function UpdateOwnerDetails() {
             .then(res=>{
                 setMessage("Owner Details updated")
                 setTimeout(function(){window.location.reload()},900);
-                navigate("/ownerhome");   
             },
            );
         
@@ -52,7 +51,7 @@ function UpdateOwnerDetails() {
             <div className="title">Update Manager Details</div>
             <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
-                <div class="user-details"> 
+                <div className="user-details"> 
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Old Password' type="password" required/></div>
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="newpassword" value={data.newpassword} placeholder='New Password' type="password" required/></div>

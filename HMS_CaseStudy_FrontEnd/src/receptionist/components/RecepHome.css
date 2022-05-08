@@ -89,71 +89,24 @@ p{
 
 /* image slide show */
 
-
-/* body {
-  margin: 0;
-  padding: 0;
-} */
-
-/* button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-} */
-
-/* img {
-  display: block;
-  width: 100%;
-} */
-
-/* section {
-  width: 100%;
-  overflow: hidden;
-} */
-
-/* .slideshow {
-  display: flex;
-  width: 200%;
-  animation: bannermove 20s linear infinite;
-
-  margin-top: 90px;
- 
-} */
-
-
-/* article.paused {
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
+.imagegallery{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+  margin-left: 50px;
+  justify-content: center;
+  margin-top: 50px;
 }
- */
-/* .imagecontainer {
-  width: 2000px;
-} */
-
-/* ul {
-  display: flex;
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
+.imagesgal{
+  width: 600px;
+  height: 300px;
 }
-
-li {
-  width: 100%;
-  height: 100%;
+#gallery{
+  font-size: x-large;
+  font-weight: 600;
+  margin-left: 50px;
+  margin-top: 53px;
 }
-
-
-@keyframes bannermove {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-} */
-
-
 
   /* Events */
   .eventshome{
@@ -163,6 +116,7 @@ li {
       column-gap: 40px;
       row-gap: 20px;
       padding: 48px;
+      padding-top: 37px
   }
   .datelogo{
     border: 7px solid #e2d0bd;
@@ -183,7 +137,12 @@ li {
   .eventcontent{
       padding: 20px;
   }
-
+  .eventheading{
+    font-size: x-large;
+    font-weight: 600;
+    margin-left: 50px;
+    margin-top: 53px;
+  }
   /* services */
 section {
     height: 100vh;

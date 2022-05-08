@@ -16,6 +16,17 @@
     background-image: url('../images/recepreservation.jpg');
     background-size: 100%;
   }
+  .updatepassbackimage{
+    height: 90.6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
+    background-image: url('../images/recepreservation.jpg');
+    background-size: 100%;
+
+  }
   .resclick{
     text-align: center;
 }

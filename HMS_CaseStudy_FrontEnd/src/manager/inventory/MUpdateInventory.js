@@ -43,10 +43,11 @@ function MUpdateInventory() {
         e.preventDefault();
         axios.put(url,item )
             .then(res=>{
-                setMessage("Reservation updated successfully")
+                setMessage("Inventory Details Updated")
+                setTimeout(function(){window.location.reload()},900);
             },
            );
-           window.location.reload();
+           
         
     }
     function inventoryhandle(i){
@@ -65,22 +66,22 @@ function MUpdateInventory() {
     <React.Fragment> 
         <ManagarInventoryNavBar/>
         <div className='backimage'>
-        <div class="reservesearchbar">
+        <div className="reservesearchbar">
             <form onSubmit={(i)=>inventorysubmit(i)}> 
                 <input  className='idsearch'  onChange={(i)=>inventoryhandle(i)} id="inventoryCode" value={inventory.inventoryCode} placeholder='Inventory Code' type="text"/>
                 <button className='idsearchbutton'>search</button>
             </form>
         </div>
         <div className='updatebody'> 
-            <div class="container">
-            <div class="title">Update Inventory</div>
+            <div className="container">
+            <div className="title">Update Inventory</div> 
             <div  className='content'>
                 <form onSubmit={(e)=>submit(e)}>
-                    <div class="user-details"> 
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text"/></div>
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='Inventory Type' type="text"/></div>
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text"/></div>
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number"/></div>
+                    <div className="user-details"> 
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text" required/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='Inventory Type' type="text" required/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text" required/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number" required/></div>
                     </div>
                     {message && <div className='message'>{message}</div>}
                     <div className="resclick">

@@ -4,10 +4,10 @@ import OwnerInventoryNavBar from './OwnerInventoryNavBar';
 
 
 function OUpdateInventory() {
-    const[message , setMessage] = useState(null);
     const[inventory,setInventory]=useState({        
         inventoryCode:"",    
     })
+    const[message , setMessage] = useState();
     const[data,setData]=useState({        
         inventoryCode:"",
         inventoryType:"",
@@ -43,11 +43,11 @@ function OUpdateInventory() {
         e.preventDefault();
         axios.put(url,item )
             .then(res=>{
-                setMessage("Guest Checked In")
+                setMessage("Inventory Details Updated")
                 setTimeout(function(){window.location.reload()},900);
             },
            );
-           window.location.reload();
+           
         
     }
     function inventoryhandle(i){
@@ -74,14 +74,14 @@ function OUpdateInventory() {
         </div>
         <div className='updatebody'> 
             <div className="container">
-            <div className="title">Update Inventory</div>
+            <div className="title">Update Inventory</div> 
             <div  className='content'>
                 <form onSubmit={(e)=>submit(e)}>
                     <div className="user-details"> 
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text"/></div>
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='Inventory Type' type="text"/></div>
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text"/></div>
-                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number"/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text" required/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='Inventory Type' type="text" required/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text" required/></div>
+                        <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number" required/></div>
                     </div>
                     {message && <div className='message'>{message}</div>}
                     <div className="resclick">

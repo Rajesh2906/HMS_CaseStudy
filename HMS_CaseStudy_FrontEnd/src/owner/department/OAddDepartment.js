@@ -49,9 +49,9 @@ function OAddDepartment() {
         <div  className='content'> 
             <form onSubmit={(e)=>submit(e)}>
             <div className="user-details"> 
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="departmentId" value={data.departmentId} placeholder='Department Id' type="text"/></div>
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="departmentName" value={data.departmentName} placeholder='Department Name' type="text"/></div>
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="numberOfEmplyees" value={data.numberOfEmplyees} placeholder='Employee Count' type="number"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="departmentId" value={data.departmentId} placeholder='Department Id' type="text" required/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="departmentName" value={data.departmentName} placeholder='Department Name' type="text" required/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="numberOfEmplyees" value={data.numberOfEmplyees} placeholder='Employee Count' type="number" required/></div>
             </div>
             {message && <div className='message'>{message}</div>}
             <div className="resclick">

@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import axios from 'axios';
-import {useNavigate ,NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import logobrown from '../images/logobrown.png'
 
 
 function UpdateRecepPassword() {
@@ -19,7 +20,6 @@ function UpdateRecepPassword() {
         return Promise.reject(error);
         });
     const url = "Receptionist/receptionist/updatereceptionist?password="+data.newpassword;
-    const navigate =  useNavigate();
     function submit(e){
         const item={
             userId:data.userId,
@@ -43,14 +43,14 @@ function UpdateRecepPassword() {
     }
   return (
     <React.Fragment>
-        <div className='detailsnavbar'><NavLink to="/recephome" id='nli'>Home</NavLink></div> 
-        <div className='backimage'>
+        <div className='resnavbar'> <img src={logobrown} className="logobrown" alt='logo' /><ul><li><NavLink to="/recephome" id='nli' >Home</NavLink></li></ul></div> 
+        <div className='updatepassbackimage'>
         <div className='updatebody'> 
             <div className="container">
             <div className="title">Update Receptionist Details</div>
             <div  className='content'>  
             <form onSubmit={(e)=>submit(e)}>
-                <div class="user-details"> 
+                <div className="user-details"> 
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="userId" value={data.userId} placeholder='User Id' type="text" required/></div>
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="password" value={data.password} placeholder='Old Password' type="password" required/></div>
                     <div className="input-box"><input onChange={(e)=>handle(e)} id="newpassword" value={data.newpassword} placeholder='New Password' type="password" required/></div>

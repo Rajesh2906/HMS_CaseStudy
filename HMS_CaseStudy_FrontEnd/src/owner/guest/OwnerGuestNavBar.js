@@ -7,13 +7,13 @@ function OwnerGuestNavBar() {
       <React.Fragment>
         <div className='oguestnavbar'>
           <ul>
-              <li><NavLink to='/ownerhome'>Home</NavLink></li>
-              <li><NavLink to='/oguestadd'>Add New Guest</NavLink></li>
+              <li><NavLink to='/oguestadd'>Add New</NavLink></li>
               <li><NavLink to='/oguestupdate'>Update</NavLink></li>
               <li><NavLink to='/oguestgetall'>GetAll</NavLink></li>
-              <li><NavLink to='/oguestcheckout'>Checkout Guest</NavLink></li>
-              <li><NavLink to='/oguestaddreserved'>Add Reserved Guest</NavLink></li>
-              <li><NavLink to='/oguestdelete'>Delete Guest Details</NavLink></li>
+              <li><NavLink to='/oguestcheckout'>Checkout</NavLink></li>
+              <li><NavLink to='/oguestaddreserved'>Add Reserved</NavLink></li>
+              <li><NavLink to='/oguestdelete'>Delete</NavLink></li>
+              <li><NavLink to='/ownerhome'>Home</NavLink></li>
           </ul>
         </div>
     </React.Fragment>

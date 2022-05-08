@@ -56,14 +56,14 @@ function RresGetAll() {
           <tbody>
           {
             reservation.filter((reservation)=>{
-              if(searchTermById==""){
+              if(searchTermById===""){
                 return reservation
               }
               else if(reservation.reservationCode_.toLowerCase().includes(searchTermById.toLowerCase())){
                 return reservation
               }
             }).filter((reservation)=>{
-              if(searchTermByPh==""){
+              if(searchTermByPh===""){
                 return reservation
               }
               else if(reservation.phoneNumber.toLowerCase().includes(searchTermByPh.toLowerCase())){

@@ -36,8 +36,8 @@ function MGetAllStaff() {
         <ManagerStaffNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchTermByStaffCode(e.target.value)} className='reservatioinsearch'/>
-        <input type="text" placeholder="seach by name" onChange={e=>setsearchTermByEmployeeName(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="Search By Id" onChange={e=>setSearchTermByStaffCode(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="Search By Name" onChange={e=>setsearchTermByEmployeeName(e.target.value)} className='reservatioinsearch'/>
         </div>
         <div className='styled-table'>
         <div className='showtable'>  
@@ -57,14 +57,14 @@ function MGetAllStaff() {
           <tbody>
           {
             staff.filter((staff)=>{
-              if(searchTermByStaffCode==""){
+              if(searchTermByStaffCode===""){
                 return staff
               }
               else if(staff.staffCode.toLowerCase().includes(searchTermByStaffCode.toLowerCase())){
                 return staff
               }
             }).filter((staff)=>{
-              if(searchTermByEmployeeName==""){
+              if(searchTermByEmployeeName===""){
                 return staff
               }
               else if(staff.employeeName.toLowerCase().includes(searchTermByEmployeeName.toLowerCase())){

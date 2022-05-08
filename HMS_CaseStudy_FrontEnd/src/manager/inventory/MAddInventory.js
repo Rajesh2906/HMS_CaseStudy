@@ -3,7 +3,8 @@ import axios from 'axios';
 import ManagarInventoryNavBar from './ManagerInventoryNavBar';
 
 function MAddInventory() {
-    const url="Manager/manager/addinventory"
+    const url="Manager/manager/addinventory";
+    const[message , setMessage] = useState();
     const[data,setData]=useState({
         inventoryCode:"",
         inventoryType:"",
@@ -29,8 +30,8 @@ function MAddInventory() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                console.log(res.data);
-                alert("Inventory details added");
+                setMessage("Inventory Added")
+                setTimeout(function(){window.location.reload()},900);
             },
            );
            window.location.reload();
@@ -52,11 +53,12 @@ function MAddInventory() {
          
             <form onSubmit={(e)=>submit(e)}>
             <div className="user-details"> 
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text"/></div>
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='inventory Type' type="text"/></div>
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text"/></div>
-                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number"/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryCode" value={data.inventoryCode} placeholder='Inventory Code' type="text" required/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryType" value={data.inventoryType} placeholder='Inventory Type' type="text" required/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryName" value={data.inventoryName} placeholder='Inventory Name' type="text" required/></div>
+                <div className="input-box"><input onChange={(e)=>handle(e)} id="inventoryQuantity" value={data.inventoryQuantity} placeholder='Inventory Quantity' type="number" required/></div>
             </div>
+            {message && <div className='message'>{message}</div>}
             <div className="resclick">
             <input type="submit" value="Add"/>
             </div>

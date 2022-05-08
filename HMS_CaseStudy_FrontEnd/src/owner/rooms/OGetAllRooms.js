@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import OwnerRoomsNavBar from './OwnerRoomsNavBar';
 
+
 function OGetAllRooms() {
 
   const [searchByRoomNumber,setSearchByRoomNumber] = useState('');
@@ -16,7 +17,7 @@ function OGetAllRooms() {
     return Promise.reject(error);
     });
 
- const url="Owner/owner/rooms/getallrooms";
+    const url="Owner/owner/rooms/getallrooms";
  
     const init = () => { 
       axios.get(url)
@@ -35,7 +36,7 @@ function OGetAllRooms() {
         <OwnerRoomsNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRoomNumber(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="Search By Id" onChange={e=>setSearchByRoomNumber(e.target.value)} className='reservatioinsearch'/>
         </div>
         <div className='styled-table'>
         <div className='showtable'>    
@@ -50,7 +51,7 @@ function OGetAllRooms() {
           <tbody>
           {
             rooms.filter((rooms)=>{
-              if(searchByRoomNumber==""){
+              if(searchByRoomNumber===""){
                 return rooms
               }
               else if(rooms.roomNumber.toLowerCase().includes(searchByRoomNumber.toLowerCase())){
@@ -68,6 +69,7 @@ function OGetAllRooms() {
       </div>
       </div>
       </div>
+
     </React.Fragment>
   )
 }

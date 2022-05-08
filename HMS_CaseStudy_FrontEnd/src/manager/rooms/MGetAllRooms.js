@@ -36,7 +36,7 @@ function MGetAllRooms() {
         <ManagerRoomsNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by id" onChange={e=>setSearchByRoomNumber(e.target.value)} className='reservatioinsearch'/>
+        <input type="text" placeholder="Search By Id" onChange={e=>setSearchByRoomNumber(e.target.value)} className='reservatioinsearch'/>
         </div>
         <div className='styled-table'>
         <div className='showtable'>    
@@ -51,7 +51,7 @@ function MGetAllRooms() {
           <tbody>
           {
             rooms.filter((rooms)=>{
-              if(searchByRoomNumber==""){
+              if(searchByRoomNumber===""){
                 return rooms
               }
               else if(rooms.roomNumber.toLowerCase().includes(searchByRoomNumber.toLowerCase())){

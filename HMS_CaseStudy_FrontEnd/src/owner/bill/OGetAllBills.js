@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import OwnerBillNavBar from './OwnerBillNavBar';
 
 function OGetAllBills() {
@@ -17,7 +18,7 @@ function OGetAllBills() {
     return Promise.reject(error);
     });
 
-  const url="Owner/owner/bill/getallbills"
+    const url="Owner/owner/bill/getallbills";
  
     const init = () => { 
       axios.get(url )
@@ -36,8 +37,8 @@ function OGetAllBills() {
         <OwnerBillNavBar/>
         <div className='backimageall'>
         <div className='searchdivall'>
-        <input type="text" placeholder="seach by bill number" onChange={e=>setSearchTermByBillNumber(e.target.value)} className='reservatioinsearch' />
-        <input type="text" placeholder="seach by guest code" onChange={e=>setSearchTermByGuestCode(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Search By Bill Number" onChange={e=>setSearchTermByBillNumber(e.target.value)} className='reservatioinsearch' />
+        <input type="text" placeholder="Search By Guest Code" onChange={e=>setSearchTermByGuestCode(e.target.value)} className='reservatioinsearch' />
         </div>
         <div className='styled-table'>
         <div className='showtable'>    

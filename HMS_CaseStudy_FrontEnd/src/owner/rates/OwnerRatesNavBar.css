@@ -1,4 +1,4 @@
-.mratesnavbar{
+.oratesnavbar{
     background-color: rgb(248, 154, 154);
     padding: 20px;
     position:sticky;
@@ -6,12 +6,12 @@
     text-align: right;
     
 }
-.mratesnavbar ul{
+.oratesnavbar ul{
     white-space: nowrap;
     max-width: 1200px;
     margin: 0 auto;
 }
-.mratesnavbar li{
+.oratesnavbar li{
     width: 150px;
     display: inline-block;
     font-size: 20px;

@@ -4,6 +4,7 @@ import OwnerRoomsNavBar from './OwnerRoomsNavBar';
 
 function OAddRoom() {
     const url="Owner/owner/rooms/addrooms"
+    const[message , setMessage] = useState();
     const[data,setData]=useState({       
         roomNumber:"",
         roomStatus_:"",
@@ -27,8 +28,8 @@ function OAddRoom() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                console.log(res.data);
-                window.location.reload();
+                setMessage("Room Added")
+                setTimeout(function(){window.location.reload()},900);
             },
            );
         
@@ -50,10 +51,11 @@ function OAddRoom() {
             <form onSubmit={(e)=>submit(e)}>
             <div className="user-details">
             <div className="input-box" >
-                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text"/>
-             </div>  
-             </div>
-             <div className="resclick">
+                <input onChange={(e)=>handle(e)} id="roomNumber" value={data.roomNumber} placeholder='Room Number' type="text" required/>
+            </div>
+            </div>
+            {message && <div className='message'>{message}</div>}    
+            <div className="resclick">
              <input type="submit" value="Add"/>
             </div>
             </form>

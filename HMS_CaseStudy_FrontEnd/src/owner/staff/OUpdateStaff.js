@@ -50,12 +50,12 @@ function OUpdateStaff() {
             }
         e.preventDefault();
         axios.put(url,item )
-            .then(res=>{
-                setMessage("Staff Details Updated")
+            .then(res=>{          
+                setMessage("Staff Details updated")
                 setTimeout(function(){window.location.reload()},900);
             },
            );
-           window.location.reload();
+         
         
     }
     function staffhandle(i){

@@ -5,12 +5,12 @@ import './OwnerStaffNavBar.css'
 function OwnerStaffNavBar() {
   return (
     <div className='ownerstaffnavbar'>
-      <ul>
+      <ul>       
+            <li><NavLink to='/oaddstaff'>Add</NavLink></li>
+            <li><NavLink to='/oupdatestaff'>Update</NavLink></li>
+            <li><NavLink to='/ogetallstaff'>Get All</NavLink></li>
+            <li><NavLink to='/odeletestaff'>Remove</NavLink></li>
             <li><NavLink to='/ownerhome'>Home</NavLink></li>
-            <li><NavLink to='/oaddstaff'>Add Staff</NavLink></li>
-            <li><NavLink to='/oupdatestaff'>Update Staff Details</NavLink></li>
-            <li><NavLink to='/ogetallstaff'>Get All Staff</NavLink></li>
-            <li><NavLink to='/odeletestaff'>Remove Staff</NavLink></li>
         </ul>
     </div>
   )

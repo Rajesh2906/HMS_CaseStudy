@@ -1,11 +1,5 @@
 import React, { Component,useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Switch,
-  Route,
-  Routes
-} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import './OwnerHeader.css'
 import authService from "../services/auth.service";
 

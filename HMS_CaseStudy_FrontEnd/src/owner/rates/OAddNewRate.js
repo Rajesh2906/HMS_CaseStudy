@@ -4,6 +4,7 @@ import OwnerRatesNavBar from './OwnerRatesNavBar';
 
 function OAddNewRate() {
     const url="Owner/owner/rates/addrate"
+    const[message , setMessage] = useState();
     const[data,setData]=useState({
         rateId:"",
         firstNightPrice:"",
@@ -29,8 +30,8 @@ function OAddNewRate() {
         e.preventDefault();
         axios.post(url,item )
             .then(res=>{
-                console.log(res.data);
-                alert("Rate successfully added");
+                setMessage("New Rates Added")
+                setTimeout(function(){window.location.reload()},900);
             },
            );
         
@@ -45,28 +46,29 @@ function OAddNewRate() {
     <React.Fragment> 
         <OwnerRatesNavBar/>
         <div className='body'>  
-        <div class="container">
-        <div class="title">Add New Price</div>
+        <div className="container">
+        <div className="title">Add New Price</div>
         <div  className='content'>
             <form onSubmit={(e)=>submit(e)}> 
-            <div class="user-details">
+            <div className="user-details">
                 
-                <div className="input-box" >
-                <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text"/>
-                </div>
-                <div className="input-box" >
-                <input onChange={(e)=>handle(e)} id="firstNightPrice" value={data.firstNightPrice} placeholder='Day1 Night Price' type="text"/>
-                </div>
-                <div className="input-box" >
-                <input onChange={(e)=>handle(e)} id="nightPrice" value={data.nightPrice} placeholder='Night Price' type="text"/>
-                </div>
-                <div className="input-box" >
-                 <input onChange={(e)=>handle(e)} id="dayPrice" value={data.dayPrice} placeholder='Day Price' type="text"/>
-                </div>
-                </div>
-                <div className="resclick">
-                <input type="submit" value="Submit"/>
-                </div>
+            <div className="input-box" >
+                <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text" required/>
+            </div>
+            <div className="input-box" >
+                <input onChange={(e)=>handle(e)} id="firstNightPrice" value={data.firstNightPrice} placeholder='Day1 Night Price' type="text" required/>
+            </div>
+            <div className="input-box" >
+                <input onChange={(e)=>handle(e)} id="nightPrice" value={data.nightPrice} placeholder='Night Price' type="text" required/>
+            </div>
+            <div className="input-box" >
+                <input onChange={(e)=>handle(e)} id="dayPrice" value={data.dayPrice} placeholder='Day Price' type="text" required/>
+            </div>
+            </div>
+            {message && <div className='message'>{message}</div>}
+            <div className="resclick">
+                <input type="submit" value="Add"/>
+            </div>
             </form>
         </div>
         </div>

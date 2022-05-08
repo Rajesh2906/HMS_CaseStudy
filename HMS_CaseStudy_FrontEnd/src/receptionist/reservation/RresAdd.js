@@ -64,7 +64,7 @@ export function RresAdd() {
     }
 
 return(
-    <React.Fragment className='addreservation'> 
+    <React.Fragment> 
     <RecepResNavBar/>
     <div className='body'>  
         <div className="container">

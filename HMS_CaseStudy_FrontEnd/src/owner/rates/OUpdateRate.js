@@ -5,6 +5,7 @@ import OwnerRatesNavBar from './OwnerRatesNavBar';
 
 function OUpdateRate() {
     const url = "Owner/owner/rates/updaterates"
+    const[message , setMessage] = useState();
     const[data,setData]=useState({
         rateId:"",
         firstNightPrice:"",
@@ -30,8 +31,8 @@ function OUpdateRate() {
             e.preventDefault();
             axios.put(url,item )
                 .then(res=>{
-                    console.log(res.data);
-                    alert("Price successfully Updated");
+                    setMessage("Price Updated")
+                    setTimeout(function(){window.location.reload()},900);
                 },
                );
             
@@ -48,24 +49,25 @@ function OUpdateRate() {
         <div className="container">
         <div className="title">Price Update Form</div>
         <div  className='content'> 
-                <form onSubmit={(e)=>submit(e)}>
+                <form onSubmit={(e)=>submit(e)}> 
                 <div className="user-details">
 
-                    <div className="input-box" > 
-                    <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text"/>
-                    </div>
-                    <div className="input-box" >
-                    <input onChange={(e)=>handle(e)} id="firstNightPrice" value={data.firstNightPrice} placeholder='Day1 Night Price' type="text"/>
-                    </div>
-                    <div className="input-box" >
-                    <input onChange={(e)=>handle(e)} id="nightPrice" value={data.nightPrice} placeholder='Night Price' type="text"/>
-                    </div>
-                    <div className="input-box" >
-                    <input onChange={(e)=>handle(e)} id="dayPrice" value={data.dayPrice} placeholder='Day Price' type="text"/>
-                    </div>
+                <div className="input-box" >
+                    <input onChange={(e)=>handle(e)} id="rateId" value={data.rateId} placeholder='Rate Id' type="text" required/>
                 </div>
+                <div className="input-box" >
+                    <input onChange={(e)=>handle(e)} id="firstNightPrice" value={data.firstNightPrice} placeholder='Day1 Night Price' type="text" required/>
+                </div>
+                <div className="input-box" >
+                    <input onChange={(e)=>handle(e)} id="nightPrice" value={data.nightPrice} placeholder='Night Price' type="text" required/>
+                </div>
+                <div className="input-box" >    
+                    <input onChange={(e)=>handle(e)} id="dayPrice" value={data.dayPrice} placeholder='Day Price' type="text" required/>
+                </div>
+                </div>
+                {message && <div className='message'>{message}</div>}
                 <div className="resclick">
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Update"/>
                 </div>
                 </form>
             </div>

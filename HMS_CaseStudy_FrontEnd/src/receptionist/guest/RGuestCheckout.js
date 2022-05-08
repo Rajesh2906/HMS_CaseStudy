@@ -69,7 +69,7 @@ return (
 <React.Fragment> 
     <RecepGusNavBar/>
     <div className='backimage'>
-            <div  class="reservesearchbar">
+            <div  className="reservesearchbar">
                 <form onSubmit={(i)=>guestsubmit(i)}> 
                     <input className='idsearch' onChange={(i)=>guesthandle(i)} id="guestCode_" value={guest.guestCode_} placeholder='Guest Code' type="text"/>
                     <button  className='idsearchbutton'>search</button>
