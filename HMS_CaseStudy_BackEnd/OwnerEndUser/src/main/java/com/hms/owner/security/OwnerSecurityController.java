@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,6 +34,9 @@ public class OwnerSecurityController {
 	@Autowired
 	private MyUserDetailsService userDetailsService;
 
+	@Autowired
+	private PasswordEncoder bCryptPasswordEncoder;
+
 	// Authenticates the owner using user name and password and returns JWT token
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
@@ -54,7 +58,9 @@ public class OwnerSecurityController {
 	// Add new username and password for the owner
 	@PostMapping("/addowner")
 	public void addOwner(@RequestBody OwnerSecurityModel mod) {
-		userDetailsService.addownerDetails(mod);
+		String encodedPassword = bCryptPasswordEncoder.encode(mod.getPassword());
+		OwnerSecurityModel user = new OwnerSecurityModel(mod.getUserId(), encodedPassword);
+		userDetailsService.addownerDetails(user);
 	}
 
 	// Add new username and password for the receptionist
@@ -75,7 +81,8 @@ public class OwnerSecurityController {
 	@PutMapping("/updateowner")
 	public void updateOwnerDetails(@RequestBody OwnerSecurityModel ownerSecurityModel, @RequestParam String newpassword)
 			throws Exception {
-		userDetailsService.updateOwnerDetails(ownerSecurityModel, newpassword);
+		String newPasswordEncoded = bCryptPasswordEncoder.encode(newpassword);
+		userDetailsService.updateOwnerDetails(ownerSecurityModel, newPasswordEncoded);
 	}
 
 }

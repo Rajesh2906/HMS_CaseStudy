@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,6 +34,9 @@ public class ManagerSecurityController {
 	@Autowired
 	private MyUserDetailsService userDetailsService;
 
+	@Autowired
+	private PasswordEncoder bCryptPasswordEncoder;
+
 	// Authenticates the manager using user name and password and returns JWT token
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
@@ -54,7 +58,9 @@ public class ManagerSecurityController {
 	// Creates new user name and password for new manager
 	@PostMapping("/addmanager")
 	public void addManager(@RequestBody ManagerSecurityModel securityModel) {
-		userDetailsService.addManagerDetails(securityModel);
+		String encodedPassword = bCryptPasswordEncoder.encode(securityModel.getPassword());
+		ManagerSecurityModel user = new ManagerSecurityModel(securityModel.getUserId(), encodedPassword);
+		userDetailsService.addManagerDetails(user);
 	}
 
 	// Creates new user name and password for new receptionist
@@ -68,7 +74,8 @@ public class ManagerSecurityController {
 	@PutMapping("/updatemanager")
 	public void updateManagerDetails(@RequestBody ManagerSecurityModel managerSecurityModel,
 			@RequestParam String password) throws Exception {
-		userDetailsService.updateManagerDetails(managerSecurityModel, password);
+		String newPasswordEncoded = bCryptPasswordEncoder.encode(password);
+		userDetailsService.updateManagerDetails(managerSecurityModel, newPasswordEncoded);
 
 	}
 

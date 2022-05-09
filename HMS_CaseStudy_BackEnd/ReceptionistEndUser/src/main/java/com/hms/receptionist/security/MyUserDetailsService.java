@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +16,8 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private ReceptionistSecurityRepository repo;
+
+	PasswordEncoder encoder = new BCryptPasswordEncoder();
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,7 +34,8 @@ public class MyUserDetailsService implements UserDetailsService {
 	public void updateReceptionistDetails(ReceptionistSecurityModel securityModel, String newPassword)
 			throws Exception {
 		if (repo.existsById(securityModel.getUserId())) {
-			if (securityModel.getPassword().equals(repo.findById(securityModel.getUserId()).get().getPassword())) {
+			if (encoder.matches(securityModel.getPassword(),
+					repo.findById(securityModel.getUserId()).get().getPassword())) {
 				securityModel.setPassword(newPassword);
 				repo.save(securityModel);
 			} else {

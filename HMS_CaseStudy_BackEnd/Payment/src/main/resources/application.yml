@@ -1,7 +1,7 @@
 paytm.payment:
   sandbox:
-    merchantId: lopGVx33149646466565
-    merchantKey: dOVv43b2VLdQfa7S
+    merchantId:
+    merchantKey:
     channelId: WEB
     website: WEBSTAGING
     industryTypeId: Retail

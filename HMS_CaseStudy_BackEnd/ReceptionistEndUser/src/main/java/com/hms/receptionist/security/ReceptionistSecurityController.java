@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,6 +30,9 @@ public class ReceptionistSecurityController {
 	@Autowired
 	private MyUserDetailsService userDetailsService;
 
+	@Autowired
+	private PasswordEncoder bCryptPasswordEncoder;
+
 	// Authenticates the receptionist using user name and password and returns JWT
 	// token
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
@@ -51,14 +55,17 @@ public class ReceptionistSecurityController {
 	// Add the username and password of the receptionist
 	@PostMapping("/addreceptionist")
 	public void addReceptionist(@RequestBody ReceptionistSecurityModel mod) {
-		userDetailsService.addUserdetails(mod);
+		String encodedPassword = bCryptPasswordEncoder.encode(mod.getPassword());
+		ReceptionistSecurityModel user = new ReceptionistSecurityModel(mod.getUserId(), encodedPassword);
+		userDetailsService.addUserdetails(user);
 	}
 
 	// Updates the receptionist username and password
 	@PutMapping("/updatereceptionist")
 	public void updateReceptionst(@RequestBody ReceptionistSecurityModel receptionistSecurityModel,
 			@RequestParam String password) throws Exception {
-		userDetailsService.updateReceptionistDetails(receptionistSecurityModel, password);
+		String newPasswordEncoded = bCryptPasswordEncoder.encode(password);
+		userDetailsService.updateReceptionistDetails(receptionistSecurityModel, newPasswordEncoded);
 	}
 
 }
