@@ -92,12 +92,14 @@ h4{
     background-color: #e2d0bd;
 }
 .testmonialtags{
-    border: 1px solid floralwhite;
+    border: 1px solid #e2d0bd;
     border-radius: 7px;
     box-sizing: border-box;
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
     width: 400px;
     margin-left: 40px;
+    padding: 20px;
+    background-color: antiquewhite;
 
 }
 .testimoniallogos{

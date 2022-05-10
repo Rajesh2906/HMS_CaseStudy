@@ -36,7 +36,7 @@ public class NotificationController {
 	@PostMapping("/reservationnotification")
 	public void run(@RequestBody ReservationNotification details) throws Exception {
 		Message.creator(new PhoneNumber(details.getPhoneNumber()), new PhoneNumber("+12185177445"),
-				"Dear " + details.getName() + " Thank you for your reservation to ABC Hotel . Your reservation code is "
+				"Dear " + details.getName() + " Thank you for your reservation to BABAI Hotel . Your reservation code is "
 						+ details.getReservationCode())
 				.create();
 		reservationMail.sendmail(details);

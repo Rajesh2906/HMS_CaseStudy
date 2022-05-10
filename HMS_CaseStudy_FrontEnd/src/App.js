@@ -80,6 +80,7 @@ import OUpdateStaff from "./owner/staff/OUpdateStaff";
 import OGetAllStaff from "./owner/staff/OGetAllStaff";
 import ODeleteStaff from "./owner/staff/ODeleteStaff";
 import UpdateRecepPassword from "./receptionist/components/UpdateRecepPassword";
+import Paymenthome from "./owner/payment/Paymenthome";
 
   
 function App() {
@@ -159,6 +160,7 @@ function App() {
           <Route path='/ogeneratebill' element={<OGenerateBill/>}/>
           <Route path='/ogetallbills' element={<OGetAllBills/>}/>
           <Route path='/oprintbill' element={<OPrintBill/>}/>
+          <Route path='/paymenthome' element={<Paymenthome/>}/>
 
           {/* OWNER DEPARTMENT ROUTES */}
           <Route path='/oadddepartment' element={<OAddDepartment/>}/>

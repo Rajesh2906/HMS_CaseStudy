@@ -9,6 +9,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+
 <div class="container">
     <div class="row">
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
@@ -37,10 +38,9 @@
                     <tbody>
 
                     <tr th:each="entry : ${parameters}">
-                        <td th:text="${entry.key} + '  : -  ' + ${entry.value}"></td>       
-                    </tr>
-                    <tr>
-                      <td><div class="navbarhomeown"><a href='http://localhost:3000/recephome' class='homepage'>Hom</a><a href='http://localhost:3000/ownerhome' class='homepageown'>e</a></div></td>
+
+                        <td th:text="${entry.key} + '  : -  ' + ${entry.value}"></td>
+                      
                     </tr>
                     </tbody>
                 </table>

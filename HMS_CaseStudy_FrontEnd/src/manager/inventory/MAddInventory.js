@@ -34,8 +34,6 @@ function MAddInventory() {
                 setTimeout(function(){window.location.reload()},900);
             },
            );
-           window.location.reload();
-        
     }
 
     function handle(e){
