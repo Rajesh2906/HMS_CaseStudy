@@ -35,6 +35,7 @@ function ManagerHome() {
     <div className="backgroundman">
      
       <div className="parallaxman"> <ManagerHeader/></div>
+      <div className="quotationown">Keep your egos in check, and let the people who work for you shine. Because they're the people who know our customers best, the people we depend on to lead the way. It's no longer Do as I say. It's Do as I do.</div>
       <div className="betweenbar">
         <ul>
           <li><a href="#eventheading">Events</a></li>

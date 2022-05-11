@@ -35,8 +35,8 @@ function RecepHome() {
 
   return (
   <div className="background">
-     
       <div className="parallax"><RecepHeader/></div>
+      <div className="quotation">You only get one chance to make a good first impression, and yours may be in the hands of receptionist</div>
       <div className="betweenbar">
         <ul>
           <li><a href="#eventheading">Events</a></li>

@@ -43,6 +43,7 @@ function OwnerHome() {
     <div className="backgroundown">
      
      <div className="parallaxown"> <OwnerHeader/></div>
+     <div className="quotationown">Hospitality is almost impossible to teach. It's all about hiring the right people.</div>
       <div className="betweenbar">
         <ul>
           <li><a href="#eventheading">Events</a></li>
