@@ -14,6 +14,7 @@ import RecepHome from "./receptionist/components/RecepHome";
 import ManagerHome from "./manager/components/ManagerHome";
 import OwnerHome from "./owner/components/OwnerHome";
 
+import Paymenthome from "./owner/payment/Paymenthome";
 import Payment from "./receptionist/payment/Payment";
 import RresAdd from "./receptionist/reservation/RresAdd";
 import RGuestAdd from "./receptionist/guest/RGuestAdd";
@@ -163,6 +164,7 @@ function App() {
           <Route path='/ogeneratebill' element={<OwnerPrivateRoute><OGenerateBill/></OwnerPrivateRoute>}/>
           <Route path='/ogetallbills' element={<OwnerPrivateRoute><OGetAllBills/></OwnerPrivateRoute>}/>
           <Route path='/oprintbill' element={<OwnerPrivateRoute><OPrintBill/></OwnerPrivateRoute>}/>
+          <Route path='/paymenthome' element={<OwnerPrivateRoute><Paymenthome/></OwnerPrivateRoute>}/>
 
           {/* OWNER DEPARTMENT ROUTES */}
           <Route path='/oadddepartment' element={<OwnerPrivateRoute><OAddDepartment/></OwnerPrivateRoute>}/>

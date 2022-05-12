@@ -13,6 +13,12 @@ import pricetag from './images/pricetag.png'
 import award from './images/award.png'
 import WWcoverage from './images/WWcoverage.png'
 import logobrown from './images/logobrown.png'
+import wifi from './images/wifi.png'
+import gym from './images/gym.png'
+import spa from './images/spa.png'
+import transport from './images/transport.png'
+import game from './images/game.png'
+import breakfast from './images/breakfast.png'
 
 
 const Home = () => {
@@ -46,20 +52,29 @@ return (
 		<div className="testmonialtags"><img src={WWcoverage} className="testimoniallogos" alt="coverage"/><br/><h4>WorldWide Coverage</h4><p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form.</p></div>
 	</div>
 	<div className="corefeatures">
-		<div>
-			asdfasdf
+		<div className="corelogos">
+			<img src={wifi} alt='wifi' className="corelogoimg"/><br/>
+			Wifi
 		</div>
-		<div>
-			asdfasdf
+		<div className="corelogos">
+		<img src={gym} alt='gym' className="corelogoimg"/><br/>
+			Gym
 		</div>
-		<div>
-			asdfasdf
+		<div className="corelogos">
+		<img src={spa} alt='spa' className="corelogoimg"/><br/>
+			Spa
 		</div>
-		<div>
-			asdfasdf
+		<div className="corelogos">
+		<img src={transport} alt='transport' className="corelogoimg"/><br/>
+			Transport
 		</div>
-		<div>
-			asdfasdf
+		<div className="corelogos">
+		<img src={breakfast} alt='breakfast' className="corelogoimg"/><br/>
+			Breakfast
+		</div>
+		<div className="corelogos">
+		<img src={game} alt='game' className="corelogoimg"/><br/>
+			Game
 		</div>
 	</div>
 	<div className="abouthotel">
